@@ -4,7 +4,7 @@ Gatava sagatave autora publicēšanai. Zemāk ir ieraksta pamatteksts.
 
 ---
 
-Padalos ar REYRUN REKURSIVE DEEP SEARCH, bezmaksas atvērtā koda prasmi mākslīgā intelekta aģentiem.
+Padalos ar REYRUN Recursive Deep Search, bezmaksas atvērtā koda prasmi mākslīgā intelekta aģentiem.
 
 Projekts, lejupielāde un pārbaudītie piemēri: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site
 
@@ -41,6 +41,6 @@ IBAN: **`LV82HABA0551011504293`**
 
 [Vairāk par mani Facebook](https://www.facebook.com/reinis.runcis)
 
-Pilnie eksperimenti, avoti un pārbaudes kods: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/eksperimenti
+Izpētes ziņojums, pilnās atbildes, avoti un pārbaudes kods: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/eksperimenti
 
 Paldies, ja dalīsies ar šo darbu vai palīdzēsi man turpināt.

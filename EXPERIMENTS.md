@@ -40,13 +40,13 @@ Release 2.0.0-beta.3 · research conducted on November 9, 2026.
 
 The final validation set contains 10 everyday questions, 10 moderately difficult questions across different fields, and 10 difficult tasks. Each of the seven new advanced tasks includes a complete mathematical proof or derivation and a calculation that was actually run. Two reproduced failures in the learning memory were fixed, and the validated code passed 82 tests. A separate trial of a new search strategy returned **no_gain**: the candidate was not adopted as the new baseline method.
 
-[All 30 answers](validation/2026-11-09-beta3/30-examples.en.md) · Evidence register · Machine-readable summary · [Compact lessons](references/observed-lessons.md).
+[All 30 answers](validation/2026-11-09-beta3/30-examples.en.md) · [Compact lessons](references/observed-lessons.md).
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
 ### 1. Why the selection changed
 
-The original 30 research tasks were actually carried out, but an independent audit found that the medium group was too concentrated on IT and that the difficult group lacked completed advanced mathematics tasks. The final selection retains 12 suitable cases and adds 18 new ones. The original answers have not been deleted or rewritten: the [historical edition in English](validation/2026-11-09/30-examples.en.md) remains available. There are 48 distinct main tasks in total; the three comparison tasks are counted separately.
+The original 30 research tasks were actually carried out, but an independent audit found that the medium group was too concentrated on IT and that the difficult group lacked completed advanced mathematics tasks. The final selection retains 12 suitable cases and adds 18 new ones. The original answers are retained in full with disclosed editorial corrections: the [historical edition in English](validation/2026-11-09/30-examples.en.md) remains available. There are 48 distinct main tasks in total; the three comparison tasks are counted separately.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
@@ -89,17 +89,17 @@ The questions were designed for validation. Where clarification was needed, the 
 
 ### 2. What answer validation covers
 
-Each case retains its answer, sources, claim-to-source links, and the SHA-256 of its original file. New calculations also retain their code and output. The root agent independently read all seven mathematical proofs written by the new author, checked the arguments, and compared them with the stored numerical results. This is not certification by a formal proof assistant. See the mathematics review.
+Each case retains its answer, sources, claim-to-source links, and the SHA-256 of its original file. New calculations also retain their code and output. The root agent independently read all seven mathematical proofs written by the new author, checked the arguments, and compared them with the stored numerical results. This is not certification by a formal proof assistant. The internal mathematics review is excluded from this edition.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
 One agent carried out the main research for each example, followed by the independent review described here. This set does not demonstrate four independent agents at the question-formulation and search stages of every case. An acceptance audit from four separate perspectives was actually performed for the strategy comparison described below.
 
-The calculations and reasoning in the seven subject-area answers were independently reviewed. An additional agent checked the four new everyday answers and the historical-address/window cases against the stored primary-source excerpts, and repeated their calculations. There is no claim that every external source was reopened on the web in every audit. See the subject-area review and six-answer audit.
+The calculations and reasoning in the seven subject-area answers were independently reviewed. An additional agent checked the four new everyday answers and the historical-address/window cases against the stored primary-source excerpts, and repeated their calculations. There is no claim that every external source was reopened on the web in every audit. The internal subject-area review and six-answer audit are excluded from this edition.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
-Mathematical formatting and citation links were adapted for the public edition. Spacing was corrected in NE02; the ambiguous opening of NP04 was clarified to read, in translation, "A cartridge containing only activated carbon..." The original research answers remain unchanged. The export mapping records the checksums of both versions and the reasons for each edit.
+Mathematical formatting and citation links were adapted for the public edition. Spacing was corrected in NE02; the ambiguous opening of NP04 was clarified to read, in translation, "A cartridge containing only activated carbon..." The original research records remain separate. Editorial revision, November 10, 2026: the public answers also received the disclosed grammar, punctuation, spacing and notation corrections, with their research meaning, conditions and results preserved. The current file manifest identifies the edited publication.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
@@ -122,7 +122,7 @@ The recurring cycle is executable: load relevant lessons → carry out the task 
 | An earlier lesson card could hide a later contradictory failure observation. | Observations and cards now share one chronological selection of 16 entries. | The next begin record also contains the newer failure text. |
 | At the 5 MiB limit, an unreferenced evidence object left by a failed write prevented even the result of memory compaction from being saved. | Before the atomic save, only already unreferenced objects from the explicitly approved compaction plan are removed. Evidence still in use is retained until the state is successfully replaced. | With 5,242,680 bytes used and 200 bytes free, compaction succeeded and left 4806 bytes. A separate test with an injected write failure preserved the previous state and its evidence. |
 
-Before, after, regression review, 82-test receipt, and full test log. These are explicitly labelled synthetic mechanism tests. Fixing a software failure does not establish an improvement in search accuracy.
+The internal records include before-and-after results, a regression review, the 82-test receipt and the full test log. These are explicitly labelled synthetic mechanism tests. Fixing a software failure does not establish an improvement in search accuracy.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
@@ -147,7 +147,7 @@ The tasks checked the output units of a specific Depth Anything checkpoint, whet
 | Total web actions | 47 | 43 |
 | Sum of durations from the first web request to completed artifacts | 456.14 s | 495.50 s |
 
-Across the three new comparison tasks, both methods met all predefined answer criteria. The candidate used 43 web actions against the existing method's 47 but did not achieve the required accuracy gain, so it was not adopted as the new baseline. The result is **no_gain**, not a claim that the candidate is worse in every use. The saving of four actions is an observation from this one pilot; the candidate's combined task duration was also longer. An auditor recalculated the table's durations consistently, from the first real request to completed artifacts. The authors' own differently defined figures of 461.75 and 569.59 seconds are retained separately and do not support a direct speed comparison. The criteria were not switched to cost after the results became known. See the automatic evaluation, register of all six runs, and [complete answers in English](validation/2026-11-09-beta3/comparison/answers.en.md).
+Across the three new comparison tasks, both methods met all predefined answer criteria. The candidate used 43 web actions against the existing method's 47 but did not achieve the required accuracy gain, so it was not adopted as the new baseline. The result is **no_gain**, not a claim that the candidate is worse in every use. The saving of four actions is an observation from this one pilot; the candidate's combined task duration was also longer. An auditor recalculated the table's durations consistently, from the first real request to completed artifacts. The authors' own differently defined figures of 461.75 and 569.59 seconds are retained separately and do not support a direct speed comparison. The criteria were not switched to cost after the results became known. The automatic evaluation and register of all six runs are excluded from this edition; the [complete answers in English](validation/2026-11-09-beta3/comparison/answers.en.md) remain available.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
@@ -183,7 +183,9 @@ The internal records referenced here are omitted from this edition; see [publica
 
 The original release used the public distribution page at https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site for its download, documentation, validation report, examples, video, and draft Facebook post. At that time, public mirrors on GitHub, Hugging Face, ModelScope, and Gitee had not been created. No Facebook post had been sent on the author's behalf.
 
-Publication update, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) has been created and its ownership and public visibility checked through the API. Repository creation is separate from verification that every file has been uploaded. The publication manifest records the files to compare after the upload. This update does not claim completed upload verification.
+> Earlier publication note, retained for history: Publication update, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) has been created and its ownership and public visibility checked through the API. Repository creation is separate from verification that every file has been uploaded. The publication manifest records the files to compare after the upload. This update does not claim completed upload verification.
+
+Publication status, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) is published, and its first 111-file edition has been verified against the publication manifest. The Chinese mirror is pending account verification: both Gitee and ModelScope requested phone binding, and no mirror has been created there. No Hugging Face mirror has been created. The Facebook drafts have not been posted on the author's behalf.
 
 This is a research skill and an executable learning cycle for a connected agent environment. Downloading the package or pasting instructions into an ordinary chat does not itself start a round-the-clock process or guarantee persistent memory. Acceptance testing for a specific installation consists of a real first task, a second task, and evidence that the second task loaded experience from the first.
 
@@ -193,6 +195,8 @@ This is a research skill and an executable learning cycle for a connected agent 
 ## Final selection: all 30 answers
 
 Validation date: November 9, 2026. Release: 2.0.0-beta.3.
+
+> Editorial revision, November 10, 2026: grammar, punctuation, spacing and incomplete mathematical notation were corrected for publication. The questions' values and conditions, full answers, mathematical arguments, research results and source URLs are preserved. Original research records remain separate; the current publication bytes are identified by the file manifest.
 
 This set contains 10 everyday questions in ordinary, sometimes unclear language, 10 moderately difficult questions across different fields and 10 difficult questions. Seven difficult examples include a complete mathematical derivation or proof and a verification calculation that was actually run.
 
@@ -204,7 +208,7 @@ The original 30 examples remain separately in the history. With the 18 additions
 
 Begin and end operations for this selection's research were manually orchestrated. Evidence files for the new medium and mathematics groups were also checked with a separate strict record validator. This does not claim that an independent background agent launched all the research.
 
-[Validation report](validation/2026-11-09-beta3/release-report.en.md) · Source and claim register · [Original 30 examples in English](validation/2026-11-09/30-examples.en.md) · [Original Latvian edition](validation/2026-11-09/30-examples.lv.md).
+[Validation report](validation/2026-11-09-beta3/release-report.en.md) · [Original 30 examples in English](validation/2026-11-09/30-examples.en.md) · [Original Latvian edition](validation/2026-11-09/30-examples.lv.md).
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
@@ -312,7 +316,7 @@ When trying them on, check the following:
 
 - Fasten the waistband and sit down. It should still feel comfortable when you are seated; there should be no strong pulling across the thighs or crotch.
 - Look from the front, side, and back. Check whether the fabric around the hips is noticeably stretched or hanging too loosely.
-- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company's [Dankan fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
+- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company [Dankan's fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
 - Judge the length with the shoes you will wear. For a clean, straight silhouette, I would initially compare a leg that just touches the shoe with a slightly shorter version. That is a matter of taste.
 
 At home, find trousers whose length you already like. Lay them flat and measure the inside seam from the crotch to the hem. Measure the waistband flat and multiply that width by two. [Levi's](https://www.levi.com/GB/en_GB/blog/article/how-to-measure-jeans) describes this method.
@@ -773,7 +777,7 @@ The shrinkage percentage is calculated from the starting dimension: after washin
 
 520 × 0.95 = 494 cm. You need 512 cm, so after washing you would be 18 cm short. If the fabric were divided in half, each piece would be 247 cm; after allowing 16 cm for hems, the finished height would be 231 cm, which is 9 cm shorter than required. Before washing, the additional length required is 18.947368… cm.
 
-5.4 m would theoretically work, because 513 cm would remain after shrinkage. That is only 1 cm more than the two panels to be cut combined, so 5.4 m cannot be described as a large practical allowance. Cutting a sample from that same length would have to be accounted for separately.
+5.4 m would theoretically work, because 513 cm would remain after shrinkage. That is only 1 cm more than the combined length required for the two panels, so 5.4 m cannot be described as a large practical allowance. Cutting a sample from that same length would have to be accounted for separately.
 
 ##### How to test your fabric
 
@@ -895,7 +899,7 @@ NSF's open component listing also contains an entry marked “Conforms to the ma
 
 ##### Practical testing
 
-First find the cartridge composition and preparation instructions, then install and flush it as directed. At the same session, collect inlet water and outlet water after filtration. Record the date, temperature, volume filtered and the litres previously passed through the cartridge.
+First find the cartridge composition and preparation instructions, then install and flush it as directed. During the same session, collect inlet water and outlet water after filtration. Record the date, temperature, volume filtered and the litres previously passed through the cartridge.
 
 Measure free chlorine with a DPD test specifically intended for free chlorine, with a range and resolution suitable for 0.4 mg/L and the expected lower value. Follow the kit's reading time; “total chlorine” is a different measure. Hach also describes chloramine interference in DPD free-chlorine measurements, so an unstable colour change should not be presented as a conclusive filter result. [Hach technical questions](https://sea.hach.com/parameters/faq).
 
@@ -2006,7 +2010,7 @@ $$
 
 The sign is positive. Resultant formulas for a monic polynomial and its derivative are presented in Milne's Propositions 4.35–4.36; all coefficients here are exact rational numbers.
 
-Thus $f$ is separable. Also, $2869\equiv1\pmod2$ and $\pmod3$, so the reductions for both selected primes have no repeated roots. The code separately checked $\gcd(\bar f,\bar f')=1$ in both fields and calculated the discriminant as the exact determinant of the $9\times9$ Sylvester matrix.
+Thus $f$ is separable. Also, $2869\equiv1\pmod2$ and $2869\equiv1\pmod3$, so the reductions for both selected primes have no repeated roots. The code separately checked $\gcd(\bar f,\bar f')=1$ in both fields and calculated the discriminant as the exact determinant of the $9\times9$ Sylvester matrix.
 
 ##### Exact factorisations
 
@@ -2132,6 +2136,8 @@ Primary sources: [Milne, Fields and Galois Theory](https://www.jmilne.org/math/C
 
 Test date: 9 November 2026.
 
+> Editorial revision, November 10, 2026: limited grammar and punctuation corrections were made for publication. A dated note clarifies the historical query accounting. All questions, supplied values and conditions, complete answers, mathematical arguments, research results and source URLs are preserved. Original research records remain separate; the file manifest identifies the current publication bytes.
+
 This edition contains 10 everyday, 10 practical technical and 10 research questions. We prepared the questions for testing; these are not interviews with 30 people. Required user clarifications are clearly labelled as fictional test-scenario data. Web searches, source reading, answer writing and experience-preservation operations were actually executed.
 
 Three separate executors worked on their own question groups. Each question involved searches in English, German, Chinese and Japanese. This does not mean that a useful, fully readable source was found in every language. Source gaps and pages that could not be opened are preserved in the test records.
@@ -2145,6 +2151,8 @@ Opening a source is now explicitly distinguished from reading the required passa
 Strict validation of evidence records was added to the execution connector. It refuses a completed run when required sources, claims, searches or editing records are missing. This check validates files and records; it does not itself prove that sentences are true. These 30 examples used the manual start/end cycle, while the new connector's checks were run separately.
 
 ### Results
+
+> Editorial correction, November 10, 2026: the original accounting paragraph is retained below. A later review confirmed 143 distinct queries with retained original receipts; the original total of 147 also included four declared E10 queries whose full original outputs were not retained.
 
 147 queries were actually executed: EN 50, DE 33, ZH 33, JA 31. They include 143 distinct query texts and 4 repetitions after an interruption. The full results of E10's four initial tool calls had not been saved; during recovery, the sources were read again and the new calls saved. This gap is reported, not filled with invented records.
 
@@ -2195,7 +2203,7 @@ When trying them on, check the following:
 
 - Fasten the waistband and sit down. It should still feel comfortable when you are seated; there should be no strong pulling across the thighs or crotch.
 - Look from the front, side, and back. Check whether the fabric around the hips is noticeably stretched or hanging too loosely.
-- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company's [Dankan fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
+- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company [Dankan's fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
 - Judge the length with the shoes you will wear. For a clean, straight silhouette, I would initially compare a leg that just touches the shoe with a slightly shorter version. That is a matter of taste.
 
 At home, find trousers whose length you already like. Lay them flat and measure the inside seam from the crotch to the hem. Measure the waistband flat and multiply that width by two. [Levi's](https://www.levi.com/GB/en_GB/blog/article/how-to-measure-jeans) describes this method.
@@ -2813,7 +2821,7 @@ I would divide evaluation into three parts.
 
 **Consistency with the observation.** On images with a known reference, calculate PSNR and structural similarity, fixing colour space, cropping, resolution and alignment in advance. Also retain results by scene and error maps; an average can hide one very poor case.
 
-**Photographic quality.** An existing supplement is the authors' LPIPS implementation: it compares images using perceptually adapted features. Its documentation also specifies input scale and network variants, which must remain the same in a comparison. The authors' evaluation used human choices between two variants relative to a reference. [LPIPS code and evaluation description](https://github.com/richzhang/PerceptualSimilarity) In our test, people would blindly compare shuffled candidate pairs, both as full images and in important crops. LPIPS and human preference do not by themselves confirm that an image depicts the original details.
+**Photographic quality.** An existing supplement is the authors' LPIPS implementation: it compares images using perceptually adapted features. Its documentation also specifies input scale and network variants, which must remain the same in a comparison. The authors' evaluation used human choices between two variants relative to a reference. [LPIPS code and evaluation description](https://github.com/richzhang/PerceptualSimilarity). In our test, people would blindly compare shuffled candidate pairs, both as full images and in important crops. LPIPS and human preference do not by themselves confirm that an image depicts the original details.
 
 **Correctness of detail.** Separately check text, object counts, facial features, geometry and textures against the known reference or held-out additional viewpoints. If only one degraded image is available, entirely missing details may be plausible, but their correctness cannot be confirmed from that same image. Such regions must be marked as uncertain in the result.
 
@@ -2831,7 +2839,7 @@ If the environment supports files and program execution, connect the start/end o
 
 ### Support the author
 
-Support details updated on 2026-11-10 at the author's request; experiment records above are unchanged.
+Support details were updated on 2026-11-10 at the author's request. The experiment text above has only the editorial corrections disclosed in its introduction; the research results are unchanged.
 
 My name is Reinis Runcis. I am paralyzed and live alone. Each day I fight to keep creating, and I share this work for free. Through my example, I hope to inspire others who feel there is no way out of their situation.
 

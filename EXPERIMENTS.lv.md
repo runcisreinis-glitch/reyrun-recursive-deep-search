@@ -40,13 +40,13 @@ Vēsturiskie secinājumi saglabāti kā izpētes pieraksti. Tulkošana un publik
 
 Gala pārbaudē ir 10 ikdienas jautājumi, 10 vidēji sarežģīti jautājumi dažādās nozarēs un 10 sarežģīti uzdevumi. Septiņos jaunajos sarežģītajos uzdevumos ir pilns matemātisks pierādījums vai atvasinājums un faktiski palaists aprēķins. Izlabotas divas reproducētas mācību atmiņas kļūmes; pārbaudītajam kodam izpildīti 82 testi. Atsevišķais jaunās meklēšanas stratēģijas izmēģinājums deva godīgu **no_gain** rezultātu: kandidāts nekļuva par jauno pamatmetodi.
 
-[Pilnās 30 atbildes](validation/2026-11-09-beta3/30-examples.lv.md) · Pierādījumu reģistrs · Mašīnlasāms kopsavilkums · [Kompaktās mācības](references/observed-lessons.md).
+[Pilnās 30 atbildes](validation/2026-11-09-beta3/30-examples.lv.md) · [Kompaktās mācības](references/observed-lessons.md).
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
 ### 1. Kāpēc atlase tika pārveidota
 
-Sākotnējie 30 pētījumi bija reāli veikti, taču neatkarīgais audits konstatēja, ka vidējā grupa bija pārāk koncentrēta uz IT un grūtajā grupā trūka izpildītu augstākās matemātikas uzdevumu. Gala atlasē saglabāti 12 piemērotie gadījumi un pievienoti 18 jauni. Sākotnējās atbildes nav izdzēstas vai pārrakstītas: [vēsturiskais izdevums](validation/2026-11-09/30-examples.lv.md) paliek pieejams. Kopā ir 48 atšķirīgi pamatuzdevumi; trīs salīdzinājuma uzdevumi uzskaitīti atsevišķi.
+Sākotnējie 30 pētījumi bija reāli veikti, taču neatkarīgais audits konstatēja, ka vidējā grupa bija pārāk koncentrēta uz IT un grūtajā grupā trūka izpildītu augstākās matemātikas uzdevumu. Gala atlasē saglabāti 12 piemērotie gadījumi un pievienoti 18 jauni. Sākotnējās atbildes saglabātas pilnībā ar norādītiem redakcionāliem labojumiem: [vēsturiskais izdevums](validation/2026-11-09/30-examples.lv.md) paliek pieejams. Kopā ir 48 atšķirīgi pamatuzdevumi; trīs salīdzinājuma uzdevumi uzskaitīti atsevišķi.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
@@ -89,17 +89,17 @@ Jautājumi sagatavoti pārbaudei. Kur vajadzīgs precizējums, dotie nosacījumi
 
 ### 2. Ko nozīmē atbilžu pārbaude
 
-Katram gadījumam saglabāta atbilde, avoti, apgalvojumu saites un sākotnējā faila SHA-256. Jaunajiem aprēķiniem saglabāts arī kods un tā izvade. Root neatkarīgi izlasīja visus septiņus jaunā autora matemātikas pierādījumus, pārbaudīja argumentu un saglabāto skaitlisko rezultātu saskaņu. Tas nav formāls pierādījumu asistenta sertifikāts. Matemātikas pārskats.
+Katram gadījumam saglabāta atbilde, avoti, apgalvojumu saites un sākotnējā faila SHA-256. Jaunajiem aprēķiniem saglabāts arī kods un tā izvade. Root neatkarīgi izlasīja visus septiņus jaunā autora matemātikas pierādījumus, pārbaudīja argumentu un saglabāto skaitlisko rezultātu saskaņu. Tas nav formāls pierādījumu asistenta sertifikāts. Iekšējais matemātikas pārskats šajā izdevumā nav publicēts.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
 Pamata izpēti katram piemēram veica viens aģents, pēc tam notika norādītā neatkarīgā pārskatīšana. Šis kopums neapliecina četrus neatkarīgus aģentus katra jautājuma formulēšanas un meklēšanas posmā; četru atsevišķu perspektīvu pieņemšanas audits faktiski izpildīts tālāk aprakstītajam stratēģijas salīdzinājumam.
 
-Septiņām nozares atbildēm neatkarīgi pārbaudīta aprēķinu un secinājumu loģika. Papildu atsevišķs aģents pārbaudīja četras jaunās ikdienas atbildes un vēsturiskās adreses/loga gadījumus pret saglabātajiem pirmavotu fragmentiem; aprēķinus tas arī atkārtoja. Nav apgalvots, ka visi ārējie avoti katrā auditā no jauna atvērti tīmeklī. Nozaru pārskats, sešu atbilžu audits.
+Septiņām nozares atbildēm neatkarīgi pārbaudīta aprēķinu un secinājumu loģika. Papildu atsevišķs aģents pārbaudīja četras jaunās ikdienas atbildes un vēsturiskās adreses/loga gadījumus pret saglabātajiem pirmavotu fragmentiem; aprēķinus tas arī atkārtoja. Nav apgalvots, ka visi ārējie avoti katrā auditā no jauna atvērti tīmeklī. Iekšējais nozaru pārskats un sešu atbilžu audits šajā izdevumā nav publicēti.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
-Publiskajam izdevumam pielāgots matemātikas noformējums un citātu saites. NE02 izlabotas atstarpes; NP04 divdomīgais atvērums precizēts uz “Kasetne, kurā ir tikai aktīvā ogle...”. Sākotnējās pētniecības atbildes paliek nemainītas, abu variantu kontrolsummas un redakciju iemesli ir eksporta sasaistē.
+Publiskajam izdevumam pielāgots matemātikas noformējums un citātu saites. NE02 izlabotas atstarpes; NP04 divdomīgais atvērums precizēts uz “Kasetne, kurā ir tikai aktīvā ogle...”. Sākotnējie pētniecības ieraksti glabājas atsevišķi. Redakcija, 2026. gada 10. novembris: publiskajās atbildēs veikti arī norādītie gramatikas, pieturzīmju, atstarpju un pieraksta labojumi, saglabājot izpētes nozīmi, nosacījumus un rezultātus. Pašreizējais failu manifests identificē rediģēto publikāciju.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
@@ -122,7 +122,7 @@ Pastāvīgais cikls ir izpildāms: ielādēt saistītās mācības → veikt uzd
 | Agrāka mācību kartīte varēja aizsegt vēlāk saglabātu pretrunīgu neveiksmi. | Novērojumiem un kartītēm tagad ir viena hronoloģiska 16 ierakstu atlase. | Nākamais sākuma ieraksts satur arī jaunāko neveiksmes tekstu. |
 | Pie 5 MiB robežas pēc neveiksmīga ieraksta palicis nesaistīts pierādījuma objekts neļāva saglabāt pat atmiņas atbrīvošanas rezultātu. | No precīzi apstiprinātā atbrīvošanas plāna pirms atomiskās saglabāšanas dzēš tikai jau nesaistītos objektus; vēl lietotos pierādījumus saglabā līdz sekmīgai stāvokļa nomaiņai. | Pie 5 242 680 aizņemtiem baitiem un 200 brīviem baitiem atbrīvošana sekmīgi atstāja 4806 baitus. Atsevišķs ievadītas rakstīšanas kļūmes tests saglabāja agrāko stāvokli un tā pierādījumus. |
 
-Pirms, pēc, regresiju pārbaude, 82 testu kvīts, pilnais testu žurnāls. Tie ir skaidri marķēti sintētiski mehānisma testi. Tie nepārvērš programmas kļūmes labojumu par pierādītu meklēšanas precizitātes pieaugumu.
+Iekšējos ierakstos ir rezultāti pirms un pēc labojuma, regresiju pārbaude, 82 testu kvīts un pilnais testu žurnāls. Tie ir skaidri marķēti sintētiski mehānisma testi. Tie nepārvērš programmas kļūmes labojumu par pierādītu meklēšanas precizitātes pieaugumu.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
@@ -147,7 +147,7 @@ Uzdevumi pārbaudīja precīza Depth Anything kontrolpunkta izvades mērvienību
 | Tīmekļa darbības kopā | 47 | 43 |
 | Laiku summa no pirmā tīmekļa pieprasījuma līdz artefaktu pabeigšanai | 456,14 s | 495,50 s |
 
-Trīs jaunu uzdevumu salīdzinājumā abi paņēmieni izpildīja visus iepriekš fiksētos atbilžu kritērijus. Kandidāts izmantoja 43 tīmekļa darbības pret esošās metodes 47, bet nesasniedza prasīto precizitātes pieaugumu; tas netika ieviests kā jaunā pamatmetode. Tas ir **no_gain**, ne apgalvojums, ka kandidāts ir sliktāks visos lietojumos. Četru darbību ietaupījums ir novērojums šajā vienā pilotā; kandidāta darbu laiku summa vienlaikus bija lielāka. Tabulas laiku auditors vienādi pārrēķināja no pirmā reālā pieprasījuma līdz artefaktu pabeigšanai. Autoru pašu atšķirīgi definētie 461,75 un 569,59 sekunžu rādītāji saglabāti atsevišķi; tie nav tiešs ātruma salīdzinājums. Kritērijus pēc rezultātu ieraudzīšanas nepārslēdza uz izmaksām. Automātiskā izvērtējuma rezultāts, visu sešu darbu reģistrs, [pilnās atbildes](validation/2026-11-09-beta3/comparison/answers.lv.md).
+Trīs jaunu uzdevumu salīdzinājumā abi paņēmieni izpildīja visus iepriekš fiksētos atbilžu kritērijus. Kandidāts izmantoja 43 tīmekļa darbības pret esošās metodes 47, bet nesasniedza prasīto precizitātes pieaugumu; tas netika ieviests kā jaunā pamatmetode. Tas ir **no_gain**, ne apgalvojums, ka kandidāts ir sliktāks visos lietojumos. Četru darbību ietaupījums ir novērojums šajā vienā pilotā; kandidāta darbu laiku summa vienlaikus bija lielāka. Tabulas laiku auditors vienādi pārrēķināja no pirmā reālā pieprasījuma līdz artefaktu pabeigšanai. Autoru pašu atšķirīgi definētie 461,75 un 569,59 sekunžu rādītāji saglabāti atsevišķi; tie nav tiešs ātruma salīdzinājums. Kritērijus pēc rezultātu ieraudzīšanas nepārslēdza uz izmaksām. Automātiskā izvērtējuma rezultāts un visu sešu darbu reģistrs šajā izdevumā nav publicēti; pieejamas [pilnās atbildes](validation/2026-11-09-beta3/comparison/answers.lv.md).
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
@@ -181,7 +181,9 @@ Sākotnējā ziņojuma kopskaitā 147 bija iekļauti četri deklarēti E10 sāku
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
-Publiskā izplatīšanas lapa: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site . Tajā ir lejupielāde, dokumentācija, šī pārbaude, visi piemēri, video un Facebook teksta sagatave. GitHub, Hugging Face, ModelScope un Gitee publiskie spoguļi šajā laidienā vēl nav izveidoti. Facebook ieraksts nav nosūtīts autora vietā.
+> Sākotnējā publikācijas piezīme, saglabāta vēsturei: Publiskā izplatīšanas lapa: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site . Tajā ir lejupielāde, dokumentācija, šī pārbaude, visi piemēri, video un Facebook teksta sagatave. GitHub, Hugging Face, ModelScope un Gitee publiskie spoguļi šajā laidienā vēl nav izveidoti. Facebook ieraksts nav nosūtīts autora vietā.
+
+Publikācijas stāvoklis 2026. gada 10. novembrī: publiskais [GitHub repozitorijs](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) ir publicēts, un tā pirmais 111 failu izdevums ir pārbaudīts pret publikācijas manifestu. Ķīnas spoguļa publicēšana gaida konta pārbaudi: gan Gitee, gan ModelScope pieprasīja tālruņa piesaisti, un spogulis tajos vēl nav izveidots. Hugging Face spogulis nav izveidots. Facebook sagataves autora vietā nav publicētas.
 
 Šī ir izpētes prasme un izpildāms mācību cikls pieslēdzamai aģenta videi. Pakotnes lejupielāde vai norādes ielīmēšana parastā čatā pati nepalaidīs diennakts procesu un negarantēs pastāvīgu atmiņu. Konkrētas instalācijas pieņemšanas pārbaude ir reāls pirmais darbs, otrais darbs un tajā ielādītā pirmā darba pieredze.
 
@@ -191,6 +193,8 @@ Publiskā izplatīšanas lapa: https://reyrun-rekursive-deep-search.runcisreinis
 ## Gala atlase: visas 30 atbildes
 
 Pārbaudes datums: **2026. gada 9. novembris**. Laidiens: **2.0.0-beta.3**.
+
+> Redakcija, 2026. gada 10. novembris: publikācijai izlabota gramatika, pieturzīmes, atstarpes un nepilnīgs matemātiskais pieraksts. Saglabāti jautājumu skaitliskie dati un nosacījumi, pilnās atbildes, matemātiskie argumenti, izpētes rezultāti un avotu adreses. Sākotnējie izpētes ieraksti glabājas atsevišķi; pašreizējās publikācijas failus identificē failu manifests.
 
 Šeit ir 10 ikdienas jautājumi parastā, reizēm neskaidrā valodā, 10 vidēji sarežģīti jautājumi dažādās nozarēs un 10 sarežģīti jautājumi. Septiņos sarežģītajos piemēros ir pilns matemātisks atvasinājums vai pierādījums un faktiski palaists kontrolaprēķins.
 
@@ -202,7 +206,7 @@ Sākotnējie 30 piemēri paliek atsevišķi vēsturē. Kopā ar 18 papildinājum
 
 Sākuma un beigu darbības šīs atlases izpētē vadītas manuāli. Jaunās vidējās un matemātikas grupas pierādījumu faili pārbaudīti arī ar atsevišķu stingro ierakstu pārbaudītāju. Tas nav apgalvojums, ka visas izpētes palaida patstāvīgs fona aģents.
 
-[Pārbaudes kopsavilkums](validation/2026-11-09-beta3/release-report.lv.md) · Avotu un apgalvojumu reģistrs · [Sākotnējie 30 piemēri](validation/2026-11-09/30-examples.lv.md).
+[Pārbaudes kopsavilkums](validation/2026-11-09-beta3/release-report.lv.md) · [Sākotnējie 30 piemēri](validation/2026-11-09/30-examples.lv.md).
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](PUBLICATION_SCOPE.md).
 
@@ -516,7 +520,7 @@ Apsvērti divi pārnesami paņēmieni: mērvienību pārbaude pirms pārrēķina
 
 Istaba četri uz trīs. Vienu krāsas spaini paņemšu un visas sienas, pietiks tak?
 
-*Pārbaudes nosacījumi:* Sākumā nosauc tikai būtiskos trūkstošos lielumus. Tad izmanto skaidri marķētu simulēto precizējumu: garums 4m, platums3m, augstums2.5m, durvju+logu laukums5m², divas kārtas, uz izvēlētās krāsas norādīti10m²/L vienai kārtai; griestus nekrāso. Aprēķini teorētisko daudzumu, nodali reālo rezervi.
+*Pārbaudes nosacījumi:* Sākumā nosauc tikai būtiskos trūkstošos lielumus. Tad izmanto skaidri marķētu simulēto precizējumu: garums 4 m, platums 3 m, augstums 2,5 m, durvju+logu laukums 5 m², divas kārtas, uz izvēlētās krāsas norādīti 10 m²/L vienai kārtai; griestus nekrāso. Aprēķini teorētisko daudzumu, nodali reālo rezervi.
 
 ##### Izpētītā atbilde
 
@@ -555,7 +559,7 @@ Iepriekšējā miltu uzdevuma mācība te noderēja: vispirms nošķirt mērvien
 
 Rīsiem uz pakas trīssimt piecdesmit, aplikācijā simt divdesmit. Tie abi uz simtu gramu. Kur tās kalorijas pazūd kad es uzvāru?
 
-*Pārbaudes nosacījumi:* Uzdevums ir par sausas un izvārītas masas salīdzinājumu, ne individuālu uztura ieteikumu. Pārbaudi abas iespējamās uzskaites bāzes. Aprēķina kontrolpiemērs:100g sausu rīsu ar350kcal pēc vārīšanas bez piedevām sver280g; pieņem, ka piemērā pārtikas enerģija nav aizlieta prom.
+*Pārbaudes nosacījumi:* Uzdevums ir par sausas un izvārītas masas salīdzinājumu, ne individuālu uztura ieteikumu. Pārbaudi abas iespējamās uzskaites bāzes. Aprēķina kontrolpiemērs: 100 g sausu rīsu ar 350 kcal pēc vārīšanas bez piedevām sver 280 g; pieņem, ka piemērā pārtikas enerģija nav aizlieta prom.
 
 ##### Izpētītā atbilde
 
@@ -724,7 +728,7 @@ Pirmais noderīgais tests: atjauno atsevišķā mapē dažus jaunus, vecus un ie
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Man ir12 vienādas bazilika podiņu stādus. Gribu salīdzināt divus mēslojumus; puse palodzes ir saulaināka. Kā4 nedēļās veikt salīdzinājumu, lai nejauši nepierādītu tikai saules ietekmi?
+Man ir 12 vienādi bazilika stādi podiņos. Gribu salīdzināt divus mēslojumus; puse palodzes ir saulaināka. Kā 4 nedēļās veikt salīdzinājumu, lai nejauši nepierādītu tikai saules ietekmi?
 
 *Pārbaudes nosacījumi:* Izstrādā izpildāmu izvietojumu, randomizāciju, mērījumu plānu un secinājumu robežas. Vairākas viena auga lapas nav neatkarīgi augi. Nepiešķir izmērītu rezultātu neizpildītam eksperimentam.
 
@@ -780,7 +784,7 @@ Otra iespēja ir akli nolasīt ar kodiem pārsauktus foto. [NC3Rs](https://eda.n
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Šuju divus kokvilnas aizkarus, katru gatavu130cm platu un240cm augstu. Malām kopā vajag8cm platumā, augšai un apakšai kopā16cm garumā. Audums150cm plats, garumā saraujas5%, platumā3%. Vai5.2m pietiks un kā pārbaudīt pirms griešanas?
+Šuju divus kokvilnas aizkarus, katru gatavu 130 cm platu un 240 cm augstu. Malām kopā vajag 8 cm platumā, augšai un apakšai kopā 16 cm garumā. Audums 150 cm plats, garumā saraujas 5%, platumā 3%. Vai 5,2 m pietiks un kā pārbaudīt pirms griešanas?
 
 *Pārbaudes nosacījumi:* Pieņem vienmērīgu norādīto saraušanos, bez raksta salāgošanas, bez brāķa un bez papildu rezerves. Izvērtē platumu un garumu atsevišķi; aprēķini teorētisko minimumu un izskaidro, kāpēc praksē vajadzīgs paša auduma paraugs.
 
@@ -838,9 +842,9 @@ Otra ideja ir izmantot nelielu ražošanas kontrolparaugu pirms visas sagataves 
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Cik elektrības teorētiski vajag80 litru ūdens uzsildīšanai no10 līdz60°C, ja visa procesa lietderība ir90% un elektrība maksā0.15€/kWh? Cik60°C ūdens vajag50 litriem40°C maisījuma ar10°C auksto ūdeni?
+Cik elektrības teorētiski vajag 80 litru ūdens uzsildīšanai no 10 līdz 60 °C, ja visa procesa lietderība ir 90% un elektrība maksā 0,15 €/kWh? Cik 60 °C ūdens vajag 50 litriem 40 °C maisījuma ar 10 °C auksto ūdeni?
 
-*Pārbaudes nosacījumi:* Izmantoρ=1kg/L un c=4.186kJ/(kg·K). Salīdzini siltumu, elektrību un cenu; maisījumam pieņem bez siltuma zuduma un vienādu blīvumu. Neiekļauj nenorādītos ilgstošās glabāšanas zudumus vai tirgus cenu pieņēmumus.
+*Pārbaudes nosacījumi:* Izmanto ρ = 1 kg/L un c = 4,186 kJ/(kg·K). Salīdzini siltumu, elektrību un cenu; maisījumam pieņem siltuma zudumu neesamību un vienādu blīvumu. Neiekļauj nenorādītos ilgstošās glabāšanas zudumus vai tirgus cenu pieņēmumus.
 
 ##### Izpētītā atbilde
 
@@ -881,7 +885,7 @@ x × (60 − 40) = (50 − x) × (40 − 10).
 
 20x = 1500 − 30x, tātad x = 30 L.
 
-Izmantoju [KIT aprakstīto kalorimetrijas bilanci](https://labs.physik.kit.edu/prakt-klass-physik-manuals/P2/Spezifische_Waermekapazitaet/doc/Hinweise-Waermekapazitaet-Mischung/), šeit piemērota divām viena veida ūdens masām. Kopīgie c un ρ saīsinās.
+Izmantoju [KIT aprakstīto kalorimetrijas bilanci](https://labs.physik.kit.edu/prakt-klass-physik-manuals/P2/Spezifische_Waermekapazitaet/doc/Hinweise-Waermekapazitaet-Mischung/), šeit piemērotu divām viena veida ūdens masām. Kopīgie c un ρ saīsinās.
 
 Pārbaude: 30 + 20 = 50 L un (30 × 60 + 20 × 10)/50 = 40 °C. Karstais ūdens atdod 30 × 4,186 × 20 = 2511,6 kJ; aukstais saņem 20 × 4,186 × 30 = 2511,6 kJ. Šim atsevišķajam sajaukšanas solim vēlreiz nepiemēro 90%, jo tā nosacījums ir sajaukšana bez zudumiem.
 
@@ -902,7 +906,7 @@ Otru mehānismu, divu krājumu sajaukšanu līdz mērķa īpašībai, var izmant
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Krāna ūdens analīzē cietība280mg/L kāCaCO3 un brīvais hlors0.4mg/L. Vai parasts aktīvās ogles krūzes filtrs noņems gan hloru, gan kaļķi? Kā atšķirt ogli, jonapmaiņu un reverso osmozi pēc faktiskas pārbaudes?
+Krāna ūdens analīzē cietība 280 mg/L kā CaCO₃ un brīvais hlors 0,4 mg/L. Vai parasts aktīvās ogles krūzes filtrs noņems gan hloru, gan kaļķi? Kā atšķirt ogli, jonapmaiņu un reverso osmozi pēc faktiskas pārbaudes?
 
 *Pārbaudes nosacījumi:* Nav dots konkrēts produkts. Salīdzini mehānismus, ko apliecina attiecīgie ražotāja/sertifikācijas ieraksti, un pirms/pēc mērījumu. Neapgalvo, ka ūdens analīze pati nosaka tā pilnu dzeramības drošumu.
 
@@ -917,7 +921,7 @@ Ražotāja BRITA piemērs parāda atšķirību vienas produktu saimes iekšienē
 | Apstrāde | Ko tā dara šajā uzdevumā | Ko meklēt dokumentos un mērījumos |
 |---|---|---|
 | Aktīvā ogle | Brīvā hlora samazināšanā darbojas arī oksidēšanās un reducēšanās reakcijas; smaku izraisošu vielu samazināšanai izmanto adsorbciju. Izšķīdušo Ca/Mg mazināšanu no ogles vien neizsecina. | Konkrēts hlora samazināšanas apliecinājums; brīvā hlora tests pirms/pēc. Cietību mēra atsevišķi. |
-| Jonapmaiņa | Mīkstināšanā sveķi Ca/Mg aizvieto ar citiem joniem. Nātrija vai kālija mīkstinātājs nav visu izšķīdušo sāļu izņemšana. Krūžu sveķu sastāvs un karbonātiskās cietības samazināšana var atšķirties. | Precīzs sveķu un sistēmas apraksts; kopējās cietības tests. Ja solīta tieši karbonātiskās cietības mazināšana, papildus vajadzīga sārmainība. |
+| Jonapmaiņa | Mīkstināšanā sveķi Ca/Mg aizvieto ar citiem joniem. Nātrija vai kālija mīkstinātājs nav visu izšķīdušo sāļu izņemšana. Krūžu sveķu sastāvs un karbonātiskās cietības samazināšana var atšķirties. | Precīzs sveķu un sistēmas apraksts; kopējās cietības tests. Ja solīta tieši karbonātiskās cietības mazināšana, papildus jānosaka sārmainība. |
 | Reversā osmoze | Spiediens virza ūdeni caur puscaurlaidīgu membrānu; sistēma samazina izšķīdušo vielu daudzumu. Daudzās sistēmās ir arī citi filtri. | Membrānas sistēmas dati un TDS samazināšanas apliecinājums; vadītspēja/TDS un cietība pirms/pēc. Par hlora samazināšanu spriež pēc visas sistēmas dokumentiem. |
 
 Ogles ķīmisko darbību apraksta [Japānas ūdens filtru asociācija](https://www.jwpa.or.jp/qa01.htm). Jonapmaiņu un reverso osmozi skaidro [NSF standartu pārskats](https://www.nsf.org/consumer-resources/articles/standards-water-treatment-systems), bet sveķu resursa izsīkšanu un cietības testus apraksta [Hach](https://my.hach.com/parameters/hardness).
@@ -963,7 +967,7 @@ Otra ir komponenta kalpošanas gaitas pārbaude: pieraksta caurlaistos litrus un
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Darbnīcā krūzi pārdod par24€, materiāli un iepakojums9€, samaksa par katru saražoto krūzi6€. Mēneša pastāvīgās izmaksas360€. Ir120 krūžu jauda; pamatpasūtījums ir40 krūzes. Papildu klients grib30 par18€. Vai pieņemt un cik krūzes jāpārdod parastajā cenā, lai nosegtu izmaksas?
+Darbnīcā krūzi pārdod par 24 €, materiāli un iepakojums 9 €, samaksa par katru saražoto krūzi 6 €. Mēneša pastāvīgās izmaksas 360 €. Ir 120 krūžu jauda; pamatpasūtījums ir 40 krūzes. Papildu klients grib 30 par 18 €. Vai pieņemt un cik krūzes jāpārdod parastajā cenā, lai nosegtu izmaksas?
 
 *Pārbaudes nosacījumi:* Šis ir hipotētisks uzdevums: nodokļi, komisijas un ārējās cenas jau izslēgtas; papildu pasūtījums neizspiež pamatpasūtījumu. Nošķir ieņēmumus, mainīgās izmaksas, seguma summu un peļņu; parādi arī nosacījumu, kurā secinājums mainītos.
 
@@ -1256,7 +1260,7 @@ Pārbaudītu divas hipotēzes: stabila nodoma atslēga novērš dublētu efektu 
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Aplūko u_t=u_xx uz(0,π), u(0,t)=u(π,t)=0. No u(x,1) arL² trokšņa līmeniδ=10^-6 grib atgūt u(x,0). Pierādi vai atspēko inversā operatora ierobežotību L², izmantojot normalizētas sinusu modas. Aprēķini lielāko veselo modu n, kuras sākuma koeficienta1 signāls t=1 vēl pārsniedzδ. Piedāvā vienu regularizāciju un precīzi pasaki, ko tā negarantē.
+Aplūko u_t=u_xx uz (0,π), u(0,t)=u(π,t)=0. No u(x,1) ar L² trokšņa līmeni δ=10^-6 grib atgūt u(x,0). Pierādi vai atspēko inversā operatora ierobežotību L², izmantojot normalizētas sinusu modas. Aprēķini lielāko veselo modu n, kuras sākuma koeficienta 1 signāls t=1 vēl pārsniedz δ. Piedāvā vienu regularizāciju un precīzi pasaki, ko tā negarantē.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pamatots pierādījums, formulas, izpildīts skaitlisks kontrolaprēķins un primārs matemātisks avots. Trokšņa robežu nepasniedz kā unikālu atgūšanas garantiju.
 
@@ -1350,7 +1354,7 @@ Nākamais lietderīgais tests: pie skaidri dotas Soboleva normas robežas salīd
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-dX_t=-2X_tdt+3dW_t, X_0=1. Atvasini vidējo, dispersiju un stacionāro sadalījumu. Atvasini Euler–Maruyama stacionāro dispersiju un soļa stabilitātes nosacījumu; salīdzini h=0.25 ar nepārtraukto modeli un parādi, kas notiek pieh=1.2.
+dX_t=-2X_tdt+3dW_t, X_0=1. Atvasini vidējo, dispersiju un stacionāro sadalījumu. Atvasini Euler–Maruyama stacionāro dispersiju un soļa stabilitātes nosacījumu; salīdzini h=0.25 ar nepārtraukto modeli un parādi, kas notiek pie h=1.2.
 
 *Pārbaudes nosacījumi:* Vajadzīgs atvasinājums, izpildīts skaitlisks kontrolaprēķins un neatkarīgs primārais avots. Montekarlo rezultātu nedrīkst aizstāt ar teorētisku pierādījumu; ja simulē, saglabā seed un kodu.
 
@@ -1367,7 +1371,7 @@ d(e^{2t}X_t)=3e^{2t}dW_t,\qquad
 X_t=e^{-2t}+3\int_0^t e^{-2(t-s)}\,dW_s.
 $$
 
-Integranda ir deterministiska un kvadrātiski integrējama. Itô integrālis ir centrēts Gausa mainīgais, un izometrija dod
+Zemintegrāļa funkcija ir deterministiska un kvadrātiski integrējama. Itô integrālis ir centrēts Gausa mainīgais, un izometrija dod
 
 $$
 \mathbb E X_t=e^{-2t},\qquad
@@ -1409,7 +1413,7 @@ $$
 
 Stacionārais sadalījums ir $N(0,v_h)$, jo stacionāru procesu var veidot kā kvadrātiski summējamu neatkarīgu Gausa inovāciju rindu. Divu risinājumu starpība ar tiem pašiem trokšņa pieaugumiem ir $a^k(Y_0-\widetilde Y_0)$, kas šajā intervālā izdziest.
 
-Šeit stabilitāte nozīmē sākuma atšķirību izdzišanu un ierobežotu otro momentu; additīvā trokšņa dēļ pats process uz nulli nekonverģē. Giles un līdzautoru oriģinālraksta 6.1. nodaļā formula dota trokšņa koeficientam $\sqrt2$; reizinot dispersiju ar $9/2$, tā sakrīt ar mūsu atvasinājumu. [Raksts](https://link.springer.com/article/10.1007/s11222-019-09890-0).
+Šeit stabilitāte nozīmē sākuma atšķirību izdzišanu un ierobežotu otro momentu; aditīvā trokšņa dēļ pats process uz nulli nekonverģē. Giles un līdzautoru oriģinālraksta 6.1. nodaļā formula dota trokšņa koeficientam $\sqrt2$; reizinot dispersiju ar $9/2$, tā sakrīt ar mūsu atvasinājumu. [Raksts](https://link.springer.com/article/10.1007/s11222-019-09890-0).
 
 Ja $|a|\ge1$, stacionāra varbūtības sadalījuma nav. Tā raksturfunkcijai būtu jāapmierina
 
@@ -1469,7 +1473,7 @@ Nākamajā metodes salīdzinājumā jāpārbauda arī autokorelācija: vienāda 
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-B=[[-1,20],[0,-1]]. Visas īpašvērtības ir negatīvas; vai no tā seko, ka||exp(tB)||₂≤1 visiemt≥0? Atvasini matricas eksponenti, precīzo spektrālo normu un tās maksimuma laiku/vērtību. Nošķir asimptotisku stabilitāti un īslaicīgu pastiprinājumu.
+B=[[-1,20],[0,-1]]. Visas īpašvērtības ir negatīvas; vai no tā seko, ka ||exp(tB)||₂≤1 visiem t≥0? Atvasini matricas eksponenti, precīzo spektrālo normu un tās maksimuma laiku/vērtību. Nošķir asimptotisku stabilitāti un īslaicīgu pastiprinājumu.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pierādījums, izpildīts skaitlisks pārbaudījums un primārs avots par nenormālu operatoru pārejas uzvedību. Normas maksimumu nepaņem tikai no rupja skaitliska režģa.
 
@@ -1597,9 +1601,9 @@ Nākamais lietderīgais tests būtu novērtēt maksimālās pastiprināšanas ju
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Risini min_x x ar ierobežojumux²≤0. Atvasini Lagranža duālo uzdevumu, primāro un duālo optimālo vērtību, sasniegšanu un KKT nosacījumus. Tad atkārto x²≤ε² pieε>0 un analizē ε→0. Vai nulles dualitātes plaisa viena pati garantē galīgu optimālu reizinātāju?
+Risini min_x x ar ierobežojumu x²≤0. Atvasini Lagranža duālo uzdevumu, primāro un duālo optimālo vērtību, sasniegšanu un KKT nosacījumus. Tad atkārto x²≤ε² pie ε>0 un analizē ε→0. Vai nulles dualitātes plaisa viena pati garantē galīgu optimālu reizinātāju?
 
-*Pārbaudes nosacījumi:* Vajadzīgs formāls atvasinājums, izpildīts skaitlisks kontrolaprēķins vairākiemε un avots. Neizmanto Slatera nosacījumu, ja tas nav izpildīts.
+*Pārbaudes nosacījumi:* Vajadzīgs formāls atvasinājums, izpildīts skaitlisks kontrolaprēķins vairākiem ε un avots. Neizmanto Slatera nosacījumu, ja tas nav izpildīts.
 
 ##### Izpētītā atbilde
 
@@ -1734,7 +1738,7 @@ Nākamais tests ir pārbaudīt ekvivalentas pieļaujamās kopas formulāciju $x=
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Uz[0,1] ņem f_n(x)=n·1_(0,1/n)(x). Nosaki punktveida/gandrīzvisur robežu, L¹ konverģenci un mēru f_n(x)dx vājo robežu. Pierādi atbildes un precīzi nosauc, kādēļ robežu nevar vienkārši ienest integrālī. Saisti ar vienmērīgu integrējamību.
+Uz [0,1] ņem f_n(x)=n·1_(0,1/n)(x). Nosaki punktveida/gandrīz visur robežu, L¹ konverģenci un mēru f_n(x)dx vājo robežu. Pierādi atbildes un precīzi nosauc, kādēļ robežu nevar vienkārši ienest integrālī. Saisti ar vienmērīgu integrējamību.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pierādījums ar patvaļīgu nepārtrauktu testa funkciju un izpildīts skaitlisks kontrolpiemērs. Neapgalvo, ka šī secība pierāda visu skaitlisko integratoru kļūmi.
 
@@ -1811,7 +1815,7 @@ $$
 
 Tātad šo integrāļu supremums pēc n ir 1 visiem K un netiecas uz nulli. Līdzvērtīgi, kopās $A_n=(0,1/n)$ mērs tiecas uz 0, bet $\int_{A_n}f_n=1$.
 
-Vienmērīgas integrējamības kritērijs un saikne ar $L^1$ konverģenci gandrīz visur konverģējošām secībām doti Ulmas universitātes lemmas 3.6 un 3.7 formulējumā un pierādījumā. Ķīnas pirmavota kursā definīcija 6.11 dod to pašu astes kritēriju. [Ulma](https://www.mathematik.uni-ulm.de/stochastik/lehre/ss05/wt/skript/node41.html), [Pekinas universitāte](https://math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/martingale.html).
+Vienmērīgas integrējamības kritērijs un saikne ar $L^1$ konverģenci gandrīz visur konverģējošām secībām doti Ulmas universitātes lemmu 3.6 un 3.7 formulējumos un pierādījumos. Ķīnas pirmavota kursā definīcija 6.11 dod to pašu astes kritēriju. [Ulma](https://www.mathematik.uni-ulm.de/stochastik/lehre/ss05/wt/skript/node41.html), [Pekinas universitāte](https://math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/martingale.html).
 
 Monotonās konverģences teorēma arī nav piemērojama: secība nav punktveidā monotoni augoša. Fatū lemma paliek spēkā un dod $0\le1$, ne vienādību.
 
@@ -1982,7 +1986,7 @@ Kods vispirms precīzi pārbaudīja matricu identitātes ar SymPy, pēc tam ar N
 
 Robežgadījumā 10 000 atkārtojumi deva tieši $\bigl(\begin{smallmatrix}1&0\\20000&1\end{smallmatrix}\bigr)$, bet norma ir aptuveni 20 000.00005. Pie $h=2.1$ pēc 1000 soļiem norma bija $5.972479742\cdot10^{273}$. Eilera metode pie $h=0.1$ pēc 10 000 soļiem deva $4.044537936\cdot10^{21}$, relatīvā atšķirība no slēgtās formulas bija $3.78\cdot10^{-15}$.
 
-Skaitliskie dati apstiprina konkrēto realizāciju; apgalvojums par visiem soļu skaitiem balstās algebraiskajā pierādījumā. Saglabāšana arī nenozīmē precīzu fāzi: Stranga rotācijas leņķis ir $\theta=\arccos(1-h^2/2)$, bet precīzā risinājuma leņķis ir $h$. Pie $h=0.1$ pēc 10 000 soļiem uzkrātā, uz pilnu apgriezienu neatlikumiem nesamazinātā leņķu starpība ir $10000(\theta-h)=0.4171361154$ radiāni.
+Skaitliskie dati apstiprina konkrēto realizāciju; apgalvojums par visiem soļu skaitiem balstās algebraiskajā pierādījumā. Saglabāšana arī nenozīmē precīzu fāzi: Stranga rotācijas leņķis ir $\theta=\arccos(1-h^2/2)$, bet precīzā risinājuma leņķis ir $h$. Pie $h=0.1$ pēc 10 000 soļiem uzkrātā leņķu starpība, neatņemot pilnos apgriezienus, ir $10000(\theta-h)=0.4171361154$ radiāni.
 
 ##### Divi pārbaudītie pārnesumi un nākamais tests
 
@@ -2007,7 +2011,7 @@ Primārie avoti: [Hairer, Lubich, Wanner (2003), kopsavilkums](https://www.cambr
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Nosaki f(x)=x^5-x-1 Galuā grupu pārQ un vai saknes izsakāmas radikāļos. Izmanto precīzu faktorizāciju modulo2 un modulo3, norādot, kāpēc attiecīgie ciklu tipi nosaka grupu. Pārbaudi diskriminantu un katras izmantotās teorēmas priekšnosacījumus.
+Nosaki f(x)=x^5-x-1 Galuā grupu pār Q un vai saknes izsakāmas radikāļos. Izmanto precīzu faktorizāciju modulo 2 un modulo 3, norādot, kāpēc attiecīgie ciklu tipi nosaka grupu. Pārbaudi diskriminantu un katras izmantotās teorēmas priekšnosacījumus.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pilns arguments, izpildīta precīza polinomu aritmētika un primārie matemātikas avoti. CAS grupas nosaukums viens pats nav pierādījums.
 
@@ -2017,7 +2021,7 @@ $$
 \boxed{\operatorname{Gal}(x^5-x-1\,/\,\mathbb Q)\cong S_5.}
 $$
 
-**Neviena šī polinoma sakne nav izsakāma radikāļos pār $\mathbb Q$.** Pierādījums izmanto precīzu faktorizāciju modulo 2 un 3, teorēmu priekšnosacījumiem un izpildītiem aritmētikas sertifikātiem.
+**Neviena šī polinoma sakne nav izsakāma radikāļos pār $\mathbb Q$.** Pierādījums izmanto precīzu faktorizāciju modulo 2 un 3, teorēmu priekšnosacījumus un izpildītus aritmētikas sertifikātus.
 
 ##### Diskriminants un labie pirmskaitļi
 
@@ -2042,7 +2046,7 @@ $$
 
 Zīme ir pozitīva. Rezultanta formulas moniskam polinomam un tā atvasinājumam izklāstītas Milne 4.35.–4.36. apgalvojumā; šeit visi koeficienti ir precīzi racionāli skaitļi.
 
-Tādēļ $f$ ir separabls. Turklāt $2869\equiv1\pmod2$ un $\pmod3$, tātad abiem izvēlētajiem pirmskaitļiem redukcijās nav atkārtotu sakņu. Kods atsevišķi pārbaudīja arī $\gcd(\bar f,\bar f')=1$ abos laukos un aprēķināja diskriminantu kā precīzu $9\times9$ Silvestra matricas determinantu.
+Tādēļ $f$ ir separabls. Turklāt $2869\equiv1\pmod2$ un $2869\equiv1\pmod3$, tātad abiem izvēlētajiem pirmskaitļiem redukcijās nav atkārtotu sakņu. Kods atsevišķi pārbaudīja arī $\gcd(\bar f,\bar f')=1$ abos laukos un aprēķināja diskriminantu kā precīzu $9\times9$ Silvestra matricas determinantu.
 
 ##### Precīzās faktorizācijas
 
@@ -2128,7 +2132,7 @@ $$
 (v_0,v_m)=t_1\cdots t_{m-1}t_m t_{m-1}\cdots t_1.
 $$
 
-Visas permutācijas ir transpozīciju reizinājumi. Tādēļ $G$ satur $S_5$, un, tā kā $G\le S_5$, ir $G=S_5$. Ar transpozīciju radītu tranzitīvu grupu arguments ir izklāstīts arī Conrad autora piezīmju pirmajā pierādījuma solī.
+Visas permutācijas ir transpozīciju reizinājumi. Tādēļ $G$ satur $S_5$, un, tā kā $G\le S_5$, ir $G=S_5$. Ar transpozīcijām radītu tranzitīvu grupu arguments ir izklāstīts arī Conrad autora piezīmju pirmajā pierādījuma solī.
 
 Šeit būtiski izmantots tieši pirmskaitlis 5. Apgalvojums “jebkurš $n$-cikls un jebkura transpozīcija ģenerē $S_n$” bez papildu nosacījumiem nav vispārīga teorēma.
 
@@ -2168,6 +2172,8 @@ Primārie avoti: [Milne, Fields and Galois Theory](https://www.jmilne.org/math/C
 
 Pārbaudes datums: 2026. gada 9. novembris.
 
+> Redakcija, 2026. gada 10. novembris: publikācijai veikti nelieli gramatikas un pieturzīmju labojumi. Datēta piezīme precizē vēsturisko vaicājumu uzskaiti. Saglabāti visi jautājumi, dotie skaitliskie dati un nosacījumi, pilnās atbildes, matemātiskie argumenti, izpētes rezultāti un avotu adreses. Sākotnējie izpētes ieraksti glabājas atsevišķi; pašreizējās publikācijas failus identificē failu manifests.
+
 Šajā izdevumā ir 10 ikdienas, 10 praktiski tehniski un 10 pētniecības jautājumi. Jautājumus sagatavojām pārbaudei; tās nav intervijas ar 30 cilvēkiem. Nepieciešamie lietotāja precizējumi ir skaidri apzīmēti kā izdomāti testa scenārija dati. Tīmekļa meklējumi, avotu lasīšana, atbilžu rakstīšana un pieredzes saglabāšanas darbības tika faktiski izpildītas.
 
 Trīs atsevišķi izpildītāji strādāja ar savām jautājumu grupām. Katrā jautājumā veikti meklējumi angļu, vācu, ķīniešu un japāņu valodā. Tas nenozīmē, ka katrā valodā atradās derīgs un pilnībā izlasāms avots. Avotu trūkumi un neatvērtās lapas saglabāti pārbaudes ierakstos.
@@ -2181,6 +2187,8 @@ Avotu atvēršanu tagad skaidri nošķir no vajadzīgās teksta vietas izlasīš
 Izpildes savienotājam pievienota stingra pierādījumu ierakstu pārbaude. Tā atsaka pabeigtu izpildi, ja trūkst prasīto avotu, apgalvojumu, meklējumu vai redakcijas ierakstu. Šī pārbaude pārbauda failus un ierakstus; tā pati nepierāda teikumu patiesumu. Šie 30 piemēri izmantoja manuālo sākuma un beigu ciklu, savukārt jaunā savienotāja pārbaudes tika veiktas atsevišķi.
 
 ### Rezultāti
+
+> Redakcijas precizējums, 2026. gada 10. novembris: zemāk saglabāta sākotnējā uzskaites rindkopa. Vēlākā pārbaude apstiprināja 143 atšķirīgus vaicājumus ar saglabātām sākotnējām kvītīm; sākotnējā kopskaitā 147 bija iekļauti arī četri deklarēti E10 vaicājumi, kuru pilnā sākotnējā izvade nebija saglabāta.
 
 Faktiski izpildīti 147 vaicājumi: EN 50, DE 33, ZH 33, JA 31. Tie ietver 143 atšķirīgus vaicājumu tekstus un 4 atkārtojumus pēc pārtraukuma. E10 četru sākotnējo rīka izsaukumu pilnie rezultāti nebija saglabāti; atkopšanas laikā avoti tika atkārtoti nolasīti un jaunie izsaukumi saglabāti. Šis iztrūkums ir norādīts, ne aizvietots ar izdomātiem ierakstiem.
 
@@ -2580,7 +2588,7 @@ Es sāktu ar trim risinājumiem zemāk. Tie ir gatavi projekti, bet piedāvā at
 
 **Mem0:** autoru [lokālais piemērs](https://github.com/mem0ai/mem0/blob/main/docs/cookbooks/companions/local-companion-ollama.mdx) izmanto vietējo Qdrant un Ollama gan valodas modelim, gan teksta iegulumiem. Nolasīju arī [Ollama iegulumu klienta kodu](https://github.com/mem0ai/mem0/blob/main/mem0/embeddings/ollama.py). Tomēr [gatavā servera aprakstā](https://github.com/mem0ai/mem0/blob/main/docs/open-source/setup.mdx) noklusējuma pakotnei uzskaitīti ierobežoti mākoņpakalpojumu piegādātāji. Tāpēc pilnīgi lokālam sākumam izvēlētos bibliotēkas dokumentēto konfigurāciju; servera attēlam vajadzīga atsevišķa pārbaude vai pielāgošana.
 
-**Letta:** [vecais repozitorijs](https://github.com/letta-ai/letta) norāda uz aktuālo `letta-code`. [Pašmitināšanas dokumentācija](https://github.com/letta-ai/letta-docs-md/blob/main/self-hosting/index.md) paredz vietējo režīmu bez Letta konta: sarunas, atmiņa un cits aģenta stāvoklis paliek datorā. Modeļa izvēle ir atsevišķa: pilnīgi lokālai darbībai jāpieslēdz, piemēram, vietējais Ollama. [Noklusējums ir Letta Cloud](https://github.com/letta-ai/letta-code), tāpēc vajadzīgo režīmu jāizvēlas apzināti.
+**Letta:** [vecais repozitorijs](https://github.com/letta-ai/letta) norāda uz aktuālo `letta-code`. [Pašmitināšanas dokumentācija](https://github.com/letta-ai/letta-docs-md/blob/main/self-hosting/index.md) paredz vietējo režīmu bez Letta konta: sarunas, atmiņa un cits aģenta stāvoklis paliek datorā. Modeļa izvēle ir atsevišķa: pilnīgi lokālai darbībai jāpieslēdz, piemēram, vietējais Ollama. [Noklusējums ir Letta Cloud](https://github.com/letta-ai/letta-code), tāpēc vajadzīgais režīms jāizvēlas apzināti.
 
 **Graphiti:** [autoru README](https://github.com/getzep/graphiti) satur Ollama konfigurācijas kodu valodas modelim, iegulumiem un pārrindošanai. Papildus jānodrošina grafu datubāze un integrācija ar aģentu. Tas ir grafu veidošanas ietvars; autori arī norāda, ka maziem vietējiem modeļiem strukturētā JSON izvada uzticamība var būt nepietiekama.
 
@@ -2666,12 +2674,12 @@ Vai jau ir vispārpieņemts pierādījums Navjē–Stoksa eksistences un gluduma
 
 2026. gada 9. novembrī nebūtu precīzi vienkārši atkārtot, ka šī problēma joprojām nav atrisināta. OpenAI 8. septembrī publicēja apgalvotu atrisinājumu un Lean formalizāciju. Clay institūts 11. septembrī rakstīja, ka problēma šķietami ir atrisināta, bet savā aktuālajā sarakstā to ievieto sadaļā “Active problems”. Pārbaudītie primārie avoti tādēļ pamato formulējumu “paziņots atrisinājums, turpinās izvērtēšana”; tie paši par sevi neapliecina vispārpieņemtu, galīgi nostiprinātu atzinumu. [Clay paziņojums](https://www.claymath.org/news/navier-stokes-announcement/) · [Clay saraksts](https://www.claymath.org/millennium-problems/)
 
-Jāpārbauda tieši tā problēmas versija, uz kuru attiecas rezultāts. Publicētais darbs apgalvo singularitātes izveidošanos ar gludu ārēju spēku, kas atbilst Clay formulējuma C un D alternatīvai. Tas neapgalvo, ka šādi atrisināts arī vispārīgais gadījums bez ārēja spēka. To var pārbaudīt, salīdzinot darba apgalvojumu ar Feffermana oficiālo formulējumu, kur A un B prasa nulles ārējo spēku. [Autoru paziņojums](https://openai.com/index/navier-stokes-solution/) · [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
+Jāpārbauda tieši tā problēmas versija, uz kuru attiecas rezultāts. Publicētais darbs apgalvo singularitātes izveidošanos ar gludu ārēju spēku, kas atbilst Clay formulējuma C un D alternatīvām. Tas neapgalvo, ka šādi atrisināts arī vispārīgais gadījums bez ārēja spēka. To var pārbaudīt, salīdzinot darba apgalvojumu ar Feffermana oficiālo formulējumu, kur A un B prasa nulles ārējo spēku. [Autoru paziņojums](https://openai.com/index/navier-stokes-solution/) · [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
 
 Mūsu projekts var sākt ar publicētā darba pārbaudi un pēc tās izmēģināt divas palīdzrīku idejas.
 
 1. Atkārtot publicētā sertifikāta pārbaudi. Gatavā bāze ir autoru Apache-2.0 repozitorijs ar Lean, Mathlib un Lake; dokumentācijā dotas būvēšanas komandas. Atsevišķa Comparator pārbaude izmanto salīdzināmu uzdevuma formalizāciju. Jāsaglabā konkrētā revīzija, atkarības, pilns izpildes žurnāls un pārbaudītā teorēma. Šajā izpētē dokumentācija ir izlasīta; būvēšana nav izpildīta. [Repozitorijs](https://github.com/openai/NavierStokesAndEuler) · [Comparator instrukcija](https://raw.githubusercontent.com/openai/NavierStokesAndEuler/main/ComparatorChallenges/README.md)
-2. Veidot mazu hipotēzi par pierādījuma pārbaudes palīdzrīku: sasaistīt katru dabiskās valodas nosacījumu ar formālo definīciju un ziņot par neatbilstībām. Otrs eksperiments būtu skaitlisko simulāciju pārnest uz rigorozu kļūdu robežu pārbaudi konkrētam datu un laika intervālam. Skaitlisku singularitātes iespaidu vien nepietiek: oficiālais apraksts pats uzsver skaitliskās nestabilitātes problēmu. [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
+2. Veidot mazu hipotēzi par pierādījuma pārbaudes palīdzrīku: sasaistīt katru dabiskās valodas nosacījumu ar formālo definīciju un ziņot par neatbilstībām. Otrs eksperiments būtu skaitlisko simulāciju pārnest uz rigorozu kļūdu robežu pārbaudi konkrētam datu un laika intervālam. Ar skaitlisku singularitātes iespaidu vien nepietiek: oficiālais apraksts pats uzsver skaitliskās nestabilitātes problēmu. [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
 
 Lētais sākuma tests būtu viena precīzi nosaukta lemma vai viena Comparator pārbaude ar iepriekš ierobežotu CPU laiku. Veiksme nozīmētu atgūstamu pārbaudes rezultātu un skaidru hipotēžu sarakstu. Ja mainīts uzdevuma formulējums vai pietrūkst formāla pamatojuma, rezultāts paliek nepilnīgs. Datora laika, enerģijas un ieviešanas izmaksas vēl jāizmēra šajā vidē.
 
@@ -2751,7 +2759,7 @@ Uzdevumus pirms rezultātu redzēšanas sadalām pa tēmām un pēc iespējamās
 
 Galvenais mērījums būtu pārbaudītu, uzdevuma atrisināšanai nepieciešamu apgalvojumu pareizība. Atsevišķi vērtējam lietderību, neatbalstītus apgalvojumus, atrasto pretpierādījumu un izmaksas. Tulkojumi un pārpublicējumi skaitās viens sākotnējais pierādījums. Vērtētāji saņem atbildes latviski bez procedūras nosaukuma; strīdīgos apgalvojumus pārbauda avotā.
 
-Gatavo MIRACL kopu var izmantot, lai atsevišķi pārbaudītu informācijas atrašanu: tiem ir cilvēku anotēta atbilstība daudzās valodās. Taču MIRACL uzdevums ir meklēt tās pašas valodas korpusā; tas pats par sevi neatbild uz jautājumu par četru valodu tīmekļa izpēti un gala atbilžu kvalitāti. Tāpēc gatavo kopu papildinātu ar atsevišķu mūsu reālo uzdevumu pārbaudi. [MIRACL autoru publikācija](https://transacl.org/index.php/tacl/article/view/4805)
+Gatavo MIRACL kopu var izmantot, lai atsevišķi pārbaudītu informācijas atrašanu: tajā ir cilvēku anotēta atbilstība daudzās valodās. Taču MIRACL uzdevums ir meklēt tās pašas valodas korpusā; tas pats par sevi neatbild uz jautājumu par četru valodu tīmekļa izpēti un gala atbilžu kvalitāti. Tāpēc gatavo kopu papildinātu ar atsevišķu mūsu reālo uzdevumu pārbaudi. [MIRACL autoru publikācija](https://transacl.org/index.php/tacl/article/view/4805)
 
 Iespējamās hipotēzes ir divas: vietējie termini atrod agrāk neatrastu primāro avotu; papildu valodas pārsvarā atrod dublikātus un iztērē laiku. Pēc galvenās pārbaudes valodas var pievienot pa vienai, saglabājot to pašu kopējo limitu. Pirms darba nosakām minimāli vērtīgu ieguvumu un analizējam pāru starpības ar nenoteiktības intervālu, uzdevumu uzskatot par vienību. Neliels pilots palīdz aprēķināt vajadzīgo izlasi. Ja intervāls ietver arī praktiski nevērtīgu rezultātu, secinājums paliek nenoteikts; priekšrocības novērtējumu nevar aizstāt ar vaicājumu skaitu.
 
@@ -2849,7 +2857,7 @@ Vērtējumu sadalītu trīs daļās.
 
 **Atbilstība novērojumam.** Uz attēliem ar zināmu etalonu rēķināt PSNR un strukturālo līdzību, iepriekš fiksējot krāsu telpu, apgriešanu, izšķirtspēju un izlīdzināšanu. Saglabāt arī rezultātu pa ainām un kļūdu kartes; vidējais skaitlis var paslēpt vienu ļoti sliktu gadījumu.
 
-**Fotogrāfiskā kvalitāte.** Gatavs papildinājums ir autoru LPIPS realizācija: tā salīdzina attēlus pēc uztverei pielāgotām pazīmēm. Dokumentācija nosaka arī ievades mērogu un tīkla variantus, kurus salīdzinājumā jāsaglabā vienādus. Autoru novērtēšanā izmantota cilvēku izvēle starp diviem variantiem pret etalonu. [LPIPS kods un novērtēšanas apraksts](https://github.com/richzhang/PerceptualSimilarity) Mūsu testā cilvēki akli salīdzinātu sajauktus kandidātu pārus gan pilnā attēlā, gan nozīmīgos fragmentos. LPIPS un cilvēku patika paši par sevi neapstiprina, ka attēls rāda sākotnējās detaļas.
+**Fotogrāfiskā kvalitāte.** Gatavs papildinājums ir autoru LPIPS realizācija: tā salīdzina attēlus pēc uztverei pielāgotām pazīmēm. Dokumentācija nosaka arī ievades mērogu un tīkla variantus, kuri salīdzinājumā jāsaglabā vienādi. Autoru novērtēšanā izmantota cilvēku izvēle starp diviem variantiem pret etalonu. [LPIPS kods un novērtēšanas apraksts](https://github.com/richzhang/PerceptualSimilarity). Mūsu testā cilvēki akli salīdzinātu sajauktus kandidātu pārus gan pilnā attēlā, gan nozīmīgos fragmentos. LPIPS un cilvēku patika paši par sevi neapstiprina, ka attēls rāda sākotnējās detaļas.
 
 **Detaļu pareizība.** Atsevišķi pārbaudīt uzrakstus, objektu skaitu, sejas pazīmes, ģeometriju un faktūras pret zināmo etalonu vai atliktiem papildu skatpunktiem. Ja pieejams tikai viens bojāts attēls, pilnīgi pazudušās detaļas var būt ticamas, taču to pareizību no tā paša attēla neapstiprināsim. Šādas vietas rezultātā jāatzīmē kā neskaidras.
 
@@ -2865,15 +2873,17 @@ Iedod aģentam visu prasmes mapi vai publicētā projekta saiti. Palūdz izlasī
 
 Ja vide atbalsta failus un programmu izpildi, pieslēdz sākuma un beigu darbības un pārbaudi otro uzdevumu: vai tas saņēma pirmā uzdevuma mācību? Jaunus paņēmienus pieņem tikai pēc iepriekš noteikta salīdzinājuma un neatkarīgām pārbaudēm. Tas dod kontrolējamu attīstības ceļu, ne garantiju, ka katrs nākamais jautājums būs vieglāks vai atbilde vienmēr labāka.
 
-### Support the author
+<a id="support-the-author"></a>
 
-Support section updated on November 10, 2026 from the author's current instructions. The experiment text above is unchanged. Earlier support wording and network labels are superseded by this section.
+### Atbalsti autoru
 
-My name is Reinis Runcis. I am paralyzed and live alone. Each day I fight to keep creating, and I share this work for free. Through my example, I hope to inspire others who feel there is no way out of their situation.
+Atbalsta sadaļa atjaunināta 2026. gada 10. novembrī pēc autora aktuālajām norādēm. Šeit izmantots autora apstiprinātais latviešu teksts. Eksperimentu saturam veikti tikai ievadā norādītie redakcionālie labojumi. Šī sadaļa aizstāj agrāko atbalsta formulējumu un tīklu nosaukumus.
 
-If this project is useful to you, or you would like to help me carry on, I would be grateful for a voluntary donation. Your support helps me in daily life and in my work on tools like this.
+Mani sauc Reinis Runcis. Esmu paralizēts un dzīvoju viens. Ikdienā cīnos, lai turpinātu radīt, un ar šo darbu dalos bez maksas. Ceru ar savu piemēru iedvesmot arī cilvēkus, kuriem šķiet, ka viņu situācijā nav izejas.
 
-Swedbank · Recipient: **REINIS RUNCIS**  
+Ja šis projekts tev noder vai vēlies palīdzēt man turpināt iesākto, būšu pateicīgs par brīvprātīgu ziedojumu. Tavs atbalsts palīdz man ikdienā un darbā pie šādiem rīkiem.
+
+Swedbank · Saņēmējs: **REINIS RUNCIS**  
 IBAN: **`LV82HABA0551011504293`**
 
 - [Stripe (EUR)](https://buy.stripe.com/dRm7sNfD2bOZckRb9A6g802)
@@ -2888,16 +2898,16 @@ IBAN: **`LV82HABA0551011504293`**
 
 `Hy6hKMwMDgXFdaD3N5J1CNMs2LwiE22QdrQnEYoX3fZh`
 
-[More about me on Facebook](https://www.facebook.com/reinis.runcis)
+[Vairāk par mani Facebook](https://www.facebook.com/reinis.runcis)
 
-Support is voluntary and is not required to use the skill.
+Atbalsts ir brīvprātīgs un nav prasmes izmantošanas nosacījums.
 
 
 <a id="comparison"></a>
 
 ## Visas sešas stratēģiju salīdzinājuma atbildes
 
-Visu sešu izpētes atbilžu korpusi ir saglabāti no pārskatītā latviešu izdevuma. Pirmavotu adreses paliek tekstā un katras atbildes strukturētajā avotu sarakstā. Strukturētie lauki ir pašu autorēto atbilžu sastāvdaļa; atsevišķas vērtētāju izvades, testu veidnes un izpildes ieraksti nav iekļauti.
+Visu sešu izpētes atbilžu pilnais saturs ir saglabāts no pārskatītā latviešu izdevuma. Redakcija, 2026. gada 10. novembris: vienā teikumā izlabots lietvārda locījums; rezultāti, strukturētie lauki un avotu adreses nav mainīti. Pirmavotu adreses paliek tekstā un katras atbildes strukturētajā avotu sarakstā. Strukturētie lauki ir pašu autorēto atbilžu sastāvdaļa; atsevišķas vērtētāju izvades, testu veidnes un izpildes ieraksti nav iekļauti.
 
 Pieejamas arī [atbildes angliski](validation/2026-11-09-beta3/comparison/answers.en.md) un [publicētie salīdzinājuma rezultāti](PUBLISHED_FINDINGS.lv.md). Izdevums nepievieno jaunu izpētes izmēģinājumu. Pierādījumu robežas norādītas [publikācijas tvērumā](PUBLICATION_SCOPE.md).
 
@@ -2989,7 +2999,7 @@ Lai iegūtu savas mapes meklētāju, vēl jāizveido šāda apstrāde:
 3. Iesniegtajam attēlam aprēķināt tādu pašu vektoru, sarindot bibliotēku pēc kosinusa līdzības un atgriezt izvēlēto tuvāko rezultātu skaitu.
 4. Pievienot attēla iesniegšanu un rezultātu attēlošanu, pēc tam pārbaudīt atbilstību savos piemēros. Šie ir lietotnes apstrādes posmi ap dokumentēto tuvāko kaimiņu mehānismu. [Modeļa lietojumi](https://github.com/facebookresearch/dinov2/blob/main/MODEL_CARD.md).
 
-Tādēļ izvēle ir `adapt_output`. Rezultātu kvalitāti savā mapē vēl jāpārbauda: projekta lietotājs ziņoja par meklēšanas pasliktināšanos, attēlu apgriežot; tas ir konkrēts pieredzes ziņojums. [Diskusija](https://github.com/facebookresearch/dinov2/issues/103). Šeit inferenci neizpildīju, pakotnes neinstalēju un svarus nelejupielādēju.
+Tādēļ izvēle ir `adapt_output`. Rezultātu kvalitāte savā mapē vēl jāpārbauda: projekta lietotājs ziņoja par meklēšanas pasliktināšanos, attēlu apgriežot; tas ir konkrēts pieredzes ziņojums. [Diskusija](https://github.com/facebookresearch/dinov2/issues/103). Šeit inferenci neizpildīju, pakotnes neinstalēju un svarus nelejupielādēju.
 
 ### evaluation_fields
 

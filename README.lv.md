@@ -4,6 +4,8 @@ Publiskais autorētais izpētes izdevums ietver pilnās atbildes, aprēķinus un
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
+Publikācijas stāvoklis 2026. gada 10. novembrī: publiskais [GitHub repozitorijs](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) ir publicēts, un tā pirmais 111 failu izdevums ir pārbaudīts pret publikācijas manifestu. Ķīnas spoguļa publicēšana gaida konta pārbaudi: gan Gitee, gan ModelScope pieprasīja tālruņa piesaisti, un spogulis tajos vēl nav izveidots. Hugging Face spogulis nav izveidots. Facebook sagataves autora vietā nav publicētas.
+
 Izpētes prasme, kas nākamajā meklējumā izmanto iepriekšējo pieredzi un pārbauda izmaiņas savā darba kārtībā. Tā palīdz atrisināt ikdienas un speciālistu jautājumus, pārbaudīt aprēķinus, atrast lietojamu programmatūru un izvērtēt pamatotas jaunu kombināciju idejas. Meklējumus veic tavs esošais MI aģents; pastāvīgai mācīšanai tā izpildvidei jāpieslēdz pievienotais darba cikls. Ar piekļuvi tīmeklim aģents ievēro angļu, vācu, ķīniešu un japāņu valodas meklēšanas kārtību un atbild tavā valodā. Citas izpētes valodas pievieno tikai pēc tavas norādes.
 
 Prasme noder tehniskām izvēlēm, nepazīstamu darbības mehānismu izpētei, sarežģītiem savienojumiem un projektiem, kuru vajadzīgais kods paslēpies zem vecāka nosaukuma, mazā repozitorijā vai pētnieka vietnē.
@@ -54,7 +56,7 @@ Katra būtiskā atbilde iziet pievienotās Humanizer procedūras redakciju un pi
 
 Iedod tam šo norādi:
 
-> Pārlasi REYRUN REKURSIVE DEEP SEARCH obligātos pierādījumu un rakstīšanas noteikumus. Nosauc konkrēti izlaisto soli. Precizē neskaidro uzdevumu, pārbaudi nepamatotos apgalvojumus aktuālajos avotos un izlabo skartās rindkopas. Parādi īsu pamatojumu ar avotiem un pasaki, kas palicis nepārbaudīts. Pārbaudi arī, vai šā darba mācība tiešām saglabāta un nākamais uzdevums to ielādē.
+> Pārlasi REYRUN Recursive Deep Search obligātos pierādījumu un rakstīšanas noteikumus. Nosauc konkrēti izlaisto soli. Precizē neskaidro uzdevumu, pārbaudi nepamatotos apgalvojumus aktuālajos avotos un izlabo skartās rindkopas. Parādi īsu pamatojumu ar avotiem un pasaki, kas palicis nepārbaudīts. Pārbaudi arī, vai šā darba mācība tiešām saglabāta un nākamais uzdevums to ielādē.
 
 Izpildvidē prasību pastiprina konkrēta beigu pārbaude: savienotājs pēc noklusējuma nepieņem darbu bez prasītajiem meklējumu, avotu, apgalvojumu, redakcijas un mācīšanās ierakstiem. Ierakstu pārbaude pati nenosaka, vai teikums ir patiess; to joprojām vērtē pēc izlasītā avota. Pārlūkprogramma, pastāvīga atmiņa un aģenta izpildes iespējas ir vajadzīgas attiecīgajam darbības režīmam. Spēcīgāks uzvednes formulējums šīs iespējas nepievieno.
 
@@ -70,7 +72,7 @@ Katra darba beigās obligāts ir pamatots mācīšanās lēmums. Uzlabojuma izp�
 
 Iedod aģentam repozitorija saiti vai visu lejupielādēto direktoriju un šo uzvedni:
 
-> Izlasi šo repozitoriju un SKILL.md. Ja tava vide atbalsta prasmes, instalē un aktivizē REYRUN REKURSIVE DEEP SEARCH. Pievieno tās pastāvīgās atmiņas sākuma un beigu ciklu esošajai aģenta izpildvidei un pārbaudi, vai otrais uzdevums ielādē pirmā pieredzi. Ja jau ir kopīga atmiņa, izmanto to. Ja vide to neļauj, pasaki, kuras daļas patiešām aktivizēji, un šim uzdevumam izmanto izpētes kārtību. Izpēti [tēma] angļu, vācu, ķīniešu un japāņu valodā. Salīdzini gatavus risinājumus un piedāvā sintēzi tikai ar pamatotu priekšrocību.
+> Izlasi šo repozitoriju un SKILL.md. Ja tava vide atbalsta prasmes, instalē un aktivizē REYRUN Recursive Deep Search. Pievieno tās pastāvīgās atmiņas sākuma un beigu ciklu esošajai aģenta izpildvidei un pārbaudi, vai otrais uzdevums ielādē pirmā pieredzi. Ja jau ir kopīga atmiņa, izmanto to. Ja vide to neļauj, pasaki, kuras daļas patiešām aktivizēji, un šim uzdevumam izmanto izpētes kārtību. Izpēti [tēma] angļu, vācu, ķīniešu un japāņu valodā. Salīdzini gatavus risinājumus un piedāvā sintēzi tikai ar pamatotu priekšrocību.
 
 Aizstāj `[tēma]` ar savu mērķi. Norādi ievadi, vēlamo rezultātu, pieejamo datoru, budžetu un būtiskos nosacījumus. Piemērs: “Uzlabot aģenta Markdown prasmi, nemainot modeļa svarus un izmantojot esošo izpildvidi.”
 
@@ -166,4 +168,4 @@ IBAN: **`LV82HABA0551011504293`**
 
 ## Licence
 
-Oriģinālais teksts un kods pieejams ar [MIT licenci](LICENSE). `assets/support-card.png` ir autora apstiprināts atbalsta attēls, uz kuru MIT licence neattiecas. Atbalsta rekvizītus un logotipu drīkst attēlot kopā ar šo projektu; plašākas tiesības uz zīmolu vai personisko stāstu netiek piešķirtas. Arī oriģinālais REYRUN logotips ir izslēgts no MIT licences. Humanizer saglabā pievienoto MIT autortiesību norādi. Skatīt [NOTICE.md](NOTICE.md). Ārējiem projektiem saglabājas to licences.
+Oriģinālais teksts un kods pieejami ar [MIT licenci](LICENSE). `assets/support-card.png` ir autora apstiprināts atbalsta attēls, uz kuru MIT licence neattiecas. Atbalsta rekvizītus un logotipu drīkst attēlot kopā ar šo projektu; plašākas tiesības uz zīmolu vai personisko stāstu netiek piešķirtas. Arī oriģinālais REYRUN logotips ir izslēgts no MIT licences. Humanizer saglabā pievienoto MIT autortiesību norādi. Skatīt [NOTICE.md](NOTICE.md). Ārējiem projektiem saglabājas to licences.

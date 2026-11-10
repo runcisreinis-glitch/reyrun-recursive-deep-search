@@ -1,16 +1,16 @@
-# REYRUN REKURSIVE DEEP SEARCH — pārbaudes un attīstības ziņojums
+# REYRUN Recursive Deep Search — pārbaudes un attīstības ziņojums
 
 **Laidiens 2.0.0-beta.3 · izpēte 2026. gada 9. novembrī.**
 
 Gala pārbaudē ir 10 ikdienas jautājumi, 10 vidēji sarežģīti jautājumi dažādās nozarēs un 10 sarežģīti uzdevumi. Septiņos jaunajos sarežģītajos uzdevumos ir pilns matemātisks pierādījums vai atvasinājums un faktiski palaists aprēķins. Izlabotas divas reproducētas mācību atmiņas kļūmes; pārbaudītajam kodam izpildīti 82 testi. Atsevišķais jaunās meklēšanas stratēģijas izmēģinājums deva godīgu **no_gain** rezultātu: kandidāts nekļuva par jauno pamatmetodi.
 
-[Pilnās 30 atbildes](30-examples.lv.md) · Pierādījumu reģistrs · Mašīnlasāms kopsavilkums · [Kompaktās mācības](../../references/observed-lessons.md).
+[Pilnās 30 atbildes](30-examples.lv.md) · [Kompaktās mācības](../../references/observed-lessons.md).
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
 ## 1. Kāpēc atlase tika pārveidota
 
-Sākotnējie 30 pētījumi bija reāli veikti, taču neatkarīgais audits konstatēja, ka vidējā grupa bija pārāk koncentrēta uz IT un grūtajā grupā trūka izpildītu augstākās matemātikas uzdevumu. Gala atlasē saglabāti 12 piemērotie gadījumi un pievienoti 18 jauni. Sākotnējās atbildes nav izdzēstas vai pārrakstītas: [vēsturiskais izdevums](../2026-11-09/30-examples.lv.md) paliek pieejams. Kopā ir 48 atšķirīgi pamatuzdevumi; trīs salīdzinājuma uzdevumi uzskaitīti atsevišķi.
+Sākotnējie 30 pētījumi bija reāli veikti, taču neatkarīgais audits konstatēja, ka vidējā grupa bija pārāk koncentrēta uz IT un grūtajā grupā trūka izpildītu augstākās matemātikas uzdevumu. Gala atlasē saglabāti 12 piemērotie gadījumi un pievienoti 18 jauni. Sākotnējās atbildes saglabātas pilnībā ar norādītiem redakcionāliem labojumiem: [vēsturiskais izdevums](../2026-11-09/30-examples.lv.md) paliek pieejams. Kopā ir 48 atšķirīgi pamatuzdevumi; trīs salīdzinājuma uzdevumi uzskaitīti atsevišķi.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
@@ -53,17 +53,17 @@ Jautājumi sagatavoti pārbaudei. Kur vajadzīgs precizējums, dotie nosacījumi
 
 ## 2. Ko nozīmē atbilžu pārbaude
 
-Katram gadījumam saglabāta atbilde, avoti, apgalvojumu saites un sākotnējā faila SHA-256. Jaunajiem aprēķiniem saglabāts arī kods un tā izvade. Root neatkarīgi izlasīja visus septiņus jaunā autora matemātikas pierādījumus, pārbaudīja argumentu un saglabāto skaitlisko rezultātu saskaņu. Tas nav formāls pierādījumu asistenta sertifikāts. Matemātikas pārskats.
+Katram gadījumam saglabāta atbilde, avoti, apgalvojumu saites un sākotnējā faila SHA-256. Jaunajiem aprēķiniem saglabāts arī kods un tā izvade. Root neatkarīgi izlasīja visus septiņus jaunā autora matemātikas pierādījumus, pārbaudīja argumentu un saglabāto skaitlisko rezultātu saskaņu. Tas nav formāls pierādījumu asistenta sertifikāts. Iekšējais matemātikas pārskats šajā izdevumā nav publicēts.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
 Pamata izpēti katram piemēram veica viens aģents, pēc tam notika norādītā neatkarīgā pārskatīšana. Šis kopums neapliecina četrus neatkarīgus aģentus katra jautājuma formulēšanas un meklēšanas posmā; četru atsevišķu perspektīvu pieņemšanas audits faktiski izpildīts tālāk aprakstītajam stratēģijas salīdzinājumam.
 
-Septiņām nozares atbildēm neatkarīgi pārbaudīta aprēķinu un secinājumu loģika. Papildu atsevišķs aģents pārbaudīja četras jaunās ikdienas atbildes un vēsturiskās adreses/loga gadījumus pret saglabātajiem pirmavotu fragmentiem; aprēķinus tas arī atkārtoja. Nav apgalvots, ka visi ārējie avoti katrā auditā no jauna atvērti tīmeklī. Nozaru pārskats, sešu atbilžu audits.
+Septiņām nozares atbildēm neatkarīgi pārbaudīta aprēķinu un secinājumu loģika. Papildu atsevišķs aģents pārbaudīja četras jaunās ikdienas atbildes un vēsturiskās adreses/loga gadījumus pret saglabātajiem pirmavotu fragmentiem; aprēķinus tas arī atkārtoja. Nav apgalvots, ka visi ārējie avoti katrā auditā no jauna atvērti tīmeklī. Iekšējais nozaru pārskats un sešu atbilžu audits šajā izdevumā nav publicēti.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
-Publiskajam izdevumam pielāgots matemātikas noformējums un citātu saites. NE02 izlabotas atstarpes; NP04 divdomīgais atvērums precizēts uz “Kasetne, kurā ir tikai aktīvā ogle...”. Sākotnējās pētniecības atbildes paliek nemainītas, abu variantu kontrolsummas un redakciju iemesli ir eksporta sasaistē.
+Publiskajam izdevumam pielāgots matemātikas noformējums un citātu saites. NE02 izlabotas atstarpes; NP04 divdomīgais atvērums precizēts uz “Kasetne, kurā ir tikai aktīvā ogle...”. Sākotnējie pētniecības ieraksti glabājas atsevišķi. Redakcija, 2026. gada 10. novembris: publiskajās atbildēs veikti arī norādītie gramatikas, pieturzīmju, atstarpju un pieraksta labojumi, saglabājot izpētes nozīmi, nosacījumus un rezultātus. Pašreizējais failu manifests identificē rediģēto publikāciju.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
@@ -86,7 +86,7 @@ Pastāvīgais cikls ir izpildāms: ielādēt saistītās mācības → veikt uzd
 | Agrāka mācību kartīte varēja aizsegt vēlāk saglabātu pretrunīgu neveiksmi. | Novērojumiem un kartītēm tagad ir viena hronoloģiska 16 ierakstu atlase. | Nākamais sākuma ieraksts satur arī jaunāko neveiksmes tekstu. |
 | Pie 5 MiB robežas pēc neveiksmīga ieraksta palicis nesaistīts pierādījuma objekts neļāva saglabāt pat atmiņas atbrīvošanas rezultātu. | No precīzi apstiprinātā atbrīvošanas plāna pirms atomiskās saglabāšanas dzēš tikai jau nesaistītos objektus; vēl lietotos pierādījumus saglabā līdz sekmīgai stāvokļa nomaiņai. | Pie 5 242 680 aizņemtiem baitiem un 200 brīviem baitiem atbrīvošana sekmīgi atstāja 4806 baitus. Atsevišķs ievadītas rakstīšanas kļūmes tests saglabāja agrāko stāvokli un tā pierādījumus. |
 
-Pirms, pēc, regresiju pārbaude, 82 testu kvīts, pilnais testu žurnāls. Tie ir skaidri marķēti sintētiski mehānisma testi. Tie nepārvērš programmas kļūmes labojumu par pierādītu meklēšanas precizitātes pieaugumu.
+Iekšējos ierakstos ir rezultāti pirms un pēc labojuma, regresiju pārbaude, 82 testu kvīts un pilnais testu žurnāls. Tie ir skaidri marķēti sintētiski mehānisma testi. Tie nepārvērš programmas kļūmes labojumu par pierādītu meklēšanas precizitātes pieaugumu.
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
@@ -111,7 +111,7 @@ Uzdevumi pārbaudīja precīza Depth Anything kontrolpunkta izvades mērvienību
 | Tīmekļa darbības kopā | 47 | 43 |
 | Laiku summa no pirmā tīmekļa pieprasījuma līdz artefaktu pabeigšanai | 456,14 s | 495,50 s |
 
-Trīs jaunu uzdevumu salīdzinājumā abi paņēmieni izpildīja visus iepriekš fiksētos atbilžu kritērijus. Kandidāts izmantoja 43 tīmekļa darbības pret esošās metodes 47, bet nesasniedza prasīto precizitātes pieaugumu; tas netika ieviests kā jaunā pamatmetode. Tas ir **no_gain**, ne apgalvojums, ka kandidāts ir sliktāks visos lietojumos. Četru darbību ietaupījums ir novērojums šajā vienā pilotā; kandidāta darbu laiku summa vienlaikus bija lielāka. Tabulas laiku auditors vienādi pārrēķināja no pirmā reālā pieprasījuma līdz artefaktu pabeigšanai. Autoru pašu atšķirīgi definētie 461,75 un 569,59 sekunžu rādītāji saglabāti atsevišķi; tie nav tiešs ātruma salīdzinājums. Kritērijus pēc rezultātu ieraudzīšanas nepārslēdza uz izmaksām. Automātiskā izvērtējuma rezultāts, visu sešu darbu reģistrs, [pilnās atbildes](comparison/answers.lv.md).
+Trīs jaunu uzdevumu salīdzinājumā abi paņēmieni izpildīja visus iepriekš fiksētos atbilžu kritērijus. Kandidāts izmantoja 43 tīmekļa darbības pret esošās metodes 47, bet nesasniedza prasīto precizitātes pieaugumu; tas netika ieviests kā jaunā pamatmetode. Tas ir **no_gain**, ne apgalvojums, ka kandidāts ir sliktāks visos lietojumos. Četru darbību ietaupījums ir novērojums šajā vienā pilotā; kandidāta darbu laiku summa vienlaikus bija lielāka. Tabulas laiku auditors vienādi pārrēķināja no pirmā reālā pieprasījuma līdz artefaktu pabeigšanai. Autoru pašu atšķirīgi definētie 461,75 un 569,59 sekunžu rādītāji saglabāti atsevišķi; tie nav tiešs ātruma salīdzinājums. Kritērijus pēc rezultātu ieraudzīšanas nepārslēdza uz izmaksām. Automātiskā izvērtējuma rezultāts un visu sešu darbu reģistrs šajā izdevumā nav publicēti; pieejamas [pilnās atbildes](comparison/answers.lv.md).
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
@@ -145,6 +145,8 @@ Sākotnējā ziņojuma kopskaitā 147 bija iekļauti četri deklarēti E10 sāku
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
-Publiskā izplatīšanas lapa: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site . Tajā ir lejupielāde, dokumentācija, šī pārbaude, visi piemēri, video un Facebook teksta sagatave. GitHub, Hugging Face, ModelScope un Gitee publiskie spoguļi šajā laidienā vēl nav izveidoti. Facebook ieraksts nav nosūtīts autora vietā.
+> Sākotnējā publikācijas piezīme, saglabāta vēsturei: Publiskā izplatīšanas lapa: https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site . Tajā ir lejupielāde, dokumentācija, šī pārbaude, visi piemēri, video un Facebook teksta sagatave. GitHub, Hugging Face, ModelScope un Gitee publiskie spoguļi šajā laidienā vēl nav izveidoti. Facebook ieraksts nav nosūtīts autora vietā.
+
+Publikācijas stāvoklis 2026. gada 10. novembrī: publiskais [GitHub repozitorijs](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) ir publicēts, un tā pirmais 111 failu izdevums ir pārbaudīts pret publikācijas manifestu. Ķīnas spoguļa publicēšana gaida konta pārbaudi: gan Gitee, gan ModelScope pieprasīja tālruņa piesaisti, un spogulis tajos vēl nav izveidots. Hugging Face spogulis nav izveidots. Facebook sagataves autora vietā nav publicētas.
 
 Šī ir izpētes prasme un izpildāms mācību cikls pieslēdzamai aģenta videi. Pakotnes lejupielāde vai norādes ielīmēšana parastā čatā pati nepalaidīs diennakts procesu un negarantēs pastāvīgu atmiņu. Konkrētas instalācijas pieņemšanas pārbaude ir reāls pirmais darbs, otrais darbs un tajā ielādītā pirmā darba pieredze.

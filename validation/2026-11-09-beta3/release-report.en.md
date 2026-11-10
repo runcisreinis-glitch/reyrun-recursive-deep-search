@@ -4,13 +4,13 @@ Release 2.0.0-beta.3 · research conducted on November 9, 2026.
 
 The final validation set contains 10 everyday questions, 10 moderately difficult questions across different fields, and 10 difficult tasks. Each of the seven new advanced tasks includes a complete mathematical proof or derivation and a calculation that was actually run. Two reproduced failures in the learning memory were fixed, and the validated code passed 82 tests. A separate trial of a new search strategy returned **no_gain**: the candidate was not adopted as the new baseline method.
 
-[All 30 answers](30-examples.en.md) · Evidence register · Machine-readable summary · [Compact lessons](../../references/observed-lessons.md).
+[All 30 answers](30-examples.en.md) · [Compact lessons](../../references/observed-lessons.md).
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
 ## 1. Why the selection changed
 
-The original 30 research tasks were actually carried out, but an independent audit found that the medium group was too concentrated on IT and that the difficult group lacked completed advanced mathematics tasks. The final selection retains 12 suitable cases and adds 18 new ones. The original answers have not been deleted or rewritten: the [historical edition in English](../2026-11-09/30-examples.en.md) remains available. There are 48 distinct main tasks in total; the three comparison tasks are counted separately.
+The original 30 research tasks were actually carried out, but an independent audit found that the medium group was too concentrated on IT and that the difficult group lacked completed advanced mathematics tasks. The final selection retains 12 suitable cases and adds 18 new ones. The original answers are retained in full with disclosed editorial corrections: the [historical edition in English](../2026-11-09/30-examples.en.md) remains available. There are 48 distinct main tasks in total; the three comparison tasks are counted separately.
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
@@ -53,17 +53,17 @@ The questions were designed for validation. Where clarification was needed, the 
 
 ## 2. What answer validation covers
 
-Each case retains its answer, sources, claim-to-source links, and the SHA-256 of its original file. New calculations also retain their code and output. The root agent independently read all seven mathematical proofs written by the new author, checked the arguments, and compared them with the stored numerical results. This is not certification by a formal proof assistant. See the mathematics review.
+Each case retains its answer, sources, claim-to-source links, and the SHA-256 of its original file. New calculations also retain their code and output. The root agent independently read all seven mathematical proofs written by the new author, checked the arguments, and compared them with the stored numerical results. This is not certification by a formal proof assistant. The internal mathematics review is excluded from this edition.
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
 One agent carried out the main research for each example, followed by the independent review described here. This set does not demonstrate four independent agents at the question-formulation and search stages of every case. An acceptance audit from four separate perspectives was actually performed for the strategy comparison described below.
 
-The calculations and reasoning in the seven subject-area answers were independently reviewed. An additional agent checked the four new everyday answers and the historical-address/window cases against the stored primary-source excerpts, and repeated their calculations. There is no claim that every external source was reopened on the web in every audit. See the subject-area review and six-answer audit.
+The calculations and reasoning in the seven subject-area answers were independently reviewed. An additional agent checked the four new everyday answers and the historical-address/window cases against the stored primary-source excerpts, and repeated their calculations. There is no claim that every external source was reopened on the web in every audit. The internal subject-area review and six-answer audit are excluded from this edition.
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
-Mathematical formatting and citation links were adapted for the public edition. Spacing was corrected in NE02; the ambiguous opening of NP04 was clarified to read, in translation, "A cartridge containing only activated carbon..." The original research answers remain unchanged. The export mapping records the checksums of both versions and the reasons for each edit.
+Mathematical formatting and citation links were adapted for the public edition. Spacing was corrected in NE02; the ambiguous opening of NP04 was clarified to read, in translation, "A cartridge containing only activated carbon..." The original research records remain separate. Editorial revision, November 10, 2026: the public answers also received the disclosed grammar, punctuation, spacing and notation corrections, with their research meaning, conditions and results preserved. The current file manifest identifies the edited publication.
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
@@ -86,7 +86,7 @@ The recurring cycle is executable: load relevant lessons → carry out the task 
 | An earlier lesson card could hide a later contradictory failure observation. | Observations and cards now share one chronological selection of 16 entries. | The next begin record also contains the newer failure text. |
 | At the 5 MiB limit, an unreferenced evidence object left by a failed write prevented even the result of memory compaction from being saved. | Before the atomic save, only already unreferenced objects from the explicitly approved compaction plan are removed. Evidence still in use is retained until the state is successfully replaced. | With 5,242,680 bytes used and 200 bytes free, compaction succeeded and left 4806 bytes. A separate test with an injected write failure preserved the previous state and its evidence. |
 
-Before, after, regression review, 82-test receipt, and full test log. These are explicitly labelled synthetic mechanism tests. Fixing a software failure does not establish an improvement in search accuracy.
+The internal records include before-and-after results, a regression review, the 82-test receipt and the full test log. These are explicitly labelled synthetic mechanism tests. Fixing a software failure does not establish an improvement in search accuracy.
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
@@ -111,7 +111,7 @@ The tasks checked the output units of a specific Depth Anything checkpoint, whet
 | Total web actions | 47 | 43 |
 | Sum of durations from the first web request to completed artifacts | 456.14 s | 495.50 s |
 
-Across the three new comparison tasks, both methods met all predefined answer criteria. The candidate used 43 web actions against the existing method's 47 but did not achieve the required accuracy gain, so it was not adopted as the new baseline. The result is **no_gain**, not a claim that the candidate is worse in every use. The saving of four actions is an observation from this one pilot; the candidate's combined task duration was also longer. An auditor recalculated the table's durations consistently, from the first real request to completed artifacts. The authors' own differently defined figures of 461.75 and 569.59 seconds are retained separately and do not support a direct speed comparison. The criteria were not switched to cost after the results became known. See the automatic evaluation, register of all six runs, and [complete answers in English](comparison/answers.en.md).
+Across the three new comparison tasks, both methods met all predefined answer criteria. The candidate used 43 web actions against the existing method's 47 but did not achieve the required accuracy gain, so it was not adopted as the new baseline. The result is **no_gain**, not a claim that the candidate is worse in every use. The saving of four actions is an observation from this one pilot; the candidate's combined task duration was also longer. An auditor recalculated the table's durations consistently, from the first real request to completed artifacts. The authors' own differently defined figures of 461.75 and 569.59 seconds are retained separately and do not support a direct speed comparison. The criteria were not switched to cost after the results became known. The automatic evaluation and register of all six runs are excluded from this edition; the [complete answers in English](comparison/answers.en.md) remain available.
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
@@ -147,6 +147,8 @@ The internal records referenced here are omitted from this edition; see [publica
 
 The original release used the public distribution page at https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site for its download, documentation, validation report, examples, video, and draft Facebook post. At that time, public mirrors on GitHub, Hugging Face, ModelScope, and Gitee had not been created. No Facebook post had been sent on the author's behalf.
 
-Publication update, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) has been created and its ownership and public visibility checked through the API. Repository creation is separate from verification that every file has been uploaded. The publication manifest records the files to compare after the upload. This update does not claim completed upload verification.
+> Earlier publication note, retained for history: Publication update, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) has been created and its ownership and public visibility checked through the API. Repository creation is separate from verification that every file has been uploaded. The publication manifest records the files to compare after the upload. This update does not claim completed upload verification.
+
+Publication status, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) is published, and its first 111-file edition has been verified against the publication manifest. The Chinese mirror is pending account verification: both Gitee and ModelScope requested phone binding, and no mirror has been created there. No Hugging Face mirror has been created. The Facebook drafts have not been posted on the author's behalf.
 
 This is a research skill and an executable learning cycle for a connected agent environment. Downloading the package or pasting instructions into an ordinary chat does not itself start a round-the-clock process or guarantee persistent memory. Acceptance testing for a specific installation consists of a real first task, a second task, and evidence that the second task loaded experience from the first.

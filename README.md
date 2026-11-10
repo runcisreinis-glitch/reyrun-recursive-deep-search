@@ -6,6 +6,8 @@ Authored public research edition: the complete research answers, calculations an
 
 Additional editions: [Latvian](README.lv.md) · [Simplified Chinese](README.zh-CN.md)
 
+Publication status, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) is published, and its first 111-file edition has been verified against the publication manifest. The Chinese mirror is pending account verification: both Gitee and ModelScope requested phone binding, and no mirror has been created there. No Hugging Face mirror has been created. The Facebook drafts have not been posted on the author's behalf.
+
 A research skill that carries experience into the next search and tests changes to its own procedure. Use it for everyday and specialist questions, checked calculations, software choices and useful combinations that address an unmet requirement. Your existing AI agent performs the searches; persistent learning needs its execution environment to call the included lifecycle. With web access, it follows the English, German, Chinese and Japanese search instructions and answers in your language. Additional research languages require your instruction.
 
 Use it for technical choices, unfamiliar mechanisms, difficult integrations and code found under old names, in small repositories or on research websites.
@@ -22,7 +24,7 @@ Both videos last 65 seconds and have no audio. The edited explainers include an 
 
 The [revised 10 + 10 + 10 selection](validation/2026-11-09-beta3/30-examples.en.md) contains 10 everyday questions, 10 medium-complexity questions across different fields and 10 difficult questions. Seven include a complete advanced mathematical proof or derivation and executed calculations. It retains 12 original cases and adds 18 new ones, with 156 queries across the selected cases. Each case searched EN/DE/ZH/JA; a query language is not evidence of a supporting source read in that language.
 
-The [original 30-case edition in English](validation/2026-11-09/30-examples.en.md) remains intact. Together with the supplement, the corpus has 48 distinct main research tasks. The questions were designed for testing and simulated clarifications are labelled. The evidence index records source/claim links, lesson use and file hashes. Full third-party retrieved pages are not republished in this release.
+The [original 30-case edition in English](validation/2026-11-09/30-examples.en.md) remains complete, with dated editorial corrections. Together with the supplement, the corpus has 48 distinct main research tasks. The questions were designed for testing and simulated clarifications are labelled. The evidence index records source/claim links, lesson use and file hashes. Full third-party retrieved pages are not republished in this release.
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
@@ -30,7 +32,7 @@ The 82-test mechanism receipt applies to the recorded source hashes. Two reprodu
 
 The internal records referenced here are omitted from this edition; see [publication scope](PUBLICATION_SCOPE.md).
 
-In the three new task comparison, both procedures passed every frozen answer check. The candidate used 43 web actions versus 47 for the baseline, but did not meet the predeclared precision-gain requirement and was not promoted. The [release report in English](validation/2026-11-09-beta3/release-report.en.md) reports the comparison criteria, outcomes and limitations, including the findings from four independent reviews. The underlying evaluation and execution records are excluded from this edition. This is a three-task pilot, not general superiority evidence.
+In the three-task comparison, both procedures passed every frozen answer check. The candidate used 43 web actions versus 47 for the baseline, but did not meet the predeclared accuracy-gain requirement and was not promoted. The [release report in English](validation/2026-11-09-beta3/release-report.en.md) reports the comparison criteria, outcomes and limitations, including the findings from four independent reviews. The underlying evaluation and execution records are excluded from this edition. This is a three-task pilot, not general superiority evidence.
 
 The chat manually controlled begin/finish for the selected research. Fourteen new medium/mathematical cases also passed standalone strict record checks. The earlier two-task strict-host demonstration shows real research through the wrapper and a subsequent task loading the saved lesson. Neither proves an unattended service.
 

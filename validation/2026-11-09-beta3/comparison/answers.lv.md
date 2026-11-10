@@ -1,6 +1,6 @@
 # Salīdzinājuma sešas pilnās atbildes
 
-Visu sešu izpētes atbilžu korpusi ir saglabāti no pārskatītā latviešu izdevuma. Pirmavotu adreses paliek tekstā un katras atbildes strukturētajā avotu sarakstā. Strukturētie lauki ir pašu autorēto atbilžu sastāvdaļa; atsevišķas vērtētāju izvades, testu veidnes un izpildes ieraksti nav iekļauti.
+Visu sešu izpētes atbilžu pilnais saturs ir saglabāts no pārskatītā latviešu izdevuma. Redakcija, 2026. gada 10. novembris: vienā teikumā izlabots lietvārda locījums; rezultāti, strukturētie lauki un avotu adreses nav mainīti. Pirmavotu adreses paliek tekstā un katras atbildes strukturētajā avotu sarakstā. Strukturētie lauki ir pašu autorēto atbilžu sastāvdaļa; atsevišķas vērtētāju izvades, testu veidnes un izpildes ieraksti nav iekļauti.
 
 Pieejamas arī [atbildes angliski](answers.en.md) un [publicētie salīdzinājuma rezultāti](../../../PUBLISHED_FINDINGS.lv.md). Izdevums nepievieno jaunu izpētes izmēģinājumu. Pierādījumu robežas norādītas [publikācijas tvērumā](../../../PUBLICATION_SCOPE.md).
 
@@ -92,7 +92,7 @@ Lai iegūtu savas mapes meklētāju, vēl jāizveido šāda apstrāde:
 3. Iesniegtajam attēlam aprēķināt tādu pašu vektoru, sarindot bibliotēku pēc kosinusa līdzības un atgriezt izvēlēto tuvāko rezultātu skaitu.
 4. Pievienot attēla iesniegšanu un rezultātu attēlošanu, pēc tam pārbaudīt atbilstību savos piemēros. Šie ir lietotnes apstrādes posmi ap dokumentēto tuvāko kaimiņu mehānismu. [Modeļa lietojumi](https://github.com/facebookresearch/dinov2/blob/main/MODEL_CARD.md).
 
-Tādēļ izvēle ir `adapt_output`. Rezultātu kvalitāti savā mapē vēl jāpārbauda: projekta lietotājs ziņoja par meklēšanas pasliktināšanos, attēlu apgriežot; tas ir konkrēts pieredzes ziņojums. [Diskusija](https://github.com/facebookresearch/dinov2/issues/103). Šeit inferenci neizpildīju, pakotnes neinstalēju un svarus nelejupielādēju.
+Tādēļ izvēle ir `adapt_output`. Rezultātu kvalitāte savā mapē vēl jāpārbauda: projekta lietotājs ziņoja par meklēšanas pasliktināšanos, attēlu apgriežot; tas ir konkrēts pieredzes ziņojums. [Diskusija](https://github.com/facebookresearch/dinov2/issues/103). Šeit inferenci neizpildīju, pakotnes neinstalēju un svarus nelejupielādēju.
 
 ## evaluation_fields
 

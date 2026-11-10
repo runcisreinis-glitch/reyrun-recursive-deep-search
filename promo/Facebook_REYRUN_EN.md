@@ -41,6 +41,6 @@ IBAN: **`LV82HABA0551011504293`**
 
 [More about me on Facebook](https://www.facebook.com/reinis.runcis)
 
-Complete experiment records, sources and verification code: https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search/blob/main/EXPERIMENTS.md
+Research report, complete answers, sources and verification code: https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search/blob/main/EXPERIMENTS.md
 
 Thank you for sharing this work or helping me continue.

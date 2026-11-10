@@ -3,7 +3,7 @@
   "project": "REYRUN Recursive Deep Search",
   "edition": "authored_public_research",
   "repository": "https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search",
-  "created_at": "2026-11-10T01:39:41.372062+00:00",
+  "created_at": "2026-11-10T04:03:30.351537+00:00",
   "file_count_excluding_manifest": 110,
   "manifest_self_excluded": true,
   "manifest_exclusion_reason": "A file cannot contain its own stable content hash. The publisher verifies this manifest as one additional Git blob.",
@@ -11,7 +11,7 @@
     "text": 103,
     "binary": 7
   },
-  "total_bytes_excluding_manifest": 7265410,
+  "total_bytes_excluding_manifest": 7283195,
   "scope_document": "PUBLICATION_SCOPE.md",
   "exclusion_manifest": "exclusion-manifest.json",
   "files": [
@@ -25,25 +25,25 @@
     },
     {
       "path": "CHANGELOG.md",
-      "size": 5880,
-      "sha256": "9b12e8b9ffd3edd5b8e3838512c2caf6945efd5f433d31831c0a002ae79f18a4",
-      "git_blob_sha": "3f73e6a7b0c3ec37b28af0fbea9119ed014cd579",
+      "size": 6814,
+      "sha256": "9023cc0d308f79de590202c044b60a72b6196bd7688f0858dd8861a300bd1031",
+      "git_blob_sha": "eeb5b67573f5707c88ee5365965db83eadf098bd",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "EXPERIMENTS.lv.md",
-      "size": 292703,
-      "sha256": "5e79ef626a90c45cdcc2aa05ac2d1f6532e035a06caa6f218c4ef40f909081e8",
-      "git_blob_sha": "1669228a6e6710a4672f1d055fa456761850b81b",
+      "size": 295153,
+      "sha256": "4d0b7e6778e378857286d603a1691b646d12741ed6ad41f865c4dffcdc9a94d8",
+      "git_blob_sha": "36da69a26334a793fbba8860d822ad9a312c5dad",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "EXPERIMENTS.md",
-      "size": 293238,
-      "sha256": "da3804678097212acfb512aee28d5d4dc39017797d844c6d10c28ec3b8e335c3",
-      "git_blob_sha": "e943ce6cd6f8b4bdf8d33089db40c5d10a730f66",
+      "size": 295256,
+      "sha256": "cfe9d9045acb2c3518691294056fb1a52b84919c1aba304beb66527a4e76d879",
+      "git_blob_sha": "fb311319c8db4f20288b749024fc841e15abf583",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -65,9 +65,9 @@
     },
     {
       "path": "PUBLICATION_SCOPE.md",
-      "size": 4589,
-      "sha256": "670fe5799f260f4628d516df24ff2e2237d6b6d0c2b2041c535a0e95b00c9200",
-      "git_blob_sha": "d95c71fa5019f728175245d3cb6be1aece258696",
+      "size": 5183,
+      "sha256": "bd3caa897eb8fa2ab813b997cdcfa3b7838ab28ba16889159bb1545b82e151f4",
+      "git_blob_sha": "24b6db6b5f3393059e554c8809b8e385426fb2de",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -89,25 +89,25 @@
     },
     {
       "path": "README.lv.md",
-      "size": 19328,
-      "sha256": "53e17e3989845c7167b8688889c4a3c25d5cd869175ca106b6f594c1d110b325",
-      "git_blob_sha": "9fb41a4cd4e9f5608915b92b2edc201a672fea0d",
+      "size": 19815,
+      "sha256": "df8d2081b60e2bbcfcfb0b5eb3ab155cd50d28edd6448f8b83629cceeadebb8f",
+      "git_blob_sha": "b28e12ef828649f4554f3c97822feb0e787b2ee1",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "README.md",
-      "size": 18542,
-      "sha256": "8609880084f6ba4533719a79a629ba4fc117e66a032ba0efbd38bcb40bf12210",
-      "git_blob_sha": "e56e1c4b787d9f2ad749a832c3a8bf4622e455d7",
+      "size": 19057,
+      "sha256": "c4a47005c3fb02ae1a38997ed219b124a242c5852ce547de3bcdf886638d27c9",
+      "git_blob_sha": "e0a408b02ae46ee17cfa05d1925203bd44ceebab",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "README.zh-CN.md",
       "size": 16027,
-      "sha256": "93ff9ae539c3504e0b72f580750661dd13e4063936039bfbd6a0d7aaa13648df",
-      "git_blob_sha": "a674d6f8a249cdc9e3e52e6d78777798513abe95",
+      "sha256": "9830ef4730d1ae1bfc2e8e6f148538bbf2917a77fc65b1b0d552e4d34653568e",
+      "git_blob_sha": "2e54b93935c2f280267a87cee7b65ed2a5402166",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -297,9 +297,9 @@
     },
     {
       "path": "exclusion-manifest.json",
-      "size": 9844,
-      "sha256": "d7c139e71d50893e626e529bb8a8be56f06a9963a26240607a2e9e1384d64649",
-      "git_blob_sha": "c54103435b64ee3f5c9ff8c63a2040d8aee158de",
+      "size": 15968,
+      "sha256": "7e255931a0c9a9345b1e4a7c0cd7bedc8a9a5a5011b0a050557fa94701884cd8",
+      "git_blob_sha": "ab333b3451f980f17da235d93bc910a8285b10e8",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -345,25 +345,25 @@
     },
     {
       "path": "promo/Facebook_REYRUN_EN.md",
-      "size": 2886,
-      "sha256": "a9545e7ef517ccab06fc5e0b3dc075bca45ef809488a18029e609bce4865b22b",
-      "git_blob_sha": "855f37a81c6461d99d49215cd8f0aa988c7e84d0",
+      "size": 2892,
+      "sha256": "45e2671327cf44c5b3469a3b55ed0a27cf3e0e5cbf7c8f41e1ea984e03c6e5d0",
+      "git_blob_sha": "f8aa7b32850fcf75f8d54d66bfb6347c0693fbca",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "promo/Facebook_REYRUN_LV.md",
-      "size": 2857,
-      "sha256": "8b8745bfcf9c0a785bb71ce40fef8cc9bde91c3fa43e68276a4425dd8d434b5b",
-      "git_blob_sha": "83c364c693962a2cd46c7d981e15436afa1c4bd2",
+      "size": 2874,
+      "sha256": "c0637add0f54b4765eb812ab8f7ddf949c4dab6e5a52bdb6fda8bc9b685fe4e6",
+      "git_blob_sha": "3ac3c285d83c40087eb202bacfe83af5924f4020",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "promo/README.md",
-      "size": 904,
-      "sha256": "42fe3a8c6bb7645e83ad49ea44c96aac35b17c1cd3c41c16c0a13c42299e000e",
-      "git_blob_sha": "eea15dceccbe65e9abf3faa7f489a0f77bc88994",
+      "size": 1076,
+      "sha256": "855372ea95064dcd9b2f5fd20450ce4d51c7f9ca549709eb72118d0bd2519ca4",
+      "git_blob_sha": "f5eed8ceadb66bd3d53ab9559af3d480e08db4bb",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -568,42 +568,18 @@
       "git_mode": "100644"
     },
     {
-      "path": "validation/2026-11-09/30-examples.en.md",
-      "size": 84193,
-      "sha256": "08bd04265611a94e5bd5a6184c65c6fc8bb11d08ef6416455cd4a61d8a12b808",
-      "git_blob_sha": "abbebcdf99042bbb02eb0767d579be857ab3b988",
-      "classification": "text",
-      "git_mode": "100644"
-    },
-    {
-      "path": "validation/2026-11-09/30-examples.lv.md",
-      "size": 84370,
-      "sha256": "aec0257dfeb977631f160821a07a788576b8cb460d6c449ae337cbfef739f597",
-      "git_blob_sha": "4c3d905b4f07ddb083a140776fbd8409a3886229",
-      "classification": "text",
-      "git_mode": "100644"
-    },
-    {
-      "path": "validation/2026-11-09/README.md",
-      "size": 1194,
-      "sha256": "83aba6a4f72aad4fbce9e03675ccb63ce49141ef8f4a4f96dbe2d7540063ff5f",
-      "git_blob_sha": "9fb000c9ceacdd6965d1b31f1e027d9b3fd8d404",
-      "classification": "text",
-      "git_mode": "100644"
-    },
-    {
       "path": "validation/2026-11-09-beta3/30-examples.en.md",
-      "size": 147122,
-      "sha256": "687092502980a27751e150e454c20684a0493b85bc88026bebf16b647df7bcdb",
-      "git_blob_sha": "b2edfe1c896b3f4cdfada3c4cb7391d2086d6dc4",
+      "size": 147497,
+      "sha256": "fc6194bf0dd2704e491f365722d59f5e6a586d9d40e4cf0248763ced6fd65d6e",
+      "git_blob_sha": "21d267e4c9d4eeca031a3a65ed129507c9b5b4cb",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "validation/2026-11-09-beta3/30-examples.lv.md",
-      "size": 145703,
-      "sha256": "4d4400bf6bfda73b4c1fbd91f0c13c12b6524a78d62a9b5e26711e27ecfd8b58",
-      "git_blob_sha": "d22c0d95e1483f8e85e9d78595ba31fe6124dc69",
+      "size": 146159,
+      "sha256": "fbbc0e77606aa4076df44e29f76cc258d6b0758a82b3cb3e5d2472c80444fa47",
+      "git_blob_sha": "fb8c7fc0d38851a1c8dd00a9e2f2ebdbfd24c724",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -873,25 +849,49 @@
     },
     {
       "path": "validation/2026-11-09-beta3/comparison/answers.lv.md",
-      "size": 19708,
-      "sha256": "db912a7666cdfa0e0a2fb5062e3ccc79975a5ae17ae448810e460ebce7ce2254",
-      "git_blob_sha": "b21d2b6b166beb95759c3fba485b67650f5b9277",
+      "size": 19862,
+      "sha256": "1d04ca61da512600c16688df14f2960cd7cb57a51c9842f011a369b620bdd265",
+      "git_blob_sha": "bd71385f4b12fff1751db3cd9555f2de7d93b428",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "validation/2026-11-09-beta3/release-report.en.md",
-      "size": 16010,
-      "sha256": "fa468b663a98af559285afe15c37e09124e60540d4e82355fc5b7b520a1c4fa0",
-      "git_blob_sha": "5418f0e49d8b1d41f7266d2d98ff7880d588223a",
+      "size": 16861,
+      "sha256": "537bf068b6ad31e9b576867409b5bc69c5fed3f97422eb733af5108e4b4c2f1d",
+      "git_blob_sha": "b035ea1c9f7fa44bb31163fe1fdef3582a9085b9",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "validation/2026-11-09-beta3/release-report.lv.md",
-      "size": 15902,
-      "sha256": "d26e5081825930af8fbc173f952cf392f806858b78b58b02decd16b9582c5c12",
-      "git_blob_sha": "2adfda876e11902fc950e9dee6ef491b928bca77",
+      "size": 16806,
+      "sha256": "5d2651e4c6c032d6830307388d7735afc7ccbf23eaee786d0edab94711b79b4a",
+      "git_blob_sha": "fd3e8b332291283d4e47abbc7cdd14a9900a1529",
+      "classification": "text",
+      "git_mode": "100644"
+    },
+    {
+      "path": "validation/2026-11-09/30-examples.en.md",
+      "size": 84985,
+      "sha256": "be39d5eb1ecb6c1dddba6b3b05c7b35365b3efbb11e8f632669a28235121da13",
+      "git_blob_sha": "47dc8f8026a9761150d839ae76cc4c7f6941509e",
+      "classification": "text",
+      "git_mode": "100644"
+    },
+    {
+      "path": "validation/2026-11-09/30-examples.lv.md",
+      "size": 85306,
+      "sha256": "3b981b53c66aa47b74215cf55dd1c081ffcf6d2a319dcf5769caf16b4b716df2",
+      "git_blob_sha": "c3f5a418774ea00b1d02df19e92697c6990e5d48",
+      "classification": "text",
+      "git_mode": "100644"
+    },
+    {
+      "path": "validation/2026-11-09/README.md",
+      "size": 1194,
+      "sha256": "83aba6a4f72aad4fbce9e03675ccb63ce49141ef8f4a4f96dbe2d7540063ff5f",
+      "git_blob_sha": "9fb000c9ceacdd6965d1b31f1e027d9b3fd8d404",
       "classification": "text",
       "git_mode": "100644"
     }

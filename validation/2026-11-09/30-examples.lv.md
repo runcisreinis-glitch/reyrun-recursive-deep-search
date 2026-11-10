@@ -2,6 +2,8 @@
 
 Pārbaudes datums: 2026. gada 9. novembris.
 
+> Redakcija, 2026. gada 10. novembris: publikācijai veikti nelieli gramatikas un pieturzīmju labojumi. Datēta piezīme precizē vēsturisko vaicājumu uzskaiti. Saglabāti visi jautājumi, dotie skaitliskie dati un nosacījumi, pilnās atbildes, matemātiskie argumenti, izpētes rezultāti un avotu adreses. Sākotnējie izpētes ieraksti glabājas atsevišķi; pašreizējās publikācijas failus identificē failu manifests.
+
 Šajā izdevumā ir 10 ikdienas, 10 praktiski tehniski un 10 pētniecības jautājumi. Jautājumus sagatavojām pārbaudei; tās nav intervijas ar 30 cilvēkiem. Nepieciešamie lietotāja precizējumi ir skaidri apzīmēti kā izdomāti testa scenārija dati. Tīmekļa meklējumi, avotu lasīšana, atbilžu rakstīšana un pieredzes saglabāšanas darbības tika faktiski izpildītas.
 
 Trīs atsevišķi izpildītāji strādāja ar savām jautājumu grupām. Katrā jautājumā veikti meklējumi angļu, vācu, ķīniešu un japāņu valodā. Tas nenozīmē, ka katrā valodā atradās derīgs un pilnībā izlasāms avots. Avotu trūkumi un neatvērtās lapas saglabāti pārbaudes ierakstos.
@@ -15,6 +17,8 @@ Avotu atvēršanu tagad skaidri nošķir no vajadzīgās teksta vietas izlasīš
 Izpildes savienotājam pievienota stingra pierādījumu ierakstu pārbaude. Tā atsaka pabeigtu izpildi, ja trūkst prasīto avotu, apgalvojumu, meklējumu vai redakcijas ierakstu. Šī pārbaude pārbauda failus un ierakstus; tā pati nepierāda teikumu patiesumu. Šie 30 piemēri izmantoja manuālo sākuma un beigu ciklu, savukārt jaunā savienotāja pārbaudes tika veiktas atsevišķi.
 
 ## Rezultāti
+
+> Redakcijas precizējums, 2026. gada 10. novembris: zemāk saglabāta sākotnējā uzskaites rindkopa. Vēlākā pārbaude apstiprināja 143 atšķirīgus vaicājumus ar saglabātām sākotnējām kvītīm; sākotnējā kopskaitā 147 bija iekļauti arī četri deklarēti E10 vaicājumi, kuru pilnā sākotnējā izvade nebija saglabāta.
 
 Faktiski izpildīti 147 vaicājumi: EN 50, DE 33, ZH 33, JA 31. Tie ietver 143 atšķirīgus vaicājumu tekstus un 4 atkārtojumus pēc pārtraukuma. E10 četru sākotnējo rīka izsaukumu pilnie rezultāti nebija saglabāti; atkopšanas laikā avoti tika atkārtoti nolasīti un jaunie izsaukumi saglabāti. Šis iztrūkums ir norādīts, ne aizvietots ar izdomātiem ierakstiem.
 
@@ -414,7 +418,7 @@ Es sāktu ar trim risinājumiem zemāk. Tie ir gatavi projekti, bet piedāvā at
 
 **Mem0:** autoru [lokālais piemērs](https://github.com/mem0ai/mem0/blob/main/docs/cookbooks/companions/local-companion-ollama.mdx) izmanto vietējo Qdrant un Ollama gan valodas modelim, gan teksta iegulumiem. Nolasīju arī [Ollama iegulumu klienta kodu](https://github.com/mem0ai/mem0/blob/main/mem0/embeddings/ollama.py). Tomēr [gatavā servera aprakstā](https://github.com/mem0ai/mem0/blob/main/docs/open-source/setup.mdx) noklusējuma pakotnei uzskaitīti ierobežoti mākoņpakalpojumu piegādātāji. Tāpēc pilnīgi lokālam sākumam izvēlētos bibliotēkas dokumentēto konfigurāciju; servera attēlam vajadzīga atsevišķa pārbaude vai pielāgošana.
 
-**Letta:** [vecais repozitorijs](https://github.com/letta-ai/letta) norāda uz aktuālo `letta-code`. [Pašmitināšanas dokumentācija](https://github.com/letta-ai/letta-docs-md/blob/main/self-hosting/index.md) paredz vietējo režīmu bez Letta konta: sarunas, atmiņa un cits aģenta stāvoklis paliek datorā. Modeļa izvēle ir atsevišķa: pilnīgi lokālai darbībai jāpieslēdz, piemēram, vietējais Ollama. [Noklusējums ir Letta Cloud](https://github.com/letta-ai/letta-code), tāpēc vajadzīgo režīmu jāizvēlas apzināti.
+**Letta:** [vecais repozitorijs](https://github.com/letta-ai/letta) norāda uz aktuālo `letta-code`. [Pašmitināšanas dokumentācija](https://github.com/letta-ai/letta-docs-md/blob/main/self-hosting/index.md) paredz vietējo režīmu bez Letta konta: sarunas, atmiņa un cits aģenta stāvoklis paliek datorā. Modeļa izvēle ir atsevišķa: pilnīgi lokālai darbībai jāpieslēdz, piemēram, vietējais Ollama. [Noklusējums ir Letta Cloud](https://github.com/letta-ai/letta-code), tāpēc vajadzīgais režīms jāizvēlas apzināti.
 
 **Graphiti:** [autoru README](https://github.com/getzep/graphiti) satur Ollama konfigurācijas kodu valodas modelim, iegulumiem un pārrindošanai. Papildus jānodrošina grafu datubāze un integrācija ar aģentu. Tas ir grafu veidošanas ietvars; autori arī norāda, ka maziem vietējiem modeļiem strukturētā JSON izvada uzticamība var būt nepietiekama.
 
@@ -500,12 +504,12 @@ Vai jau ir vispārpieņemts pierādījums Navjē–Stoksa eksistences un gluduma
 
 2026. gada 9. novembrī nebūtu precīzi vienkārši atkārtot, ka šī problēma joprojām nav atrisināta. OpenAI 8. septembrī publicēja apgalvotu atrisinājumu un Lean formalizāciju. Clay institūts 11. septembrī rakstīja, ka problēma šķietami ir atrisināta, bet savā aktuālajā sarakstā to ievieto sadaļā “Active problems”. Pārbaudītie primārie avoti tādēļ pamato formulējumu “paziņots atrisinājums, turpinās izvērtēšana”; tie paši par sevi neapliecina vispārpieņemtu, galīgi nostiprinātu atzinumu. [Clay paziņojums](https://www.claymath.org/news/navier-stokes-announcement/) · [Clay saraksts](https://www.claymath.org/millennium-problems/)
 
-Jāpārbauda tieši tā problēmas versija, uz kuru attiecas rezultāts. Publicētais darbs apgalvo singularitātes izveidošanos ar gludu ārēju spēku, kas atbilst Clay formulējuma C un D alternatīvai. Tas neapgalvo, ka šādi atrisināts arī vispārīgais gadījums bez ārēja spēka. To var pārbaudīt, salīdzinot darba apgalvojumu ar Feffermana oficiālo formulējumu, kur A un B prasa nulles ārējo spēku. [Autoru paziņojums](https://openai.com/index/navier-stokes-solution/) · [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
+Jāpārbauda tieši tā problēmas versija, uz kuru attiecas rezultāts. Publicētais darbs apgalvo singularitātes izveidošanos ar gludu ārēju spēku, kas atbilst Clay formulējuma C un D alternatīvām. Tas neapgalvo, ka šādi atrisināts arī vispārīgais gadījums bez ārēja spēka. To var pārbaudīt, salīdzinot darba apgalvojumu ar Feffermana oficiālo formulējumu, kur A un B prasa nulles ārējo spēku. [Autoru paziņojums](https://openai.com/index/navier-stokes-solution/) · [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
 
 Mūsu projekts var sākt ar publicētā darba pārbaudi un pēc tās izmēģināt divas palīdzrīku idejas.
 
 1. Atkārtot publicētā sertifikāta pārbaudi. Gatavā bāze ir autoru Apache-2.0 repozitorijs ar Lean, Mathlib un Lake; dokumentācijā dotas būvēšanas komandas. Atsevišķa Comparator pārbaude izmanto salīdzināmu uzdevuma formalizāciju. Jāsaglabā konkrētā revīzija, atkarības, pilns izpildes žurnāls un pārbaudītā teorēma. Šajā izpētē dokumentācija ir izlasīta; būvēšana nav izpildīta. [Repozitorijs](https://github.com/openai/NavierStokesAndEuler) · [Comparator instrukcija](https://raw.githubusercontent.com/openai/NavierStokesAndEuler/main/ComparatorChallenges/README.md)
-2. Veidot mazu hipotēzi par pierādījuma pārbaudes palīdzrīku: sasaistīt katru dabiskās valodas nosacījumu ar formālo definīciju un ziņot par neatbilstībām. Otrs eksperiments būtu skaitlisko simulāciju pārnest uz rigorozu kļūdu robežu pārbaudi konkrētam datu un laika intervālam. Skaitlisku singularitātes iespaidu vien nepietiek: oficiālais apraksts pats uzsver skaitliskās nestabilitātes problēmu. [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
+2. Veidot mazu hipotēzi par pierādījuma pārbaudes palīdzrīku: sasaistīt katru dabiskās valodas nosacījumu ar formālo definīciju un ziņot par neatbilstībām. Otrs eksperiments būtu skaitlisko simulāciju pārnest uz rigorozu kļūdu robežu pārbaudi konkrētam datu un laika intervālam. Ar skaitlisku singularitātes iespaidu vien nepietiek: oficiālais apraksts pats uzsver skaitliskās nestabilitātes problēmu. [Oficiālais uzdevums](https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf)
 
 Lētais sākuma tests būtu viena precīzi nosaukta lemma vai viena Comparator pārbaude ar iepriekš ierobežotu CPU laiku. Veiksme nozīmētu atgūstamu pārbaudes rezultātu un skaidru hipotēžu sarakstu. Ja mainīts uzdevuma formulējums vai pietrūkst formāla pamatojuma, rezultāts paliek nepilnīgs. Datora laika, enerģijas un ieviešanas izmaksas vēl jāizmēra šajā vidē.
 
@@ -585,7 +589,7 @@ Uzdevumus pirms rezultātu redzēšanas sadalām pa tēmām un pēc iespējamās
 
 Galvenais mērījums būtu pārbaudītu, uzdevuma atrisināšanai nepieciešamu apgalvojumu pareizība. Atsevišķi vērtējam lietderību, neatbalstītus apgalvojumus, atrasto pretpierādījumu un izmaksas. Tulkojumi un pārpublicējumi skaitās viens sākotnējais pierādījums. Vērtētāji saņem atbildes latviski bez procedūras nosaukuma; strīdīgos apgalvojumus pārbauda avotā.
 
-Gatavo MIRACL kopu var izmantot, lai atsevišķi pārbaudītu informācijas atrašanu: tiem ir cilvēku anotēta atbilstība daudzās valodās. Taču MIRACL uzdevums ir meklēt tās pašas valodas korpusā; tas pats par sevi neatbild uz jautājumu par četru valodu tīmekļa izpēti un gala atbilžu kvalitāti. Tāpēc gatavo kopu papildinātu ar atsevišķu mūsu reālo uzdevumu pārbaudi. [MIRACL autoru publikācija](https://transacl.org/index.php/tacl/article/view/4805)
+Gatavo MIRACL kopu var izmantot, lai atsevišķi pārbaudītu informācijas atrašanu: tajā ir cilvēku anotēta atbilstība daudzās valodās. Taču MIRACL uzdevums ir meklēt tās pašas valodas korpusā; tas pats par sevi neatbild uz jautājumu par četru valodu tīmekļa izpēti un gala atbilžu kvalitāti. Tāpēc gatavo kopu papildinātu ar atsevišķu mūsu reālo uzdevumu pārbaudi. [MIRACL autoru publikācija](https://transacl.org/index.php/tacl/article/view/4805)
 
 Iespējamās hipotēzes ir divas: vietējie termini atrod agrāk neatrastu primāro avotu; papildu valodas pārsvarā atrod dublikātus un iztērē laiku. Pēc galvenās pārbaudes valodas var pievienot pa vienai, saglabājot to pašu kopējo limitu. Pirms darba nosakām minimāli vērtīgu ieguvumu un analizējam pāru starpības ar nenoteiktības intervālu, uzdevumu uzskatot par vienību. Neliels pilots palīdz aprēķināt vajadzīgo izlasi. Ja intervāls ietver arī praktiski nevērtīgu rezultātu, secinājums paliek nenoteikts; priekšrocības novērtējumu nevar aizstāt ar vaicājumu skaitu.
 
@@ -683,7 +687,7 @@ Vērtējumu sadalītu trīs daļās.
 
 **Atbilstība novērojumam.** Uz attēliem ar zināmu etalonu rēķināt PSNR un strukturālo līdzību, iepriekš fiksējot krāsu telpu, apgriešanu, izšķirtspēju un izlīdzināšanu. Saglabāt arī rezultātu pa ainām un kļūdu kartes; vidējais skaitlis var paslēpt vienu ļoti sliktu gadījumu.
 
-**Fotogrāfiskā kvalitāte.** Gatavs papildinājums ir autoru LPIPS realizācija: tā salīdzina attēlus pēc uztverei pielāgotām pazīmēm. Dokumentācija nosaka arī ievades mērogu un tīkla variantus, kurus salīdzinājumā jāsaglabā vienādus. Autoru novērtēšanā izmantota cilvēku izvēle starp diviem variantiem pret etalonu. [LPIPS kods un novērtēšanas apraksts](https://github.com/richzhang/PerceptualSimilarity) Mūsu testā cilvēki akli salīdzinātu sajauktus kandidātu pārus gan pilnā attēlā, gan nozīmīgos fragmentos. LPIPS un cilvēku patika paši par sevi neapstiprina, ka attēls rāda sākotnējās detaļas.
+**Fotogrāfiskā kvalitāte.** Gatavs papildinājums ir autoru LPIPS realizācija: tā salīdzina attēlus pēc uztverei pielāgotām pazīmēm. Dokumentācija nosaka arī ievades mērogu un tīkla variantus, kuri salīdzinājumā jāsaglabā vienādi. Autoru novērtēšanā izmantota cilvēku izvēle starp diviem variantiem pret etalonu. [LPIPS kods un novērtēšanas apraksts](https://github.com/richzhang/PerceptualSimilarity). Mūsu testā cilvēki akli salīdzinātu sajauktus kandidātu pārus gan pilnā attēlā, gan nozīmīgos fragmentos. LPIPS un cilvēku patika paši par sevi neapstiprina, ka attēls rāda sākotnējās detaļas.
 
 **Detaļu pareizība.** Atsevišķi pārbaudīt uzrakstus, objektu skaitu, sejas pazīmes, ģeometriju un faktūras pret zināmo etalonu vai atliktiem papildu skatpunktiem. Ja pieejams tikai viens bojāts attēls, pilnīgi pazudušās detaļas var būt ticamas, taču to pareizību no tā paša attēla neapstiprināsim. Šādas vietas rezultātā jāatzīmē kā neskaidras.
 
@@ -699,15 +703,17 @@ Iedod aģentam visu prasmes mapi vai publicētā projekta saiti. Palūdz izlasī
 
 Ja vide atbalsta failus un programmu izpildi, pieslēdz sākuma un beigu darbības un pārbaudi otro uzdevumu: vai tas saņēma pirmā uzdevuma mācību? Jaunus paņēmienus pieņem tikai pēc iepriekš noteikta salīdzinājuma un neatkarīgām pārbaudēm. Tas dod kontrolējamu attīstības ceļu, ne garantiju, ka katrs nākamais jautājums būs vieglāks vai atbilde vienmēr labāka.
 
-## Support the author
+<a id="support-the-author"></a>
 
-Support section updated on November 10, 2026 from the author's current instructions. The experiment text above is unchanged. Earlier support wording and network labels are superseded by this section.
+## Atbalsti autoru
 
-My name is Reinis Runcis. I am paralyzed and live alone. Each day I fight to keep creating, and I share this work for free. Through my example, I hope to inspire others who feel there is no way out of their situation.
+Atbalsta sadaļa atjaunināta 2026. gada 10. novembrī pēc autora aktuālajām norādēm. Šeit izmantots autora apstiprinātais latviešu teksts. Eksperimentu saturam veikti tikai ievadā norādītie redakcionālie labojumi. Šī sadaļa aizstāj agrāko atbalsta formulējumu un tīklu nosaukumus.
 
-If this project is useful to you, or you would like to help me carry on, I would be grateful for a voluntary donation. Your support helps me in daily life and in my work on tools like this.
+Mani sauc Reinis Runcis. Esmu paralizēts un dzīvoju viens. Ikdienā cīnos, lai turpinātu radīt, un ar šo darbu dalos bez maksas. Ceru ar savu piemēru iedvesmot arī cilvēkus, kuriem šķiet, ka viņu situācijā nav izejas.
 
-Swedbank · Recipient: **REINIS RUNCIS**  
+Ja šis projekts tev noder vai vēlies palīdzēt man turpināt iesākto, būšu pateicīgs par brīvprātīgu ziedojumu. Tavs atbalsts palīdz man ikdienā un darbā pie šādiem rīkiem.
+
+Swedbank · Saņēmējs: **REINIS RUNCIS**  
 IBAN: **`LV82HABA0551011504293`**
 
 - [Stripe (EUR)](https://buy.stripe.com/dRm7sNfD2bOZckRb9A6g802)
@@ -722,6 +728,6 @@ IBAN: **`LV82HABA0551011504293`**
 
 `Hy6hKMwMDgXFdaD3N5J1CNMs2LwiE22QdrQnEYoX3fZh`
 
-[More about me on Facebook](https://www.facebook.com/reinis.runcis)
+[Vairāk par mani Facebook](https://www.facebook.com/reinis.runcis)
 
-Support is voluntary and is not required to use the skill.
+Atbalsts ir brīvprātīgs un nav prasmes izmantošanas nosacījums.

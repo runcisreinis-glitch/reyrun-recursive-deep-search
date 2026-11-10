@@ -2,6 +2,8 @@
 
 Test date: 9 November 2026.
 
+> Editorial revision, November 10, 2026: limited grammar and punctuation corrections were made for publication. A dated note clarifies the historical query accounting. All questions, supplied values and conditions, complete answers, mathematical arguments, research results and source URLs are preserved. Original research records remain separate; the file manifest identifies the current publication bytes.
+
 This edition contains 10 everyday, 10 practical technical and 10 research questions. We prepared the questions for testing; these are not interviews with 30 people. Required user clarifications are clearly labelled as fictional test-scenario data. Web searches, source reading, answer writing and experience-preservation operations were actually executed.
 
 Three separate executors worked on their own question groups. Each question involved searches in English, German, Chinese and Japanese. This does not mean that a useful, fully readable source was found in every language. Source gaps and pages that could not be opened are preserved in the test records.
@@ -15,6 +17,8 @@ Opening a source is now explicitly distinguished from reading the required passa
 Strict validation of evidence records was added to the execution connector. It refuses a completed run when required sources, claims, searches or editing records are missing. This check validates files and records; it does not itself prove that sentences are true. These 30 examples used the manual start/end cycle, while the new connector's checks were run separately.
 
 ## Results
+
+> Editorial correction, November 10, 2026: the original accounting paragraph is retained below. A later review confirmed 143 distinct queries with retained original receipts; the original total of 147 also included four declared E10 queries whose full original outputs were not retained.
 
 147 queries were actually executed: EN 50, DE 33, ZH 33, JA 31. They include 143 distinct query texts and 4 repetitions after an interruption. The full results of E10's four initial tool calls had not been saved; during recovery, the sources were read again and the new calls saved. This gap is reported, not filled with invented records.
 
@@ -65,7 +69,7 @@ When trying them on, check the following:
 
 - Fasten the waistband and sit down. It should still feel comfortable when you are seated; there should be no strong pulling across the thighs or crotch.
 - Look from the front, side, and back. Check whether the fabric around the hips is noticeably stretched or hanging too loosely.
-- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company's [Dankan fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
+- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company [Dankan's fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
 - Judge the length with the shoes you will wear. For a clean, straight silhouette, I would initially compare a leg that just touches the shoe with a slightly shorter version. That is a matter of taste.
 
 At home, find trousers whose length you already like. Lay them flat and measure the inside seam from the crotch to the hem. Measure the waistband flat and multiply that width by two. [Levi's](https://www.levi.com/GB/en_GB/blog/article/how-to-measure-jeans) describes this method.
@@ -683,7 +687,7 @@ I would divide evaluation into three parts.
 
 **Consistency with the observation.** On images with a known reference, calculate PSNR and structural similarity, fixing colour space, cropping, resolution and alignment in advance. Also retain results by scene and error maps; an average can hide one very poor case.
 
-**Photographic quality.** An existing supplement is the authors' LPIPS implementation: it compares images using perceptually adapted features. Its documentation also specifies input scale and network variants, which must remain the same in a comparison. The authors' evaluation used human choices between two variants relative to a reference. [LPIPS code and evaluation description](https://github.com/richzhang/PerceptualSimilarity) In our test, people would blindly compare shuffled candidate pairs, both as full images and in important crops. LPIPS and human preference do not by themselves confirm that an image depicts the original details.
+**Photographic quality.** An existing supplement is the authors' LPIPS implementation: it compares images using perceptually adapted features. Its documentation also specifies input scale and network variants, which must remain the same in a comparison. The authors' evaluation used human choices between two variants relative to a reference. [LPIPS code and evaluation description](https://github.com/richzhang/PerceptualSimilarity). In our test, people would blindly compare shuffled candidate pairs, both as full images and in important crops. LPIPS and human preference do not by themselves confirm that an image depicts the original details.
 
 **Correctness of detail.** Separately check text, object counts, facial features, geometry and textures against the known reference or held-out additional viewpoints. If only one degraded image is available, entirely missing details may be plausible, but their correctness cannot be confirmed from that same image. Such regions must be marked as uncertain in the result.
 
@@ -701,7 +705,7 @@ If the environment supports files and program execution, connect the start/end o
 
 ## Support the author
 
-Support details updated on 2026-11-10 at the author's request; experiment records above are unchanged.
+Support details were updated on 2026-11-10 at the author's request. The experiment text above has only the editorial corrections disclosed in its introduction; the research results are unchanged.
 
 My name is Reinis Runcis. I am paralyzed and live alone. Each day I fight to keep creating, and I share this work for free. Through my example, I hope to inspire others who feel there is no way out of their situation.
 

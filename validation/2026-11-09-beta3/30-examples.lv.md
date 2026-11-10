@@ -1,6 +1,8 @@
-# REYRUN REKURSIVE DEEP SEARCH: pārbaudītā 10 + 10 + 10 atlase
+# REYRUN Recursive Deep Search: pārbaudītā 10 + 10 + 10 atlase
 
 Pārbaudes datums: **2026. gada 9. novembris**. Laidiens: **2.0.0-beta.3**.
+
+> Redakcija, 2026. gada 10. novembris: publikācijai izlabota gramatika, pieturzīmes, atstarpes un nepilnīgs matemātiskais pieraksts. Saglabāti jautājumu skaitliskie dati un nosacījumi, pilnās atbildes, matemātiskie argumenti, izpētes rezultāti un avotu adreses. Sākotnējie izpētes ieraksti glabājas atsevišķi; pašreizējās publikācijas failus identificē failu manifests.
 
 Šeit ir 10 ikdienas jautājumi parastā, reizēm neskaidrā valodā, 10 vidēji sarežģīti jautājumi dažādās nozarēs un 10 sarežģīti jautājumi. Septiņos sarežģītajos piemēros ir pilns matemātisks atvasinājums vai pierādījums un faktiski palaists kontrolaprēķins.
 
@@ -12,7 +14,7 @@ Sākotnējie 30 piemēri paliek atsevišķi vēsturē. Kopā ar 18 papildinājum
 
 Sākuma un beigu darbības šīs atlases izpētē vadītas manuāli. Jaunās vidējās un matemātikas grupas pierādījumu faili pārbaudīti arī ar atsevišķu stingro ierakstu pārbaudītāju. Tas nav apgalvojums, ka visas izpētes palaida patstāvīgs fona aģents.
 
-[Pārbaudes kopsavilkums](release-report.lv.md) · Avotu un apgalvojumu reģistrs · [Sākotnējie 30 piemēri](../2026-11-09/30-examples.lv.md).
+[Pārbaudes kopsavilkums](release-report.lv.md) · [Sākotnējie 30 piemēri](../2026-11-09/30-examples.lv.md).
 
 Šeit minētie iekšējie ieraksti šajā izdevumā nav publicēti; skati [publikācijas tvērumu](../../PUBLICATION_SCOPE.md).
 
@@ -326,7 +328,7 @@ Apsvērti divi pārnesami paņēmieni: mērvienību pārbaude pirms pārrēķina
 
 Istaba četri uz trīs. Vienu krāsas spaini paņemšu un visas sienas, pietiks tak?
 
-*Pārbaudes nosacījumi:* Sākumā nosauc tikai būtiskos trūkstošos lielumus. Tad izmanto skaidri marķētu simulēto precizējumu: garums 4m, platums3m, augstums2.5m, durvju+logu laukums5m², divas kārtas, uz izvēlētās krāsas norādīti10m²/L vienai kārtai; griestus nekrāso. Aprēķini teorētisko daudzumu, nodali reālo rezervi.
+*Pārbaudes nosacījumi:* Sākumā nosauc tikai būtiskos trūkstošos lielumus. Tad izmanto skaidri marķētu simulēto precizējumu: garums 4 m, platums 3 m, augstums 2,5 m, durvju+logu laukums 5 m², divas kārtas, uz izvēlētās krāsas norādīti 10 m²/L vienai kārtai; griestus nekrāso. Aprēķini teorētisko daudzumu, nodali reālo rezervi.
 
 #### Izpētītā atbilde
 
@@ -365,7 +367,7 @@ Iepriekšējā miltu uzdevuma mācība te noderēja: vispirms nošķirt mērvien
 
 Rīsiem uz pakas trīssimt piecdesmit, aplikācijā simt divdesmit. Tie abi uz simtu gramu. Kur tās kalorijas pazūd kad es uzvāru?
 
-*Pārbaudes nosacījumi:* Uzdevums ir par sausas un izvārītas masas salīdzinājumu, ne individuālu uztura ieteikumu. Pārbaudi abas iespējamās uzskaites bāzes. Aprēķina kontrolpiemērs:100g sausu rīsu ar350kcal pēc vārīšanas bez piedevām sver280g; pieņem, ka piemērā pārtikas enerģija nav aizlieta prom.
+*Pārbaudes nosacījumi:* Uzdevums ir par sausas un izvārītas masas salīdzinājumu, ne individuālu uztura ieteikumu. Pārbaudi abas iespējamās uzskaites bāzes. Aprēķina kontrolpiemērs: 100 g sausu rīsu ar 350 kcal pēc vārīšanas bez piedevām sver 280 g; pieņem, ka piemērā pārtikas enerģija nav aizlieta prom.
 
 #### Izpētītā atbilde
 
@@ -534,7 +536,7 @@ Pirmais noderīgais tests: atjauno atsevišķā mapē dažus jaunus, vecus un ie
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Man ir12 vienādas bazilika podiņu stādus. Gribu salīdzināt divus mēslojumus; puse palodzes ir saulaināka. Kā4 nedēļās veikt salīdzinājumu, lai nejauši nepierādītu tikai saules ietekmi?
+Man ir 12 vienādi bazilika stādi podiņos. Gribu salīdzināt divus mēslojumus; puse palodzes ir saulaināka. Kā 4 nedēļās veikt salīdzinājumu, lai nejauši nepierādītu tikai saules ietekmi?
 
 *Pārbaudes nosacījumi:* Izstrādā izpildāmu izvietojumu, randomizāciju, mērījumu plānu un secinājumu robežas. Vairākas viena auga lapas nav neatkarīgi augi. Nepiešķir izmērītu rezultātu neizpildītam eksperimentam.
 
@@ -590,7 +592,7 @@ Otra iespēja ir akli nolasīt ar kodiem pārsauktus foto. [NC3Rs](https://eda.n
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Šuju divus kokvilnas aizkarus, katru gatavu130cm platu un240cm augstu. Malām kopā vajag8cm platumā, augšai un apakšai kopā16cm garumā. Audums150cm plats, garumā saraujas5%, platumā3%. Vai5.2m pietiks un kā pārbaudīt pirms griešanas?
+Šuju divus kokvilnas aizkarus, katru gatavu 130 cm platu un 240 cm augstu. Malām kopā vajag 8 cm platumā, augšai un apakšai kopā 16 cm garumā. Audums 150 cm plats, garumā saraujas 5%, platumā 3%. Vai 5,2 m pietiks un kā pārbaudīt pirms griešanas?
 
 *Pārbaudes nosacījumi:* Pieņem vienmērīgu norādīto saraušanos, bez raksta salāgošanas, bez brāķa un bez papildu rezerves. Izvērtē platumu un garumu atsevišķi; aprēķini teorētisko minimumu un izskaidro, kāpēc praksē vajadzīgs paša auduma paraugs.
 
@@ -648,9 +650,9 @@ Otra ideja ir izmantot nelielu ražošanas kontrolparaugu pirms visas sagataves 
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Cik elektrības teorētiski vajag80 litru ūdens uzsildīšanai no10 līdz60°C, ja visa procesa lietderība ir90% un elektrība maksā0.15€/kWh? Cik60°C ūdens vajag50 litriem40°C maisījuma ar10°C auksto ūdeni?
+Cik elektrības teorētiski vajag 80 litru ūdens uzsildīšanai no 10 līdz 60 °C, ja visa procesa lietderība ir 90% un elektrība maksā 0,15 €/kWh? Cik 60 °C ūdens vajag 50 litriem 40 °C maisījuma ar 10 °C auksto ūdeni?
 
-*Pārbaudes nosacījumi:* Izmantoρ=1kg/L un c=4.186kJ/(kg·K). Salīdzini siltumu, elektrību un cenu; maisījumam pieņem bez siltuma zuduma un vienādu blīvumu. Neiekļauj nenorādītos ilgstošās glabāšanas zudumus vai tirgus cenu pieņēmumus.
+*Pārbaudes nosacījumi:* Izmanto ρ = 1 kg/L un c = 4,186 kJ/(kg·K). Salīdzini siltumu, elektrību un cenu; maisījumam pieņem siltuma zudumu neesamību un vienādu blīvumu. Neiekļauj nenorādītos ilgstošās glabāšanas zudumus vai tirgus cenu pieņēmumus.
 
 #### Izpētītā atbilde
 
@@ -691,7 +693,7 @@ x × (60 − 40) = (50 − x) × (40 − 10).
 
 20x = 1500 − 30x, tātad x = 30 L.
 
-Izmantoju [KIT aprakstīto kalorimetrijas bilanci](https://labs.physik.kit.edu/prakt-klass-physik-manuals/P2/Spezifische_Waermekapazitaet/doc/Hinweise-Waermekapazitaet-Mischung/), šeit piemērota divām viena veida ūdens masām. Kopīgie c un ρ saīsinās.
+Izmantoju [KIT aprakstīto kalorimetrijas bilanci](https://labs.physik.kit.edu/prakt-klass-physik-manuals/P2/Spezifische_Waermekapazitaet/doc/Hinweise-Waermekapazitaet-Mischung/), šeit piemērotu divām viena veida ūdens masām. Kopīgie c un ρ saīsinās.
 
 Pārbaude: 30 + 20 = 50 L un (30 × 60 + 20 × 10)/50 = 40 °C. Karstais ūdens atdod 30 × 4,186 × 20 = 2511,6 kJ; aukstais saņem 20 × 4,186 × 30 = 2511,6 kJ. Šim atsevišķajam sajaukšanas solim vēlreiz nepiemēro 90%, jo tā nosacījums ir sajaukšana bez zudumiem.
 
@@ -712,7 +714,7 @@ Otru mehānismu, divu krājumu sajaukšanu līdz mērķa īpašībai, var izmant
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Krāna ūdens analīzē cietība280mg/L kāCaCO3 un brīvais hlors0.4mg/L. Vai parasts aktīvās ogles krūzes filtrs noņems gan hloru, gan kaļķi? Kā atšķirt ogli, jonapmaiņu un reverso osmozi pēc faktiskas pārbaudes?
+Krāna ūdens analīzē cietība 280 mg/L kā CaCO₃ un brīvais hlors 0,4 mg/L. Vai parasts aktīvās ogles krūzes filtrs noņems gan hloru, gan kaļķi? Kā atšķirt ogli, jonapmaiņu un reverso osmozi pēc faktiskas pārbaudes?
 
 *Pārbaudes nosacījumi:* Nav dots konkrēts produkts. Salīdzini mehānismus, ko apliecina attiecīgie ražotāja/sertifikācijas ieraksti, un pirms/pēc mērījumu. Neapgalvo, ka ūdens analīze pati nosaka tā pilnu dzeramības drošumu.
 
@@ -727,7 +729,7 @@ Ražotāja BRITA piemērs parāda atšķirību vienas produktu saimes iekšienē
 | Apstrāde | Ko tā dara šajā uzdevumā | Ko meklēt dokumentos un mērījumos |
 |---|---|---|
 | Aktīvā ogle | Brīvā hlora samazināšanā darbojas arī oksidēšanās un reducēšanās reakcijas; smaku izraisošu vielu samazināšanai izmanto adsorbciju. Izšķīdušo Ca/Mg mazināšanu no ogles vien neizsecina. | Konkrēts hlora samazināšanas apliecinājums; brīvā hlora tests pirms/pēc. Cietību mēra atsevišķi. |
-| Jonapmaiņa | Mīkstināšanā sveķi Ca/Mg aizvieto ar citiem joniem. Nātrija vai kālija mīkstinātājs nav visu izšķīdušo sāļu izņemšana. Krūžu sveķu sastāvs un karbonātiskās cietības samazināšana var atšķirties. | Precīzs sveķu un sistēmas apraksts; kopējās cietības tests. Ja solīta tieši karbonātiskās cietības mazināšana, papildus vajadzīga sārmainība. |
+| Jonapmaiņa | Mīkstināšanā sveķi Ca/Mg aizvieto ar citiem joniem. Nātrija vai kālija mīkstinātājs nav visu izšķīdušo sāļu izņemšana. Krūžu sveķu sastāvs un karbonātiskās cietības samazināšana var atšķirties. | Precīzs sveķu un sistēmas apraksts; kopējās cietības tests. Ja solīta tieši karbonātiskās cietības mazināšana, papildus jānosaka sārmainība. |
 | Reversā osmoze | Spiediens virza ūdeni caur puscaurlaidīgu membrānu; sistēma samazina izšķīdušo vielu daudzumu. Daudzās sistēmās ir arī citi filtri. | Membrānas sistēmas dati un TDS samazināšanas apliecinājums; vadītspēja/TDS un cietība pirms/pēc. Par hlora samazināšanu spriež pēc visas sistēmas dokumentiem. |
 
 Ogles ķīmisko darbību apraksta [Japānas ūdens filtru asociācija](https://www.jwpa.or.jp/qa01.htm). Jonapmaiņu un reverso osmozi skaidro [NSF standartu pārskats](https://www.nsf.org/consumer-resources/articles/standards-water-treatment-systems), bet sveķu resursa izsīkšanu un cietības testus apraksta [Hach](https://my.hach.com/parameters/hardness).
@@ -773,7 +775,7 @@ Otra ir komponenta kalpošanas gaitas pārbaude: pieraksta caurlaistos litrus un
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Darbnīcā krūzi pārdod par24€, materiāli un iepakojums9€, samaksa par katru saražoto krūzi6€. Mēneša pastāvīgās izmaksas360€. Ir120 krūžu jauda; pamatpasūtījums ir40 krūzes. Papildu klients grib30 par18€. Vai pieņemt un cik krūzes jāpārdod parastajā cenā, lai nosegtu izmaksas?
+Darbnīcā krūzi pārdod par 24 €, materiāli un iepakojums 9 €, samaksa par katru saražoto krūzi 6 €. Mēneša pastāvīgās izmaksas 360 €. Ir 120 krūžu jauda; pamatpasūtījums ir 40 krūzes. Papildu klients grib 30 par 18 €. Vai pieņemt un cik krūzes jāpārdod parastajā cenā, lai nosegtu izmaksas?
 
 *Pārbaudes nosacījumi:* Šis ir hipotētisks uzdevums: nodokļi, komisijas un ārējās cenas jau izslēgtas; papildu pasūtījums neizspiež pamatpasūtījumu. Nošķir ieņēmumus, mainīgās izmaksas, seguma summu un peļņu; parādi arī nosacījumu, kurā secinājums mainītos.
 
@@ -1066,7 +1068,7 @@ Pārbaudītu divas hipotēzes: stabila nodoma atslēga novērš dublētu efektu 
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Aplūko u_t=u_xx uz(0,π), u(0,t)=u(π,t)=0. No u(x,1) arL² trokšņa līmeniδ=10^-6 grib atgūt u(x,0). Pierādi vai atspēko inversā operatora ierobežotību L², izmantojot normalizētas sinusu modas. Aprēķini lielāko veselo modu n, kuras sākuma koeficienta1 signāls t=1 vēl pārsniedzδ. Piedāvā vienu regularizāciju un precīzi pasaki, ko tā negarantē.
+Aplūko u_t=u_xx uz (0,π), u(0,t)=u(π,t)=0. No u(x,1) ar L² trokšņa līmeni δ=10^-6 grib atgūt u(x,0). Pierādi vai atspēko inversā operatora ierobežotību L², izmantojot normalizētas sinusu modas. Aprēķini lielāko veselo modu n, kuras sākuma koeficienta 1 signāls t=1 vēl pārsniedz δ. Piedāvā vienu regularizāciju un precīzi pasaki, ko tā negarantē.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pamatots pierādījums, formulas, izpildīts skaitlisks kontrolaprēķins un primārs matemātisks avots. Trokšņa robežu nepasniedz kā unikālu atgūšanas garantiju.
 
@@ -1160,7 +1162,7 @@ Nākamais lietderīgais tests: pie skaidri dotas Soboleva normas robežas salīd
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-dX_t=-2X_tdt+3dW_t, X_0=1. Atvasini vidējo, dispersiju un stacionāro sadalījumu. Atvasini Euler–Maruyama stacionāro dispersiju un soļa stabilitātes nosacījumu; salīdzini h=0.25 ar nepārtraukto modeli un parādi, kas notiek pieh=1.2.
+dX_t=-2X_tdt+3dW_t, X_0=1. Atvasini vidējo, dispersiju un stacionāro sadalījumu. Atvasini Euler–Maruyama stacionāro dispersiju un soļa stabilitātes nosacījumu; salīdzini h=0.25 ar nepārtraukto modeli un parādi, kas notiek pie h=1.2.
 
 *Pārbaudes nosacījumi:* Vajadzīgs atvasinājums, izpildīts skaitlisks kontrolaprēķins un neatkarīgs primārais avots. Montekarlo rezultātu nedrīkst aizstāt ar teorētisku pierādījumu; ja simulē, saglabā seed un kodu.
 
@@ -1177,7 +1179,7 @@ d(e^{2t}X_t)=3e^{2t}dW_t,\qquad
 X_t=e^{-2t}+3\int_0^t e^{-2(t-s)}\,dW_s.
 $$
 
-Integranda ir deterministiska un kvadrātiski integrējama. Itô integrālis ir centrēts Gausa mainīgais, un izometrija dod
+Zemintegrāļa funkcija ir deterministiska un kvadrātiski integrējama. Itô integrālis ir centrēts Gausa mainīgais, un izometrija dod
 
 $$
 \mathbb E X_t=e^{-2t},\qquad
@@ -1219,7 +1221,7 @@ $$
 
 Stacionārais sadalījums ir $N(0,v_h)$, jo stacionāru procesu var veidot kā kvadrātiski summējamu neatkarīgu Gausa inovāciju rindu. Divu risinājumu starpība ar tiem pašiem trokšņa pieaugumiem ir $a^k(Y_0-\widetilde Y_0)$, kas šajā intervālā izdziest.
 
-Šeit stabilitāte nozīmē sākuma atšķirību izdzišanu un ierobežotu otro momentu; additīvā trokšņa dēļ pats process uz nulli nekonverģē. Giles un līdzautoru oriģinālraksta 6.1. nodaļā formula dota trokšņa koeficientam $\sqrt2$; reizinot dispersiju ar $9/2$, tā sakrīt ar mūsu atvasinājumu. [Raksts](https://link.springer.com/article/10.1007/s11222-019-09890-0).
+Šeit stabilitāte nozīmē sākuma atšķirību izdzišanu un ierobežotu otro momentu; aditīvā trokšņa dēļ pats process uz nulli nekonverģē. Giles un līdzautoru oriģinālraksta 6.1. nodaļā formula dota trokšņa koeficientam $\sqrt2$; reizinot dispersiju ar $9/2$, tā sakrīt ar mūsu atvasinājumu. [Raksts](https://link.springer.com/article/10.1007/s11222-019-09890-0).
 
 Ja $|a|\ge1$, stacionāra varbūtības sadalījuma nav. Tā raksturfunkcijai būtu jāapmierina
 
@@ -1279,7 +1281,7 @@ Nākamajā metodes salīdzinājumā jāpārbauda arī autokorelācija: vienāda 
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-B=[[-1,20],[0,-1]]. Visas īpašvērtības ir negatīvas; vai no tā seko, ka||exp(tB)||₂≤1 visiemt≥0? Atvasini matricas eksponenti, precīzo spektrālo normu un tās maksimuma laiku/vērtību. Nošķir asimptotisku stabilitāti un īslaicīgu pastiprinājumu.
+B=[[-1,20],[0,-1]]. Visas īpašvērtības ir negatīvas; vai no tā seko, ka ||exp(tB)||₂≤1 visiem t≥0? Atvasini matricas eksponenti, precīzo spektrālo normu un tās maksimuma laiku/vērtību. Nošķir asimptotisku stabilitāti un īslaicīgu pastiprinājumu.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pierādījums, izpildīts skaitlisks pārbaudījums un primārs avots par nenormālu operatoru pārejas uzvedību. Normas maksimumu nepaņem tikai no rupja skaitliska režģa.
 
@@ -1407,9 +1409,9 @@ Nākamais lietderīgais tests būtu novērtēt maksimālās pastiprināšanas ju
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Risini min_x x ar ierobežojumux²≤0. Atvasini Lagranža duālo uzdevumu, primāro un duālo optimālo vērtību, sasniegšanu un KKT nosacījumus. Tad atkārto x²≤ε² pieε>0 un analizē ε→0. Vai nulles dualitātes plaisa viena pati garantē galīgu optimālu reizinātāju?
+Risini min_x x ar ierobežojumu x²≤0. Atvasini Lagranža duālo uzdevumu, primāro un duālo optimālo vērtību, sasniegšanu un KKT nosacījumus. Tad atkārto x²≤ε² pie ε>0 un analizē ε→0. Vai nulles dualitātes plaisa viena pati garantē galīgu optimālu reizinātāju?
 
-*Pārbaudes nosacījumi:* Vajadzīgs formāls atvasinājums, izpildīts skaitlisks kontrolaprēķins vairākiemε un avots. Neizmanto Slatera nosacījumu, ja tas nav izpildīts.
+*Pārbaudes nosacījumi:* Vajadzīgs formāls atvasinājums, izpildīts skaitlisks kontrolaprēķins vairākiem ε un avots. Neizmanto Slatera nosacījumu, ja tas nav izpildīts.
 
 #### Izpētītā atbilde
 
@@ -1544,7 +1546,7 @@ Nākamais tests ir pārbaudīt ekvivalentas pieļaujamās kopas formulāciju $x=
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Uz[0,1] ņem f_n(x)=n·1_(0,1/n)(x). Nosaki punktveida/gandrīzvisur robežu, L¹ konverģenci un mēru f_n(x)dx vājo robežu. Pierādi atbildes un precīzi nosauc, kādēļ robežu nevar vienkārši ienest integrālī. Saisti ar vienmērīgu integrējamību.
+Uz [0,1] ņem f_n(x)=n·1_(0,1/n)(x). Nosaki punktveida/gandrīz visur robežu, L¹ konverģenci un mēru f_n(x)dx vājo robežu. Pierādi atbildes un precīzi nosauc, kādēļ robežu nevar vienkārši ienest integrālī. Saisti ar vienmērīgu integrējamību.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pierādījums ar patvaļīgu nepārtrauktu testa funkciju un izpildīts skaitlisks kontrolpiemērs. Neapgalvo, ka šī secība pierāda visu skaitlisko integratoru kļūmi.
 
@@ -1621,7 +1623,7 @@ $$
 
 Tātad šo integrāļu supremums pēc n ir 1 visiem K un netiecas uz nulli. Līdzvērtīgi, kopās $A_n=(0,1/n)$ mērs tiecas uz 0, bet $\int_{A_n}f_n=1$.
 
-Vienmērīgas integrējamības kritērijs un saikne ar $L^1$ konverģenci gandrīz visur konverģējošām secībām doti Ulmas universitātes lemmas 3.6 un 3.7 formulējumā un pierādījumā. Ķīnas pirmavota kursā definīcija 6.11 dod to pašu astes kritēriju. [Ulma](https://www.mathematik.uni-ulm.de/stochastik/lehre/ss05/wt/skript/node41.html), [Pekinas universitāte](https://math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/martingale.html).
+Vienmērīgas integrējamības kritērijs un saikne ar $L^1$ konverģenci gandrīz visur konverģējošām secībām doti Ulmas universitātes lemmu 3.6 un 3.7 formulējumos un pierādījumos. Ķīnas pirmavota kursā definīcija 6.11 dod to pašu astes kritēriju. [Ulma](https://www.mathematik.uni-ulm.de/stochastik/lehre/ss05/wt/skript/node41.html), [Pekinas universitāte](https://math.pku.edu.cn/teachers/lidf/course/stochproc/stochprocnotes/html/_book/martingale.html).
 
 Monotonās konverģences teorēma arī nav piemērojama: secība nav punktveidā monotoni augoša. Fatū lemma paliek spēkā un dod $0\le1$, ne vienādību.
 
@@ -1792,7 +1794,7 @@ Kods vispirms precīzi pārbaudīja matricu identitātes ar SymPy, pēc tam ar N
 
 Robežgadījumā 10 000 atkārtojumi deva tieši $\bigl(\begin{smallmatrix}1&0\\20000&1\end{smallmatrix}\bigr)$, bet norma ir aptuveni 20 000.00005. Pie $h=2.1$ pēc 1000 soļiem norma bija $5.972479742\cdot10^{273}$. Eilera metode pie $h=0.1$ pēc 10 000 soļiem deva $4.044537936\cdot10^{21}$, relatīvā atšķirība no slēgtās formulas bija $3.78\cdot10^{-15}$.
 
-Skaitliskie dati apstiprina konkrēto realizāciju; apgalvojums par visiem soļu skaitiem balstās algebraiskajā pierādījumā. Saglabāšana arī nenozīmē precīzu fāzi: Stranga rotācijas leņķis ir $\theta=\arccos(1-h^2/2)$, bet precīzā risinājuma leņķis ir $h$. Pie $h=0.1$ pēc 10 000 soļiem uzkrātā, uz pilnu apgriezienu neatlikumiem nesamazinātā leņķu starpība ir $10000(\theta-h)=0.4171361154$ radiāni.
+Skaitliskie dati apstiprina konkrēto realizāciju; apgalvojums par visiem soļu skaitiem balstās algebraiskajā pierādījumā. Saglabāšana arī nenozīmē precīzu fāzi: Stranga rotācijas leņķis ir $\theta=\arccos(1-h^2/2)$, bet precīzā risinājuma leņķis ir $h$. Pie $h=0.1$ pēc 10 000 soļiem uzkrātā leņķu starpība, neatņemot pilnos apgriezienus, ir $10000(\theta-h)=0.4171361154$ radiāni.
 
 #### Divi pārbaudītie pārnesumi un nākamais tests
 
@@ -1817,7 +1819,7 @@ Primārie avoti: [Hairer, Lubich, Wanner (2003), kopsavilkums](https://www.cambr
 
 **Sākotnējais jautājums un nepieciešamie nosacījumi**
 
-Nosaki f(x)=x^5-x-1 Galuā grupu pārQ un vai saknes izsakāmas radikāļos. Izmanto precīzu faktorizāciju modulo2 un modulo3, norādot, kāpēc attiecīgie ciklu tipi nosaka grupu. Pārbaudi diskriminantu un katras izmantotās teorēmas priekšnosacījumus.
+Nosaki f(x)=x^5-x-1 Galuā grupu pār Q un vai saknes izsakāmas radikāļos. Izmanto precīzu faktorizāciju modulo 2 un modulo 3, norādot, kāpēc attiecīgie ciklu tipi nosaka grupu. Pārbaudi diskriminantu un katras izmantotās teorēmas priekšnosacījumus.
 
 *Pārbaudes nosacījumi:* Vajadzīgs pilns arguments, izpildīta precīza polinomu aritmētika un primārie matemātikas avoti. CAS grupas nosaukums viens pats nav pierādījums.
 
@@ -1827,7 +1829,7 @@ $$
 \boxed{\operatorname{Gal}(x^5-x-1\,/\,\mathbb Q)\cong S_5.}
 $$
 
-**Neviena šī polinoma sakne nav izsakāma radikāļos pār $\mathbb Q$.** Pierādījums izmanto precīzu faktorizāciju modulo 2 un 3, teorēmu priekšnosacījumiem un izpildītiem aritmētikas sertifikātiem.
+**Neviena šī polinoma sakne nav izsakāma radikāļos pār $\mathbb Q$.** Pierādījums izmanto precīzu faktorizāciju modulo 2 un 3, teorēmu priekšnosacījumus un izpildītus aritmētikas sertifikātus.
 
 #### Diskriminants un labie pirmskaitļi
 
@@ -1852,7 +1854,7 @@ $$
 
 Zīme ir pozitīva. Rezultanta formulas moniskam polinomam un tā atvasinājumam izklāstītas Milne 4.35.–4.36. apgalvojumā; šeit visi koeficienti ir precīzi racionāli skaitļi.
 
-Tādēļ $f$ ir separabls. Turklāt $2869\equiv1\pmod2$ un $\pmod3$, tātad abiem izvēlētajiem pirmskaitļiem redukcijās nav atkārtotu sakņu. Kods atsevišķi pārbaudīja arī $\gcd(\bar f,\bar f')=1$ abos laukos un aprēķināja diskriminantu kā precīzu $9\times9$ Silvestra matricas determinantu.
+Tādēļ $f$ ir separabls. Turklāt $2869\equiv1\pmod2$ un $2869\equiv1\pmod3$, tātad abiem izvēlētajiem pirmskaitļiem redukcijās nav atkārtotu sakņu. Kods atsevišķi pārbaudīja arī $\gcd(\bar f,\bar f')=1$ abos laukos un aprēķināja diskriminantu kā precīzu $9\times9$ Silvestra matricas determinantu.
 
 #### Precīzās faktorizācijas
 
@@ -1938,7 +1940,7 @@ $$
 (v_0,v_m)=t_1\cdots t_{m-1}t_m t_{m-1}\cdots t_1.
 $$
 
-Visas permutācijas ir transpozīciju reizinājumi. Tādēļ $G$ satur $S_5$, un, tā kā $G\le S_5$, ir $G=S_5$. Ar transpozīciju radītu tranzitīvu grupu arguments ir izklāstīts arī Conrad autora piezīmju pirmajā pierādījuma solī.
+Visas permutācijas ir transpozīciju reizinājumi. Tādēļ $G$ satur $S_5$, un, tā kā $G\le S_5$, ir $G=S_5$. Ar transpozīcijām radītu tranzitīvu grupu arguments ir izklāstīts arī Conrad autora piezīmju pirmajā pierādījuma solī.
 
 Šeit būtiski izmantots tieši pirmskaitlis 5. Apgalvojums “jebkurš $n$-cikls un jebkura transpozīcija ģenerē $S_n$” bez papildu nosacījumiem nav vispārīga teorēma.
 

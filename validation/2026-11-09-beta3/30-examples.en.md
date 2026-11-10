@@ -2,6 +2,8 @@
 
 Validation date: November 9, 2026. Release: 2.0.0-beta.3.
 
+> Editorial revision, November 10, 2026: grammar, punctuation, spacing and incomplete mathematical notation were corrected for publication. The questions' values and conditions, full answers, mathematical arguments, research results and source URLs are preserved. Original research records remain separate; the current publication bytes are identified by the file manifest.
+
 This set contains 10 everyday questions in ordinary, sometimes unclear language, 10 moderately difficult questions across different fields and 10 difficult questions. Seven difficult examples include a complete mathematical derivation or proof and a verification calculation that was actually run.
 
 The questions were prepared for validation; they are not interviews with 30 people. Explicit and simulated conditions are not claims about Reinis's actual home, health, finances or devices. Web searches, source reading and the stated calculations were actually performed. Physical tests that were not performed remain proposals.
@@ -12,7 +14,7 @@ The original 30 examples remain separately in the history. With the 18 additions
 
 Begin and end operations for this selection's research were manually orchestrated. Evidence files for the new medium and mathematics groups were also checked with a separate strict record validator. This does not claim that an independent background agent launched all the research.
 
-[Validation report](release-report.en.md) · Source and claim register · [Original 30 examples in English](../2026-11-09/30-examples.en.md) · [Original Latvian edition](../2026-11-09/30-examples.lv.md).
+[Validation report](release-report.en.md) · [Original 30 examples in English](../2026-11-09/30-examples.en.md) · [Original Latvian edition](../2026-11-09/30-examples.lv.md).
 
 The internal records referenced here are omitted from this edition; see [publication scope](../../PUBLICATION_SCOPE.md).
 
@@ -120,7 +122,7 @@ When trying them on, check the following:
 
 - Fasten the waistband and sit down. It should still feel comfortable when you are seated; there should be no strong pulling across the thighs or crotch.
 - Look from the front, side, and back. Check whether the fabric around the hips is noticeably stretched or hanging too loosely.
-- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company's [Dankan fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
+- Try the movements you need in everyday life. If possible, take a few steps too. The Japanese tailoring company [Dankan's fitting guidance](https://dankan.co.jp/blogs/dankan-magazine/jeans-size-guide) emphasizes comfort while moving, as well as when standing in front of a mirror.
 - Judge the length with the shoes you will wear. For a clean, straight silhouette, I would initially compare a leg that just touches the shoe with a slightly shorter version. That is a matter of taste.
 
 At home, find trousers whose length you already like. Lay them flat and measure the inside seam from the crotch to the hem. Measure the waistband flat and multiply that width by two. [Levi's](https://www.levi.com/GB/en_GB/blog/article/how-to-measure-jeans) describes this method.
@@ -581,7 +583,7 @@ The shrinkage percentage is calculated from the starting dimension: after washin
 
 520 × 0.95 = 494 cm. You need 512 cm, so after washing you would be 18 cm short. If the fabric were divided in half, each piece would be 247 cm; after allowing 16 cm for hems, the finished height would be 231 cm, which is 9 cm shorter than required. Before washing, the additional length required is 18.947368… cm.
 
-5.4 m would theoretically work, because 513 cm would remain after shrinkage. That is only 1 cm more than the two panels to be cut combined, so 5.4 m cannot be described as a large practical allowance. Cutting a sample from that same length would have to be accounted for separately.
+5.4 m would theoretically work, because 513 cm would remain after shrinkage. That is only 1 cm more than the combined length required for the two panels, so 5.4 m cannot be described as a large practical allowance. Cutting a sample from that same length would have to be accounted for separately.
 
 #### How to test your fabric
 
@@ -703,7 +705,7 @@ NSF's open component listing also contains an entry marked “Conforms to the ma
 
 #### Practical testing
 
-First find the cartridge composition and preparation instructions, then install and flush it as directed. At the same session, collect inlet water and outlet water after filtration. Record the date, temperature, volume filtered and the litres previously passed through the cartridge.
+First find the cartridge composition and preparation instructions, then install and flush it as directed. During the same session, collect inlet water and outlet water after filtration. Record the date, temperature, volume filtered and the litres previously passed through the cartridge.
 
 Measure free chlorine with a DPD test specifically intended for free chlorine, with a range and resolution suitable for 0.4 mg/L and the expected lower value. Follow the kit's reading time; “total chlorine” is a different measure. Hach also describes chloramine interference in DPD free-chlorine measurements, so an unstable colour change should not be presented as a conclusive filter result. [Hach technical questions](https://sea.hach.com/parameters/faq).
 
@@ -1814,7 +1816,7 @@ $$
 
 The sign is positive. Resultant formulas for a monic polynomial and its derivative are presented in Milne's Propositions 4.35–4.36; all coefficients here are exact rational numbers.
 
-Thus $f$ is separable. Also, $2869\equiv1\pmod2$ and $\pmod3$, so the reductions for both selected primes have no repeated roots. The code separately checked $\gcd(\bar f,\bar f')=1$ in both fields and calculated the discriminant as the exact determinant of the $9\times9$ Sylvester matrix.
+Thus $f$ is separable. Also, $2869\equiv1\pmod2$ and $2869\equiv1\pmod3$, so the reductions for both selected primes have no repeated roots. The code separately checked $\gcd(\bar f,\bar f')=1$ in both fields and calculated the discriminant as the exact determinant of the $9\times9$ Sylvester matrix.
 
 #### Exact factorisations
 

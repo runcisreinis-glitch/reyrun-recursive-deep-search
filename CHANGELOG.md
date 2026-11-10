@@ -1,5 +1,12 @@
 # Changelog
 
+## Editorial revision — 2026-11-10
+
+- Applied four complete English/Latvian text reviews to correct grammar, punctuation, spacing, current headings and incomplete notation. Research values, conditions, mathematical arguments and reported outcomes are preserved.
+- Added local dated corrections beside the historical 147-query wording and outdated publication status. The first 111-file GitHub edition is published and verified; a Chinese mirror is pending account verification.
+- Clarified which internal records are excluded and reused the approved Latvian support story in the Latvian historical report. Source code, tests, calculation files and all payment details are unchanged.
+- The historical research statements below describe their original release. The supported historical query count is 143 with retained receipts; the originally declared total of 147 includes four E10 queries whose full initial outputs were not retained.
+
 ## Documentation and support update — 2026-11-10
 
 - Added the full experiment document, public evidence download, source-review scope and explicit default host integration guidance. Runtime code is unchanged.
@@ -13,7 +20,7 @@
 - Fixed older lesson cards hiding newer failure observations; cards and observations now share one chronological 16-entry bound.
 - Fixed near-capacity orphan objects preventing acknowledged compaction, while preserving referenced evidence until atomic state replacement succeeds.
 - Verified 82 mechanism tests against retained source hashes, including four new regression tests. Synthetic mechanism evidence remains separate from real research evidence.
-- Ran a preregistered three-task, equal-budget comparison with two fresh worker contexts and independent review. In the three new task comparison, both procedures passed every frozen answer check. The candidate used 43 web actions versus 47 for the baseline, but did not meet the predeclared precision-gain requirement and was not promoted.
+- Ran a preregistered three-task, equal-budget comparison with two fresh worker contexts and independent review. In the three-task comparison, both procedures passed every frozen answer check. The candidate used 43 web actions versus 47 for the baseline, but did not meet the predeclared accuracy-gain requirement and was not promoted.
 - Corrected the historical query accounting: 143 distinct queries have retained raw receipts; the earlier total147 also included four declared initial E10 queries whose original output was lost. Existing recovery receipts remain and are mapped explicitly.
 - Prepared the public distribution page, complete source download, revised examples and shareable videos. Public forge mirrors require their own verified publication; no mirror URL is invented.
 
