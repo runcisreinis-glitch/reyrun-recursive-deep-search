@@ -1,0 +1,14 @@
+interface:
+  display_name: REYRUN Recursive Deep Search
+  short_description: Deep research that preserves and tests useful learning
+  default_prompt: Use $reyrun-rekursive-deep-search to research this problem in English,
+    German, Chinese and Japanese, load prior lessons and test worthwhile improvements.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

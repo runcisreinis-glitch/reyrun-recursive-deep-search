@@ -1,0 +1,60 @@
+{
+  "user_data": {
+    "observed_collisions": 2,
+    "observation_days": null,
+    "window_dimensions": null,
+    "baseline_rate": null,
+    "efficacy_reduction_percent": null
+  },
+  "source_based_design": {
+    "max_gap_mm": 50,
+    "minimum_marker_width_mm": 5,
+    "source": "S1"
+  },
+  "hypothetical_grid": {
+    "hypothetical": true,
+    "width_mm": 1000,
+    "height_mm": 1000,
+    "diameter_mm": 6,
+    "columns": 20,
+    "rows": 20,
+    "dots": 400,
+    "horizontal_center_pitch_mm": 50.0,
+    "vertical_center_pitch_mm": 50.0,
+    "outer_center_to_edge_mm": [
+      25.0,
+      25.0
+    ],
+    "clear_internal_gaps_mm": [
+      44.0,
+      44.0
+    ],
+    "marked_surface_percent": 1.1309733552923256
+  },
+  "hypothetical_rate_examples": {
+    "two_in_30_window_days": 0.06666666666666667,
+    "one_in_30_window_days": 0.03333333333333333,
+    "raw_relative_decrease_percent": 50,
+    "does_not_prove_causation": true
+  },
+  "hypothetical_zero_events": {
+    "window_days": 30,
+    "events": 0,
+    "one_sided_confidence": 0.95,
+    "poisson_rate_upper_per_window_day": 0.0998577424517997,
+    "formula": "lambda_upper=-ln(0.05)/T",
+    "assumptions": [
+      "constant Poisson event rate",
+      "independent events",
+      "perfect detection",
+      "fixed exposure"
+    ],
+    "applicable_to_user_window_as_measured_result": false
+  },
+  "limitations": [
+    "No real window measurements",
+    "No collision-monitoring experiment performed",
+    "Small marked-area percentage is not an efficacy measure",
+    "No proportional reduction inferred from the user's two events"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "method": "deterministic exact moment recursion, no Monte Carlo",
+  "continuous_stationary_variance": 2.25,
+  "em_stationary_variance_h025": 3.0,
+  "relative_variance_bias_h025": 0.33333333333333326,
+  "rows": [
+    {
+      "h": 0.25,
+      "k": 1,
+      "t": 0.25,
+      "a": 0.5,
+      "mean": 0.5,
+      "variance": 2.25,
+      "continuous_mean": 0.6065306597126334,
+      "continuous_variance": 1.4222712573642546
+    },
+    {
+      "h": 0.25,
+      "k": 4,
+      "t": 1.0,
+      "a": 0.5,
+      "mean": 0.0625,
+      "variance": 2.98828125,
+      "continuous_mean": 0.1353352832366127,
+      "continuous_variance": 2.2087898125003482
+    },
+    {
+      "h": 0.25,
+      "k": 20,
+      "t": 5.0,
+      "a": 0.5,
+      "mean": 9.5367431640625e-07,
+      "variance": 2.9999999999972715,
+      "continuous_mean": 4.5399929762484854e-05,
+      "continuous_variance": 2.2499999953624044
+    },
+    {
+      "h": 0.25,
+      "k": 100,
+      "t": 25.0,
+      "a": 0.5,
+      "mean": 7.888609052210118e-31,
+      "variance": 3.0,
+      "continuous_mean": 1.9287498479639178e-22,
+      "continuous_variance": 2.25
+    },
+    {
+      "h": 1.2,
+      "k": 1,
+      "t": 1.2,
+      "a": -1.4,
+      "mean": -1.4,
+      "variance": 10.799999999999999,
+      "continuous_mean": 0.09071795328941251,
+      "continuous_variance": 2.231483069139705
+    },
+    {
+      "h": 1.2,
+      "k": 2,
+      "t": 2.4,
+      "a": -1.4,
+      "mean": 1.9599999999999997,
+      "variance": 31.967999999999996,
+      "continuous_mean": 0.00822974704902003,
+      "continuous_variance": 2.2498476103428957
+    },
+    {
+      "h": 1.2,
+      "k": 10,
+      "t": 12.0,
+      "a": -1.4,
+      "mean": 28.925465497599983,
+      "variance": 9401.428735344532,
+      "continuous_mean": 3.775134544279098e-11,
+      "continuous_variance": 2.25
+    },
+    {
+      "h": 1.2,
+      "k": 100,
+      "t": 120.0,
+      "a": -1.4,
+      "mean": 410018608884990.56,
+      "variance": 1.8912966708598087e+30,
+      "continuous_mean": 5.8792826982452694e-105,
+      "continuous_variance": 2.25
+    },
+    {
+      "h": 1,
+      "k": 100,
+      "t": 100,
+      "a": -1,
+      "mean": 1.0,
+      "variance": 900.0,
+      "continuous_mean": 1.3838965267367376e-87,
+      "continuous_variance": 2.25
+    }
+  ],
+  "noise_correction": {
+    "a": 0.5,
+    "noise_variance": 1.6875,
+    "stationary_variance": 2.25,
+    "lag1_correlation": 0.5,
+    "true_lag1_correlation": 0.6065306597126334
+  },
+  "exact_grid_transition": {
+    "a": 0.6065306597126334,
+    "noise_variance": 1.4222712573642546
+  }
+}

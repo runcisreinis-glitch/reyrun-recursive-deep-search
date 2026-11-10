@@ -1,0 +1,273 @@
+{
+  "polynomial": "x**5 - x - 1",
+  "factorizations": {
+    "2": {
+      "unit": 1,
+      "factors": [
+        {
+          "poly": "x**2 + x + 1",
+          "multiplicity": 1
+        },
+        {
+          "poly": "x**3 + x**2 + 1",
+          "multiplicity": 1
+        }
+      ],
+      "gcd_derivative": "1"
+    },
+    "3": {
+      "unit": 1,
+      "factors": [
+        {
+          "poly": "x**5 - x - 1",
+          "multiplicity": 1
+        }
+      ],
+      "gcd_derivative": "1"
+    }
+  },
+  "mod3_value_at_0_1_2": [
+    2,
+    2,
+    2
+  ],
+  "mod3_irreducible_quadratic_remainders": [
+    {
+      "quadratic": "x**2 + 1",
+      "remainder": "-1"
+    },
+    {
+      "quadratic": "x**2 + x + 2",
+      "remainder": "x - 1"
+    },
+    {
+      "quadratic": "x**2 + 2*x + 2",
+      "remainder": "x - 1"
+    }
+  ],
+  "mod3_bezout_certificate": {
+    "u": "x**8 + x**7 + x**6 + x**5 - x**4 - x**3 - x**2 - x - 1",
+    "v": "-x**4 - x**3 - x**2 - x - 1",
+    "identity": "u*f+v*(x^9-x)=1 in F3[x]"
+  },
+  "discriminant": 2869,
+  "prime_factorization": {
+    "19": 1,
+    "151": 1
+  },
+  "resultant": 2869,
+  "sylvester_determinant": 2869,
+  "sylvester_matrix": [
+    [
+      1,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      -1
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      5,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      -1
+    ]
+  ],
+  "prime_remainders": {
+    "2": 1,
+    "3": 1
+  },
+  "five_cycle_with_each_transposition": [
+    {
+      "transposition": [
+        0,
+        1
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        0,
+        2
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        0,
+        3
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        0,
+        4
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        1,
+        2
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        1,
+        3
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        1,
+        4
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        2,
+        3
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        2,
+        4
+      ],
+      "generated_order": 120
+    },
+    {
+      "transposition": [
+        3,
+        4
+      ],
+      "generated_order": 120
+    }
+  ],
+  "affine_countermodel": {
+    "order": 20,
+    "cycle_type_counts": {
+      "(1, 1, 1, 1, 1)": 1,
+      "(1, 2, 2)": 5,
+      "(1, 4)": 10,
+      "(5,)": 4
+    },
+    "contains_odd_permutation": true,
+    "contains_2_3_cycle": false
+  },
+  "A5_conjugacy_class_sizes": [
+    1,
+    12,
+    12,
+    15,
+    20
+  ],
+  "A5_union_sizes_including_identity": [
+    1,
+    13,
+    16,
+    21,
+    25,
+    28,
+    33,
+    36,
+    40,
+    45,
+    48,
+    60
+  ],
+  "A5_union_sizes_dividing60": [
+    1,
+    60
+  ]
+}

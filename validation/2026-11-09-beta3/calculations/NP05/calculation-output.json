@@ -1,0 +1,139 @@
+{
+  "inputs": {
+    "normal_price": 24,
+    "special_price": 18,
+    "materials_packaging": 9,
+    "piecework_per_produced_unit": 6,
+    "fixed_month": 360,
+    "capacity": 120,
+    "base_order": 40,
+    "special_order": 30,
+    "provenance": "task; all produced units sold"
+  },
+  "unit_variable_eur": 15,
+  "normal_contribution_eur": 9,
+  "special_contribution_eur": 3,
+  "base": {
+    "normal_units": 40,
+    "special_units": 0,
+    "revenue_eur": 960,
+    "variable_cost_eur": 600,
+    "contribution_eur": 360,
+    "fixed_cost_eur": 360,
+    "profit_eur": 0
+  },
+  "combined": {
+    "normal_units": 40,
+    "special_units": 30,
+    "revenue_eur": 1500,
+    "variable_cost_eur": 1050,
+    "contribution_eur": 450,
+    "fixed_cost_eur": 360,
+    "profit_eur": 90
+  },
+  "increment": {
+    "revenue_eur": 540,
+    "variable_cost_eur": 450,
+    "contribution_eur": 90,
+    "profit_eur": 90
+  },
+  "spare_before": 80,
+  "spare_after": 50,
+  "normal_only_breakeven": 40,
+  "normal_breakeven_with_30_special": 30,
+  "boundary_normal_only": [
+    {
+      "normal_units": 39,
+      "special_units": 0,
+      "revenue_eur": 936,
+      "variable_cost_eur": 585,
+      "contribution_eur": 351,
+      "fixed_cost_eur": 360,
+      "profit_eur": -9
+    },
+    {
+      "normal_units": 40,
+      "special_units": 0,
+      "revenue_eur": 960,
+      "variable_cost_eur": 600,
+      "contribution_eur": 360,
+      "fixed_cost_eur": 360,
+      "profit_eur": 0
+    },
+    {
+      "normal_units": 41,
+      "special_units": 0,
+      "revenue_eur": 984,
+      "variable_cost_eur": 615,
+      "contribution_eur": 369,
+      "fixed_cost_eur": 360,
+      "profit_eur": 9
+    }
+  ],
+  "boundary_with_special": [
+    {
+      "normal_units": 29,
+      "special_units": 30,
+      "revenue_eur": 1236,
+      "variable_cost_eur": 885,
+      "contribution_eur": 351,
+      "fixed_cost_eur": 360,
+      "profit_eur": -9
+    },
+    {
+      "normal_units": 30,
+      "special_units": 30,
+      "revenue_eur": 1260,
+      "variable_cost_eur": 900,
+      "contribution_eur": 360,
+      "fixed_cost_eur": 360,
+      "profit_eur": 0
+    },
+    {
+      "normal_units": 31,
+      "special_units": 30,
+      "revenue_eur": 1284,
+      "variable_cost_eur": 915,
+      "contribution_eur": 369,
+      "fixed_cost_eur": 360,
+      "profit_eur": 9
+    }
+  ],
+  "hypothetical_extra_order_cost": [
+    {
+      "extra_cost_eur": 0,
+      "incremental_profit_eur": 90
+    },
+    {
+      "extra_cost_eur": 50,
+      "incremental_profit_eur": 40
+    },
+    {
+      "extra_cost_eur": 90,
+      "incremental_profit_eur": 0
+    },
+    {
+      "extra_cost_eur": 100,
+      "incremental_profit_eur": -10
+    }
+  ],
+  "hypothetical_displacement": [
+    {
+      "lost_normal_units": 0,
+      "incremental_profit_eur": 90
+    },
+    {
+      "lost_normal_units": 10,
+      "incremental_profit_eur": 0
+    },
+    {
+      "lost_normal_units": 11,
+      "incremental_profit_eur": -9
+    },
+    {
+      "lost_normal_units": 30,
+      "incremental_profit_eur": -180
+    }
+  ],
+  "scope": "No actual workshop observation; changed-premise scenarios are hypothetical"
+}

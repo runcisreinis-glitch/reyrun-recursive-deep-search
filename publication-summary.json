@@ -1,0 +1,191 @@
+{
+  "schema": "reyrun-authored-publication-summary-v1",
+  "project": "REYRUN Recursive Deep Search",
+  "version": "2.0.0-beta.3",
+  "edition": "authored_public_research",
+  "scope_document": "PUBLICATION_SCOPE.md",
+  "findings_document": "PUBLISHED_FINDINGS.md",
+  "release_review_complete": true,
+  "release_review_scope": "Reported review of authored release; internal review artifacts are excluded.",
+  "selected_count": 30,
+  "retained_count": 12,
+  "new_count": 18,
+  "historical_distinct_main_cases": 48,
+  "selected_query_count": 156,
+  "cases": [
+    {
+      "id": "E01",
+      "level": "everyday",
+      "query_count": 6
+    },
+    {
+      "id": "E02",
+      "level": "everyday",
+      "query_count": 5
+    },
+    {
+      "id": "E04",
+      "level": "everyday",
+      "query_count": 6
+    },
+    {
+      "id": "E05",
+      "level": "everyday",
+      "query_count": 4
+    },
+    {
+      "id": "E07",
+      "level": "everyday",
+      "query_count": 4
+    },
+    {
+      "id": "E08",
+      "level": "everyday",
+      "query_count": 4
+    },
+    {
+      "id": "NE01",
+      "level": "everyday",
+      "query_count": 5
+    },
+    {
+      "id": "NE02",
+      "level": "everyday",
+      "query_count": 5
+    },
+    {
+      "id": "NE03",
+      "level": "everyday",
+      "query_count": 5
+    },
+    {
+      "id": "NE04",
+      "level": "everyday",
+      "query_count": 5
+    },
+    {
+      "id": "P02",
+      "level": "medium",
+      "query_count": 5
+    },
+    {
+      "id": "P04",
+      "level": "medium",
+      "query_count": 4
+    },
+    {
+      "id": "P05",
+      "level": "medium",
+      "query_count": 4
+    },
+    {
+      "id": "NP01",
+      "level": "medium",
+      "query_count": 5
+    },
+    {
+      "id": "NP02",
+      "level": "medium",
+      "query_count": 6
+    },
+    {
+      "id": "NP03",
+      "level": "medium",
+      "query_count": 5
+    },
+    {
+      "id": "NP04",
+      "level": "medium",
+      "query_count": 7
+    },
+    {
+      "id": "NP05",
+      "level": "medium",
+      "query_count": 6
+    },
+    {
+      "id": "NP06",
+      "level": "medium",
+      "query_count": 9
+    },
+    {
+      "id": "NP07",
+      "level": "medium",
+      "query_count": 6
+    },
+    {
+      "id": "F03",
+      "level": "hard",
+      "query_count": 6
+    },
+    {
+      "id": "F08",
+      "level": "hard",
+      "query_count": 4
+    },
+    {
+      "id": "F09",
+      "level": "hard",
+      "query_count": 4
+    },
+    {
+      "id": "NF01",
+      "level": "hard",
+      "query_count": 5
+    },
+    {
+      "id": "NF02",
+      "level": "hard",
+      "query_count": 5
+    },
+    {
+      "id": "NF03",
+      "level": "hard",
+      "query_count": 5
+    },
+    {
+      "id": "NF04",
+      "level": "hard",
+      "query_count": 5
+    },
+    {
+      "id": "NF05",
+      "level": "hard",
+      "query_count": 5
+    },
+    {
+      "id": "NF06",
+      "level": "hard",
+      "query_count": 6
+    },
+    {
+      "id": "NF07",
+      "level": "hard",
+      "query_count": 5
+    }
+  ],
+  "mechanism_tests": {
+    "passed": 82,
+    "failed": 0,
+    "status": "reported_historical_result",
+    "scope": "Offline/synthetic software mechanisms; not a research-accuracy benchmark."
+  },
+  "comparison": {
+    "tasks": 3,
+    "answers": 6,
+    "outcome": "no_gain",
+    "candidate_promoted": false,
+    "accuracy_gain": 0,
+    "baseline_web_actions": 47,
+    "candidate_web_actions": 43,
+    "general_improvement_proven": false
+  },
+  "excluded_internal_records_are_public": false,
+  "public_edition_retest": {
+    "date": "2026-11-10",
+    "passed": 82,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s tests -v",
+    "scope": "Existing tests rerun from this reduced public edition after excluding internal records; no new tests or research trial added."
+  }
+}

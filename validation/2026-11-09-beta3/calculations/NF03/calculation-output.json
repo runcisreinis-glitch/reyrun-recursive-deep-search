@@ -1,0 +1,61 @@
+{
+  "t_max_exact": "sqrt(99)/10",
+  "t_max": 0.99498743710662,
+  "norm_max_exact": "exp(-sqrt(99)/10)*(10+sqrt(99))",
+  "norm_max": 7.376028934374846,
+  "rows": [
+    {
+      "t": 0,
+      "formula_norm": 1.0,
+      "svd_norm": 1.0
+    },
+    {
+      "t": 0.01,
+      "formula_norm": 1.0939927521639723,
+      "svd_norm": 1.0939927521639723
+    },
+    {
+      "t": 0.5,
+      "formula_norm": 6.12536496803019,
+      "svd_norm": 6.1253649680301905
+    },
+    {
+      "t": 0.99498743710662,
+      "formula_norm": 7.376028934374846,
+      "svd_norm": 7.376028934374845
+    },
+    {
+      "t": 1,
+      "formula_norm": 7.375937039054878,
+      "svd_norm": 7.375937039054879
+    },
+    {
+      "t": 2,
+      "formula_norm": 5.416792599570768,
+      "svd_norm": 5.416792599570767
+    },
+    {
+      "t": 10,
+      "formula_norm": 0.009080212946471076,
+      "svd_norm": 0.009080212946471076
+    }
+  ],
+  "derivative_log_at_tstar": 0.0,
+  "optimal_initial_vector": [
+    0.05006277505981887,
+    0.9987460731103327
+  ],
+  "achieved_norm": 7.376028934374845,
+  "sym_B_eigenvalues": [
+    -11,
+    9
+  ],
+  "energy_initial_derivative_z_equal_components": 18,
+  "P": "Matrix([[1/2, 5], [5, 201/2]])",
+  "P_det": "101/4",
+  "Lyapunov_residual": "Matrix([[0, 0], [0, 0]])",
+  "P_eigenvalues": [
+    0.2506218943955487,
+    100.74937810560445
+  ]
+}

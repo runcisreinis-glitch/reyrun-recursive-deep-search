@@ -1,0 +1,42 @@
+{
+  "heat_kJ": {
+    "exact": "16744",
+    "decimal": 16744.0
+  },
+  "heat_kWh": {
+    "exact": "2093/450",
+    "decimal": 4.651111111111111
+  },
+  "electricity_kWh": {
+    "exact": "2093/405",
+    "decimal": 5.167901234567902
+  },
+  "cost_eur": {
+    "exact": "2093/2700",
+    "decimal": 0.7751851851851852
+  },
+  "process_loss_kWh": {
+    "exact": "2093/4050",
+    "decimal": 0.5167901234567901
+  },
+  "hot_water_L": {
+    "exact": "30",
+    "decimal": 30.0
+  },
+  "cold_water_L": {
+    "exact": "20",
+    "decimal": 20.0
+  },
+  "mixture_C": {
+    "exact": "40",
+    "decimal": 40.0
+  },
+  "hot_heat_lost_kJ": {
+    "exact": "12558/5",
+    "decimal": 2511.6
+  },
+  "cold_heat_gained_kJ": {
+    "exact": "12558/5",
+    "decimal": 2511.6
+  }
+}

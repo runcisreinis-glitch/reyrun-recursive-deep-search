@@ -1,0 +1,153 @@
+{
+  "schema": "reyrun-authored-public-edition-exclusions-v1",
+  "edition_date": "2026-11-10",
+  "source_file_count": 295,
+  "selected_source_files": 105,
+  "source_files_not_copied": 190,
+  "original_paths_physically_absent": 188,
+  "superseded_metadata_paths_reauthored": [
+    "PUBLICATION_SCOPE.md",
+    "file-manifest.json"
+  ],
+  "expected_public_file_count": 111,
+  "omitted_category_counts": {
+    "baseline_and_instruction_snapshot_archive": 18,
+    "execution_demonstration_lifecycle_and_memory_records": 21,
+    "internal_translation_review_receipts_and_duplicate_working_exports": 81,
+    "internal_verification_receipts_and_mechanism_logs": 13,
+    "private_comparison_fixtures_policy_evaluation_and_execution_records": 18,
+    "raw_evaluator_and_review_artifacts": 23,
+    "raw_evidence_indexes_provenance_and_execution_support_records": 9,
+    "superseded_metadata_not_included": 1,
+    "superseded_metadata_reauthored_for_this_edition": 2,
+    "tool_query_dumps_and_raw_source_ledgers": 4
+  },
+  "private_path_index_included": false,
+  "secret_or_private_identifier_values_included": false,
+  "raw_artifacts_embedded_elsewhere": false,
+  "combined_report_changes": [
+    "Removed full individual evaluator audits, historical audit and six-case review artifacts from the combined report.",
+    "Removed the strict-host execution demonstration and its two answer exports from the combined report.",
+    "Published an authored account of the reported findings, negative result and limits instead.",
+    "Retained all final and historical research answers, all six strategy-comparison research answers, calculation links and public release findings."
+  ],
+  "complete_answer_preservation": {
+    "historical_en_lv": "Entire files unchanged.",
+    "final_en_lv": "All 30 answer bodies unchanged; introductory evidence-scope wording and one omitted evidence-register link clarified.",
+    "comparison_en_lv": "All six answer bodies unchanged; introductory evidence-scope wording clarified.",
+    "code_tests_calculations": "All 40 source, test, calculation-source and calculation-result files unchanged."
+  },
+  "navigation": "References to excluded records are explicit omission notes. Public relative links resolve within this edition.",
+  "reported_comparison": {
+    "outcome": "no_gain",
+    "accuracy_gain": 0,
+    "baseline_web_actions": 47,
+    "candidate_web_actions": 43,
+    "candidate_promoted": false
+  },
+  "edited_public_files": [
+    {
+      "path": "EXPERIMENTS.lv.md",
+      "before_sha256": "e800915e070956010b38cbbb4b26d5a6fc0c67a3613d0505cb8f5a7edb20a5aa",
+      "after_sha256": "5e79ef626a90c45cdcc2aa05ac2d1f6532e035a06caa6f218c4ef40f909081e8",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "EXPERIMENTS.md",
+      "before_sha256": "02730327db27edfc77b3b2c2f4a3393cbf9dbe7748e7148bdd7915bb1f086a18",
+      "after_sha256": "da3804678097212acfb512aee28d5d4dc39017797d844c6d10c28ec3b8e335c3",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "README.lv.md",
+      "before_sha256": "2067c7078587eb88bea7179ac506bc4949d929228247fafe5941bd5634a7b179",
+      "after_sha256": "53e17e3989845c7167b8688889c4a3c25d5cd869175ca106b6f594c1d110b325",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "3bebae35480fdddc7e8461a7fd71a7023c5394224b49dfc4a15d26996cf052b3",
+      "after_sha256": "8609880084f6ba4533719a79a629ba4fc117e66a032ba0efbd38bcb40bf12210",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "README.zh-CN.md",
+      "before_sha256": "12bfed8e8d9a5ef6c2add9a3c876863f230579f4da337c16e94881017f9d7cd4",
+      "after_sha256": "93ff9ae539c3504e0b72f580750661dd13e4063936039bfbd6a0d7aaa13648df",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "examples/real-result.md",
+      "before_sha256": "faa5f418021fe8ad4b1ff725234115d049dd072c7f6bea59cd2fa8013b583367",
+      "after_sha256": "f4097b6407200a7d59ce4af8f4a609c4e4c073fd82651be88d4f5ee1c63e1286",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "examples/real-result.original-multilingual.md",
+      "before_sha256": "4614d726d94d2accb0b6f996c850e3d8e79e0a1487076ea13987197c88d2b876",
+      "after_sha256": "b75533353d7d28b0b4df3d4401c04613ce1c05eaeffca50c20ee48b77b3c112b",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "media/README.md",
+      "before_sha256": "18f66a0daf11d0c85de4783316054c8cceb94b04985b522189b71a9df8e86ad5",
+      "after_sha256": "7bfb47795fe8d054cacbefbc31c7fea83cf5009a0e120ba82ef7a74add36d888",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "references/observed-lessons.md",
+      "before_sha256": "061ae0ba510bf95bc2046aacaa80ef47df2ccb0fbdac4119c5e5409899fb12db",
+      "after_sha256": "fa00706ab5eae6e7e352e7bdcfcd9959d8357a48fcc6666621edc436d1ea7bb2",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09-beta3/30-examples.en.md",
+      "before_sha256": "ae1da10f6501f6bca1e7482ad41f74850a1606530c4fc0ffdbb174c4408b3545",
+      "after_sha256": "687092502980a27751e150e454c20684a0493b85bc88026bebf16b647df7bcdb",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09-beta3/30-examples.lv.md",
+      "before_sha256": "c405430a2c335faf86b7c98e8730524d75e2e9baa63c72cbed8a56ed135e8d15",
+      "after_sha256": "4d4400bf6bfda73b4c1fbd91f0c13c12b6524a78d62a9b5e26711e27ecfd8b58",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09-beta3/comparison/answers.en.md",
+      "before_sha256": "1eeaa23fe8bdd6fa5275f2e3990de7fe9c677ffb89bbf13c081468a392cc5281",
+      "after_sha256": "46b941bb49776a060daa75e33f8ab279ef3d3d0038461e452586a2459df38ac4",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09-beta3/comparison/answers.lv.md",
+      "before_sha256": "f205481082c02582d09928a8f81db8b21ebe6725c9a5986cb4e95088e6470b2e",
+      "after_sha256": "db912a7666cdfa0e0a2fb5062e3ccc79975a5ae17ae448810e460ebce7ce2254",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09-beta3/release-report.en.md",
+      "before_sha256": "3089ab70d573a6c0218c80e5110208be6de04783bec46a4cdeb93ead089dff50",
+      "after_sha256": "fa468b663a98af559285afe15c37e09124e60540d4e82355fc5b7b520a1c4fa0",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09-beta3/release-report.lv.md",
+      "before_sha256": "7894154ab26f151b24c9b6cfb4e4c9698f26019af14c9e40e0096169ff64bcc6",
+      "after_sha256": "d26e5081825930af8fbc173f952cf392f806858b78b58b02decd16b9582c5c12",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    },
+    {
+      "path": "validation/2026-11-09/README.md",
+      "before_sha256": "591f0c2ea41f884aa33b647c8af39718749995c48b749d33c3f4a60fcbadbcab",
+      "after_sha256": "83aba6a4f72aad4fbce9e03675ccb63ce49141ef8f4a4f96dbe2d7540063ff5f",
+      "reason": "Authored public scope, omitted internal-record navigation, or rebuilt combined report; complete answer bodies, mathematics, code and calculation results preserved as specified."
+    }
+  ],
+  "new_authored_documents": [
+    "PUBLICATION_SCOPE.md",
+    "PUBLISHED_FINDINGS.md",
+    "PUBLISHED_FINDINGS.lv.md",
+    "publication-summary.json"
+  ],
+  "limits": "This public edition does not provide the raw records needed to replay private execution or inspect every intermediate evaluator action. It makes no general improvement or security-certification claim."
+}

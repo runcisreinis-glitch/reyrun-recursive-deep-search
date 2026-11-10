@@ -1,0 +1,66 @@
+{
+  "epsilon_positive_cases": [
+    {
+      "epsilon": "1",
+      "b": "1",
+      "x_star": "-1",
+      "lambda_star": "1/2",
+      "dual_value": "-1",
+      "KKT_stationarity_residual": "0",
+      "normalized_mu": "1/2",
+      "lambda_from_normalized_mu": "1/2"
+    },
+    {
+      "epsilon": "1/10",
+      "b": "1/100",
+      "x_star": "-1/10",
+      "lambda_star": "5",
+      "dual_value": "-1/10",
+      "KKT_stationarity_residual": "0",
+      "normalized_mu": "1/20",
+      "lambda_from_normalized_mu": "5"
+    },
+    {
+      "epsilon": "1/100",
+      "b": "1/10000",
+      "x_star": "-1/100",
+      "lambda_star": "50",
+      "dual_value": "-1/100",
+      "KKT_stationarity_residual": "0",
+      "normalized_mu": "1/200",
+      "lambda_from_normalized_mu": "50"
+    },
+    {
+      "epsilon": "1/1000000",
+      "b": "1/1000000000000",
+      "x_star": "-1/1000000",
+      "lambda_star": "500000",
+      "dual_value": "-1/1000000",
+      "KKT_stationarity_residual": "0",
+      "normalized_mu": "1/2000000",
+      "lambda_from_normalized_mu": "500000"
+    }
+  ],
+  "epsilon_zero_dual_sequence": [
+    {
+      "lambda": 1,
+      "g": "-1/4"
+    },
+    {
+      "lambda": 10,
+      "g": "-1/40"
+    },
+    {
+      "lambda": 100,
+      "g": "-1/400"
+    },
+    {
+      "lambda": 1000000,
+      "g": "-1/4000000"
+    }
+  ],
+  "epsilon_zero_primal": 0,
+  "epsilon_zero_stationarity_at_x0": 1,
+  "sensitivity": "p(b)=-sqrt(b), p_prime(b)=-1/(2sqrt(b))=-lambda_star",
+  "normalized_parameter_warning": "x=epsilon*y is invertible only for epsilon>0"
+}

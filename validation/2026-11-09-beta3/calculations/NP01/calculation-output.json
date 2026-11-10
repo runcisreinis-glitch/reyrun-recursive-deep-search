@@ -1,0 +1,92 @@
+{
+  "seed": 20261109,
+  "kind": "generated random allocation, no growth measurements",
+  "layout": [
+    {
+      "pair": 1,
+      "light_zone": "saulaināka",
+      "left": {
+        "plant": 6,
+        "fertilizer": "B"
+      },
+      "right": {
+        "plant": 7,
+        "fertilizer": "A"
+      }
+    },
+    {
+      "pair": 2,
+      "light_zone": "saulaināka",
+      "left": {
+        "plant": 9,
+        "fertilizer": "A"
+      },
+      "right": {
+        "plant": 11,
+        "fertilizer": "B"
+      }
+    },
+    {
+      "pair": 3,
+      "light_zone": "saulaināka",
+      "left": {
+        "plant": 2,
+        "fertilizer": "B"
+      },
+      "right": {
+        "plant": 10,
+        "fertilizer": "A"
+      }
+    },
+    {
+      "pair": 4,
+      "light_zone": "mazāk saulaina",
+      "left": {
+        "plant": 4,
+        "fertilizer": "A"
+      },
+      "right": {
+        "plant": 12,
+        "fertilizer": "B"
+      }
+    },
+    {
+      "pair": 5,
+      "light_zone": "mazāk saulaina",
+      "left": {
+        "plant": 5,
+        "fertilizer": "B"
+      },
+      "right": {
+        "plant": 8,
+        "fertilizer": "A"
+      }
+    },
+    {
+      "pair": 6,
+      "light_zone": "mazāk saulaina",
+      "left": {
+        "plant": 1,
+        "fertilizer": "A"
+      },
+      "right": {
+        "plant": 3,
+        "fertilizer": "B"
+      }
+    }
+  ],
+  "plants_per_treatment": 6,
+  "plants_per_treatment_per_light_zone": 3,
+  "independent_pairs": 6,
+  "measurement_days": [
+    0,
+    7,
+    14,
+    21,
+    28
+  ],
+  "total_repeated_measurements": 60,
+  "experimental_units": 12,
+  "within_pair_allocation_count": 64,
+  "smallest_nonzero_two_sided_p_for_extreme_sign_pattern": 0.03125
+}

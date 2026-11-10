@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:05,000
+REYRUN REKURSIVE DEEP SEARCH
+Research with sources.
+Reuse lessons in a connected agent.
+
+2
+00:00:05,000 --> 00:00:12,000
+Start with a free chat
+Duck.ai
+Claude Haiku 5.5
+
+3
+00:00:12,000 --> 00:00:22,000
+Add the instructions
+Install the skill if your agent environment supports it.
+Read SKILL.md and its references.
+Ask it to confirm its tools and working mode.
+
+4
+00:00:22,000 --> 00:00:32,000
+Ask one clear question
+Fit the whole photo or fill the sheet?
+Calculate ppi, borders and crop.
+
+5
+00:00:32,000 --> 00:00:43,000
+The recorded answer
+Read the actual response and check its sources.
+Fit: about 257 ppi, with 6 mm borders above and below.
+Fill: about 242 ppi, with the left and right edges cropped.
+
+6
+00:00:43,000 --> 00:00:50,000
+Keep useful experience
+In a connected agent runtime
+Save a lesson with its evidence.
+Verify that the next run loads it.
+
+7
+00:00:50,000 --> 00:01:05,000
+The skill is free. Support is voluntary.
+Swedbank, Stripe, PayPal, USDT BSC/BEP-20 and Solana/SPL.
+More about Reinis: facebook.com/reinis.runcis

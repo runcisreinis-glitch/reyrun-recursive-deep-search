@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:05,000
+REYRUN REKURSIVE DEEP SEARCH
+Izpēte ar avotiem.
+Pieredze nākamajam darbam pieslēgtā aģentā.
+
+2
+00:00:05,000 --> 00:00:12,000
+Sāc ar bezmaksas čatu
+Duck.ai
+Claude Haiku 5.5
+
+3
+00:00:12,000 --> 00:00:22,000
+Pievieno norādījumus
+Uzstādi prasmi, ja tava aģenta vide to atbalsta.
+Izlasi SKILL.md un tā atsauču failus.
+Palūdz apstiprināt pieejamos rīkus un režīmu.
+
+4
+00:00:22,000 --> 00:00:32,000
+Uzdod konkrētu jautājumu
+Ietilpināt visu foto vai aizpildīt lapu?
+Aprēķini ppi, malas un apgriešanu.
+
+5
+00:00:32,000 --> 00:00:43,000
+Ierakstītā atbilde
+Izlasi īsto atbildi un pārbaudi tās avotus.
+Pilns kadrs: ap 257 ppi, ar 6 mm malām augšā un apakšā.
+Lapas aizpilde: ap 242 ppi, apgriežot kreiso un labo malu.
+
+6
+00:00:43,000 --> 00:00:50,000
+Saglabā noderīgo pieredzi
+Pieslēgtā aģenta izpildvidē
+Saglabā atziņu kopā ar tās pierādījumiem.
+Pārbaudi, vai nākamais darbs to ielādē.
+
+7
+00:00:50,000 --> 00:01:05,000
+Prasme ir bez maksas. Atbalsts ir brīvprātīgs.
+Swedbank, Stripe, PayPal, USDT BSC/BEP-20 un Solana/SPL.
+Vairāk par Reini: facebook.com/reinis.runcis

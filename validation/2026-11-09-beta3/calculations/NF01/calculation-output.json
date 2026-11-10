@@ -1,0 +1,51 @@
+{
+  "delta": 1e-06,
+  "sqrt_log_inverse_delta": 3.7169221888498383,
+  "modes": [
+    {
+      "n": 1,
+      "signal": 0.36787944117144233,
+      "above_delta": true,
+      "amplified_noise": 2.718281828459045e-06
+    },
+    {
+      "n": 2,
+      "signal": 0.01831563888873418,
+      "above_delta": true,
+      "amplified_noise": 5.4598150033144235e-05
+    },
+    {
+      "n": 3,
+      "signal": 0.00012340980408667956,
+      "above_delta": true,
+      "amplified_noise": 0.008103083927575383
+    },
+    {
+      "n": 4,
+      "signal": 1.1253517471925912e-07,
+      "above_delta": false,
+      "amplified_noise": 8.886110520507872
+    },
+    {
+      "n": 5,
+      "signal": 1.3887943864964021e-11,
+      "above_delta": false,
+      "amplified_noise": 72004.89933738588
+    },
+    {
+      "n": 6,
+      "signal": 2.3195228302435696e-16,
+      "above_delta": false,
+      "amplified_noise": 4311231547.115195
+    }
+  ],
+  "cutoff_3_noise_bound": 0.008103083927575383,
+  "cutoff_4_noise_bound": 8.886110520507872,
+  "same_bias_averaging": {
+    "replicates": 100,
+    "per_replicate_mode4_error": 1e-06,
+    "average_mode4_error": 1e-06,
+    "inverse_coefficient_error": 8.886110520507872
+  },
+  "normalization_squared_integral": "(2/pi)*(pi/2) = 1"
+}

@@ -1,0 +1,65 @@
+{
+  "scope": "2024. lēmumā nosauktās ielu pārejas, ne universāls visu vēsturisko laikposmu tulkotājs",
+  "source_rules": [
+    {
+      "old": "Maskavas iela",
+      "segment": "13. janvāra iela–Lāčplēša iela",
+      "new": "Lastādijas iela",
+      "source": "S1, 2.1"
+    },
+    {
+      "old": "Maskavas iela",
+      "segment": "Lāčplēša iela–Rīgas robeža",
+      "new": "Latgales iela",
+      "source": "S1, 2.2"
+    },
+    {
+      "old": "Latgales iela",
+      "segment": "2024. lēmuma iepriekšējā Latgales iela",
+      "new": "Jāņa Klīdzēja iela",
+      "source": "S1, 1"
+    }
+  ],
+  "tests": [
+    {
+      "input": "Maskavas iela; posms nav dots",
+      "candidates": [
+        "Lastādijas iela",
+        "Latgales iela"
+      ],
+      "building_identity": null
+    },
+    {
+      "input": "Maskavas iela; sākuma posms zināms",
+      "candidates": [
+        "Lastādijas iela"
+      ],
+      "building_identity": null
+    },
+    {
+      "input": "Latgales iela tieši pirms 2024. pārdēvēšanas",
+      "candidates": [
+        "Jāņa Klīdzēja iela"
+      ],
+      "building_identity": null
+    }
+  ],
+  "timeline": {
+    "decision": "2024-02-21",
+    "official_publication": "2024-02-28",
+    "city_says_in_force_by": "2024-03-01",
+    "exact_effective_date": null
+  },
+  "arithmetic": {
+    "rules": 3,
+    "maskavas_successor_names": 2,
+    "publication_after_decision_days": 7,
+    "confirmation_after_publication_days": 2
+  },
+  "unperformed": [
+    "Nav nosaukts vai identificēts privāts nams",
+    "Nav pārbaudīta māju numuru pāreja",
+    "Nav veikta konkrētas kartes ģeoreferencēšana",
+    "Nav pieņemts, ka lēmuma pieņemšanas datums ir spēkā stāšanās datums"
+  ]
+}

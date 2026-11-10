@@ -1,0 +1,14 @@
+{
+  "given_inputs": {
+    "hardness_mg_L_as_CaCO3": 280,
+    "free_chlorine_mg_L": 0.4
+  },
+  "hypothetical_outputs_NOT_MEASURED": {
+    "hardness_after_mg_L_as_CaCO3": 140,
+    "free_chlorine_after_mg_L": 0.04
+  },
+  "hypothetical_hardness_reduction_percent": 50.0,
+  "hypothetical_chlorine_reduction_percent": 90.0,
+  "actual_filter_performance": null,
+  "formula": "100*(before-after)/before"
+}

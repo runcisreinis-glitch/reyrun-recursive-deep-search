@@ -1,0 +1,157 @@
+{
+  "matrix": "Matrix([[1 - h**2/2, -h**3/4 + h], [-h, 1 - h**2/2]])",
+  "determinant": "1",
+  "invariant_matrix": "Matrix([[1, 0], [0, 1 - h**2/4]])",
+  "invariant_residual": "Matrix([[0, 0], [0, 0]])",
+  "euler_energy_identity": "Matrix([[h**2 + 1, 0], [0, h**2 + 1]])",
+  "stable_long_runs": [
+    {
+      "h": 0.1,
+      "steps": 10000,
+      "final_operator_norm": 1.0012320750248518,
+      "max_operator_norm": 1.0012523486249192,
+      "proven_bound": 1.0012523486435176,
+      "max_invariant_matrix_defect": 7.255766475920088e-14,
+      "initial_state": [
+        1,
+        0
+      ],
+      "true_energy_min": 1.0,
+      "true_energy_max": 1.0025062655897865,
+      "phase_per_step": 0.10004171361154007,
+      "phase_error_after_10000_steps": 0.41713611540067363
+    },
+    {
+      "h": 1.0,
+      "steps": 10000,
+      "final_operator_norm": 1.1327822185373186,
+      "max_operator_norm": 1.1327822185373186,
+      "proven_bound": 1.1547005383792517,
+      "max_invariant_matrix_defect": 0.0,
+      "initial_state": [
+        1,
+        0
+      ],
+      "true_energy_min": 1.0,
+      "true_energy_max": 1.25,
+      "phase_per_step": 1.0471975511965979,
+      "phase_error_after_10000_steps": 471.9755119659785
+    },
+    {
+      "h": 1.9,
+      "steps": 10000,
+      "final_operator_norm": 2.90876614143136,
+      "max_operator_norm": 3.202563051731528,
+      "proven_bound": 3.202563076101742,
+      "max_invariant_matrix_defect": 1.4390714618695043e-12,
+      "initial_state": [
+        1,
+        0
+      ],
+      "true_energy_min": 1.0,
+      "true_energy_max": 10.256410085096444,
+      "phase_per_step": 2.5064717950067505,
+      "phase_error_after_10000_steps": 6064.7179500675065
+    },
+    {
+      "h": 1.999,
+      "steps": 10000,
+      "final_operator_norm": 26.9886267805127,
+      "max_operator_norm": 31.626730169084873,
+      "proven_bound": 31.626730190074568,
+      "max_invariant_matrix_defect": 2.048583545072357e-12,
+      "initial_state": [
+        1,
+        0
+      ],
+      "true_energy_min": 1.0,
+      "true_energy_max": 1000.2500611867756,
+      "phase_per_step": 3.078344464858539,
+      "phase_error_after_10000_steps": 10793.444648585391
+    }
+  ],
+  "boundary_exact": [
+    {
+      "steps": 1,
+      "power": [
+        [
+          -1,
+          0
+        ],
+        [
+          -2,
+          -1
+        ]
+      ],
+      "operator_norm": 2.414213562373095
+    },
+    {
+      "steps": 2,
+      "power": [
+        [
+          1,
+          0
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "operator_norm": 4.23606797749979
+    },
+    {
+      "steps": 100,
+      "power": [
+        [
+          1,
+          0
+        ],
+        [
+          200,
+          1
+        ]
+      ],
+      "operator_norm": 200.00499987500626
+    },
+    {
+      "steps": 10000,
+      "power": [
+        [
+          1,
+          0
+        ],
+        [
+          20000,
+          1
+        ]
+      ],
+      "operator_norm": 20000.000050000002
+    }
+  ],
+  "unstable_long_run": {
+    "h": 2.1,
+    "steps": 1000,
+    "eigenvalues": [
+      -0.5326719550695507,
+      -1.8773280449304495
+    ],
+    "operator_norm": 5.972479741818311e+273,
+    "log10_operator_norm": 273.7761546853317
+  },
+  "euler_long_runs": [
+    {
+      "h": 0.1,
+      "steps": 10000,
+      "operator_norm": 4.044537935523549e+21,
+      "theoretical_norm": 4.044537935523564e+21,
+      "relative_error": 3.774758283725532e-15
+    },
+    {
+      "h": 1.0,
+      "steps": 1000,
+      "operator_norm": 3.273390607896142e+150,
+      "theoretical_norm": 3.27339060789603e+150,
+      "relative_error": 3.419486915845482e-14
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "required_afterwash_width_cm": {
+    "exact": "138",
+    "decimal": 138.0
+  },
+  "required_afterwash_length_per_panel_cm": {
+    "exact": "256",
+    "decimal": 256.0
+  },
+  "raw_width_min_cm": {
+    "exact": "13800/97",
+    "decimal": 142.2680412371134
+  },
+  "raw_length_each_cm": {
+    "exact": "5120/19",
+    "decimal": 269.4736842105263
+  },
+  "raw_total_length_m": {
+    "exact": "512/95",
+    "decimal": 5.389473684210526
+  },
+  "available_afterwash_width_cm": {
+    "exact": "291/2",
+    "decimal": 145.5
+  },
+  "available_afterwash_length_cm": {
+    "exact": "494",
+    "decimal": 494.0
+  },
+  "postwash_total_shortfall_cm": {
+    "exact": "18",
+    "decimal": 18.0
+  },
+  "prewash_extra_cm": {
+    "exact": "360/19",
+    "decimal": 18.94736842105263
+  },
+  "finished_height_if_halved_cm": {
+    "exact": "231",
+    "decimal": 231.0
+  },
+  "max_length_shrinkage_for_5_2m_percent": {
+    "exact": "20/13",
+    "decimal": 1.5384615384615385
+  },
+  "afterwash_spare_with_5_4m_cm": {
+    "exact": "1",
+    "decimal": 1.0
+  }
+}
