@@ -15,7 +15,7 @@ import sys
 from urllib.parse import urlsplit
 
 
-SCHEMA = "reyrun-delivery-v4"
+SCHEMA = "reyrun-delivery-v6"
 ROLES = {"optimistic", "skeptical", "conservative", "innovative"}
 LANGUAGES = {"EN", "DE", "ZH", "JA"}
 CLAIM_TYPES = {"fact", "source_claim", "experience", "calculation",
@@ -387,7 +387,117 @@ def sentence_check(data, answer):
     return {"sentences_checked": count, "unresolved_sentence_comparisons": unresolved}
 
 
-def independent_reviews(root, data, answer_digest, registry):
+def answer_layout(data, root, answer, sources):
+    output = answer.decode("utf-8").strip()
+    layout = data.get("answer_layout")
+    require(isinstance(layout, dict), "answer layout is missing")
+    intro = string(layout.get("intro"), "short opening answer").strip()
+    heading = string(layout.get("more_heading"), "localized optional reading heading").strip()
+    if layout.get("language") == "LV":
+        require(heading == "Ja vēlaties uzzināt vairāk", "incorrect Latvian optional reading heading")
+    require(output.startswith(intro + "\n\n") and len(sentence_units(intro)) in {2, 3},
+            "first paragraph must be the standalone two- or three-sentence answer")
+    tail = output[len(intro):].lstrip()
+    require(tail.startswith(heading + "\n") or re.match(r"^#{1,6} " + re.escape(heading) + r"\s*\n", tail),
+            "optional reading must begin immediately after the short answer")
+    scopes = data["task_clarity"].get("requested_geographies")
+    require(isinstance(scopes, list) and set(scopes) <= {"local", "global"},
+            "record requested local and global scopes during clarification")
+    for scope in scopes:
+        require(string(layout.get(scope), scope + " result or evidence gap") in intro,
+                scope + " result or gap must appear in the short answer")
+    if data["practical_answer"]["leader"]["status"] == "verified":
+        match = layout.get("leader_measure", {})
+        wanted = string(match.get("requested_metric"), "requested leadership metric").strip().casefold()
+        found = string(match.get("source_metric"), "actually measured leadership metric").strip().casefold()
+        require(wanted == found, "leader metric differs from the requested measure; report a gap")
+        for field in ("population", "place", "period"):
+            string(match.get(field), "leadership " + field)
+    for key in ("price", "wait"):
+        row = layout.get(key, {})
+        require(row.get("status") in {"verified", "gap", "not_applicable"}, key + " disposition is missing")
+        if row["status"] != "not_applicable":
+            require(string(row.get("wording"), key + " result or remaining gap") in intro,
+                    key + " must appear in the short answer when material")
+        if row["status"] == "verified":
+            require(isinstance(row.get("source_ids"), list) and row["source_ids"] and
+                    all(x in sources for x in row["source_ids"]), key + " lacks read evidence")
+    require(layout["price"]["status"] == data["overlooked_search"]["first_answer"]["price"]["status"],
+            "short answer and research disagree on the price status")
+    topics = layout.get("topics")
+    require(isinstance(topics, list) and 2 <= len(topics) <= 4, "need two to four optional topics")
+    first_hand_ids = {seq["human_source_id"] for seq in data["firsthand_sequences"]}
+    distinct = set()
+    for topic in topics:
+        insight = string(topic.get("insight"), "one-sentence insight from an optional topic")
+        require(insight in tail and insight not in distinct, "optional insight is missing or duplicated")
+        distinct.add(insight)
+        require(topic.get("origin_id") in first_hand_ids, "optional topic lacks a first-hand origin")
+        target = string(topic.get("target"), "functional research link or expandable section")
+        content = artifact(root, topic.get("research"), "completed optional research").decode("utf-8")
+        refs = topic.get("source_ids")
+        require(isinstance(refs, list) and refs and all(x in sources and sources[x]["url"] in content for x in refs),
+                "completed optional research does not contain the cited sources")
+        if topic.get("format") == "html_details":
+            require(content in output and "<details" in content and "<summary" in content and
+                    "</details>" in content and ('id="' + target + '"') in content,
+                    "expandable optional section is missing its actual content")
+        elif topic.get("format") == "chat_link":
+            require(("](" + target + ")") in tail, "chat link is missing from the actual answer")
+            if target.startswith("sandbox:/"):
+                require(target == "sandbox:" + str((root / topic["research"]["path"]).resolve()),
+                        "local research link points to a different artifact")
+            else:
+                require(urlsplit(target).scheme == "https" and bool(urlsplit(target).hostname),
+                        "expected an accessible HTTPS or local artifact link")
+                checked = json.loads(artifact(root, topic.get("link_check"), "research link response receipt"))
+                require(checked.get("requested_url") == target and checked.get("status") == 200 and
+                        checked.get("content_sha256") == topic["research"]["sha256"],
+                        "research link did not retrieve the attached content")
+                timestamp(checked.get("checked_at"), "research link check time")
+                fragment = urlsplit(target).fragment
+                if fragment:
+                    require(('id="' + fragment + '"') in content or ("id='" + fragment + "'") in content,
+                            "linked research section anchor is absent")
+        else:
+            raise Invalid("unknown optional research format")
+
+
+def publication_layers(root, data, sources):
+    mode = data["task_clarity"].get("format")
+    require(mode in {"chat", "published_case"}, "select chat or published_case delivery during clarification")
+    if mode == "chat":
+        return None
+    case = data.get("publication_layers")
+    require(isinstance(case, dict), "published case lacks reader and professional layers")
+    layers = {}
+    for name in ("reader", "professional", "method", "data"):
+        value = artifact(root, case.get(name), "published case " + name)
+        layers[name] = hashlib.sha256(value).hexdigest()
+    require(layers["reader"] != layers["professional"], "published layers must provide different depth")
+    technical = artifact(root, case["professional"], "professional explanation").decode("utf-8")
+    refs = case.get("source_ids")
+    require(isinstance(refs, list) and refs and all(i in sources and sources[i]["url"] in technical for i in refs),
+            "professional layer lacks its actual cited sources")
+    require(string(case.get("limitations"), "research limitations") in technical,
+            "research limitations are missing from the professional layer")
+    card = case.get("editorial_decision")
+    require(isinstance(card, dict) and set(card.get("conclusions", {})) == ROLES,
+            "published case needs four separately attributed conclusions")
+    string(card.get("synthesis"), "editor synthesis of arguments, disagreements and final decision")
+    require(card.get("unresolved_critical") == [], "editor retained a critical objection")
+    rows = data["independent_review"]["reports"]
+    for row in rows:
+        note = card["conclusions"][row["role"]]
+        require(note.get("instance_id") == row["instance_id"] and
+                note.get("report_sha256") == row["report"]["sha256"],
+                "published conclusion is attributed to another review")
+        string(note.get("conclusion"), "individual reviewer conclusion")
+    payload = json.dumps(layers, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(payload).hexdigest()
+
+
+def independent_reviews(root, data, answer_digest, registry, case_digest=None):
     receipt_dir = None
     if registry is not None:
         base = Path(registry)
@@ -418,6 +528,9 @@ def independent_reviews(root, data, answer_digest, registry):
                 report.get("instance_id") == row["instance_id"] and
                 report.get("run_id") == data["run_id"] and report.get("answer_sha256") == answer_digest,
                 "review report is not bound to this draft, role, instance and run")
+        if case_digest is not None:
+            require(report.get("case_sha256") == case_digest,
+                    "individual review does not cover this reader/professional research packet")
         finding = string(report.get("finding"), "independent finding").strip().casefold()
         require(finding not in reports, "duplicate review finding")
         reports.add(finding)
@@ -553,7 +666,9 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
         require(review.get(key) is True, key + " is missing")
     require(review.get("unresolved_critical") == [], "unresolved critical evidence objections")
     sentence_summary = sentence_check(data, answer)
-    independent_reviews(root, data, data["answer"]["sha256"], review_receipt_dir)
+    case_digest = publication_layers(root, data, source_map)
+    independent_reviews(root, data, data["answer"]["sha256"], review_receipt_dir, case_digest)
+    answer_layout(data, root, answer, source_map)
     checked = {"innovation_records_checked": True, "independent_reports_checked": 4,
             "controller_receipts_matched": review_receipt_dir is not None,
             "reviewer_identity_authenticated": False, "schema": SCHEMA, "evidence_contract_passed": True,
@@ -565,6 +680,8 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
             "source_content_languages": sorted({source["language"] for source in sources}),
             "statement": "Required records, references, timestamps and artifact hashes passed. Semantic reviews remain attributed attestations; factual truth and reviewer identity are not machine-certified."}
     checked.update(sentence_summary)
+    if case_digest:
+        checked["published_case_sha256"] = case_digest
     if "evaluation_fields" in data:
         fields = json.loads(artifact(root, data["evaluation_fields"], "evaluation fields"))
         require(type(fields) is dict and bool(fields), "evaluation fields must be a nonempty JSON object")

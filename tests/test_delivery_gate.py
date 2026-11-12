@@ -16,7 +16,18 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
         path = root / name
         path.write_text(text, encoding="utf-8")
         return {"path": name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
-    answer = file("answer.md", "Synthetic claim, not a real research result. [Source](https://example.org/source)\n")
+    intro = "Synthetic claim for testing. It has no real-world evidential value."
+    more = "If you would like to learn more"
+    topics = []
+    for i in (1, 2):
+        url = "https://example.org/test-report-" + str(i)
+        article = file("report-" + str(i) + ".md", "Synthetic report " + str(i) + " with source https://example.org/source")
+        check = file("link-" + str(i) + ".json", json.dumps(dict(requested_url=url, status=200,
+                     content_sha256=article["sha256"], checked_at="2026-11-09T00:03:00Z")))
+        topics.append(dict(insight="Synthetic insight " + str(i) + ".", origin_id="human", source_ids=["s1"],
+                           format="chat_link", target=url, research=article, link_check=check))
+    answer = file("answer.md", intro + "\n\n" + more + "\n" + "\n".join(
+        t["insight"] + " [Read](" + t["target"] + ")" for t in topics) + "\n")
     draft = file("draft.md", "Synthetic draft.\n")
     receipt = file("receipt.json", '{"synthetic":true}')
     source = file("source.txt", "SYNTHETIC SOURCE: fixture for record validation only.")
@@ -59,11 +70,13 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
                for k in ("conservative", "innovative", "frontier")}
     return {"schema": gate.SCHEMA, "run_id": run_id, "begin_sha256": begin_hash,
             "answer": answer,
+            "answer_layout": {"intro": intro, "more_heading": more, "language": "EN", "topics": topics,
+                              "price": {"status": "not_applicable"}, "wait": {"status": "not_applicable"}},
             "sentence_review": [{"text": part, "sentences": [{"text": part, "ordinary_approach": "Fixture baseline",
                 "contribution": "Fixture delta", "evidence_or_basis": "Synthetic source", "utility": "Fixture",
                 "result": "adds_value"}]} for part in gate.sentence_units((root / "answer.md").read_text())],
             "task_clarity": {"decision": "ready", "goal": "SYNTHETIC validation",
-                             "unresolved_ambiguities": [], "checked_at": "2026-11-09T00:00:00Z"},
+                             "unresolved_ambiguities": [], "requested_geographies": [], "format": "chat", "checked_at": "2026-11-09T00:00:00Z"},
             "queries": [{"language": lang, "query": lang + " synthetic query",
                          "executed_at": ("2026-11-09T00:01:45Z" if lang == "DE" else "2026-11-09T00:01:00Z"), "receipt": receipt}
                         for lang in sorted(gate.LANGUAGES)],
@@ -133,6 +146,63 @@ class DeliveryRecords(unittest.TestCase):
     def test_professional_routes_require_direct_and_adjacent_disciplines(self):
         self.data["practitioner_routes"]["professions"].pop()
         with self.assertRaisesRegex(gate.Invalid, "adjacent"):
+            self.check()
+
+    def test_published_case_cannot_fall_back_to_chat_only(self):
+        self.data["task_clarity"]["format"] = "published_case"
+        with self.assertRaisesRegex(gate.Invalid, "reader and professional"):
+            self.check()
+
+    def test_published_case_reviews_bind_both_layers_method_and_data(self):
+        def keep(name, value):
+            body = value.encode()
+            (self.root / name).write_bytes(body)
+            return {"path": name, "sha256": hashlib.sha256(body).hexdigest()}
+        rows = self.data["independent_review"]["reports"]
+        case = {
+            "reader": self.data["answer"], "professional": keep("professional.md", "Fixture scope https://example.org/source"),
+            "method": keep("method.md", "Fixture method"), "data": keep("data.csv", "fixture,0"),
+            "source_ids": ["s1"], "limitations": "Fixture scope",
+            "editorial_decision": {"conclusions": {}, "synthesis": "Fixture test only.", "unresolved_critical": []}}
+        layers = {k: case[k]["sha256"] for k in ("reader", "professional", "method", "data")}
+        payload = json.dumps(layers, sort_keys=True, separators=(",", ":")).encode()
+        self.data["task_clarity"]["format"] = "published_case"
+        self.data["publication_layers"] = case
+        for row in rows:
+            source = json.loads((self.root / row["report"]["path"]).read_text())
+            source["case_sha256"] = hashlib.sha256(payload).hexdigest()
+            row["report"] = keep(row["report"]["path"], json.dumps(source))
+            receipt = json.loads((self.root / row["dispatch_receipt"]["path"]).read_text())
+            receipt["report_sha256"] = row["report"]["sha256"]
+            row["dispatch_receipt"] = keep(row["dispatch_receipt"]["path"], json.dumps(receipt))
+            case["editorial_decision"]["conclusions"][row["role"]] = {
+                "instance_id": row["instance_id"], "report_sha256": row["report"]["sha256"], "conclusion": "Fixture"}
+        self.assertEqual(self.check()["published_case_sha256"], hashlib.sha256(payload).hexdigest())
+        case["data"] = keep("data.csv", "changed,1")
+        with self.assertRaisesRegex(gate.Invalid, "research packet"):
+            self.check()
+
+    def test_short_opening_precedes_the_exploration(self):
+        self.data["answer_layout"]["intro"] = "Supplement"
+        with self.assertRaisesRegex(gate.Invalid, "standalone"):
+            self.check()
+
+    def test_requested_local_and_global_scope_must_both_reach_the_opening(self):
+        self.data["task_clarity"]["requested_geographies"] = ["local", "global"]
+        self.data["answer_layout"].update(local="Synthetic claim", **{"global": "World sales"})
+        with self.assertRaisesRegex(gate.Invalid, "global result"):
+            self.check()
+
+    def test_listing_count_cannot_be_presented_as_sales_leadership(self):
+        self.data["practical_answer"]["leader"] = dict(status="verified", reason="Fixture", source_ids=["s1"],
+                                                       criterion="Sales by make and color in Latvia")
+        self.data["answer_layout"]["leader_measure"] = dict(requested_metric="sales", source_metric="listings")
+        with self.assertRaisesRegex(gate.Invalid, "leader metric"):
+            self.check()
+
+    def test_decorative_link_does_not_pass(self):
+        self.data["answer_layout"]["topics"][0]["target"] = "https://example.org/missing"
+        with self.assertRaisesRegex(gate.Invalid, "chat link is missing"):
             self.check()
 
     def test_official_search_cannot_precede_reading_the_human_account(self):
@@ -336,7 +406,12 @@ class DeliveryRecords(unittest.TestCase):
             data = make_fixture(outside)
             external_manifest = outside / "delivery-manifest.json"
             external_manifest.write_text(json.dumps(data), encoding="utf-8")
-            self.manifest.symlink_to(external_manifest)
+            try:
+                self.manifest.symlink_to(external_manifest)
+            except OSError as error:
+                if getattr(error, "winerror", None) == 1314:
+                    self.skipTest("Windows account lacks symbolic-link creation permission")
+                raise
             with self.assertRaisesRegex(gate.Invalid, "symbolic link"):
                 gate.validate(self.manifest, "fixture", "a" * 64, self.root)
 

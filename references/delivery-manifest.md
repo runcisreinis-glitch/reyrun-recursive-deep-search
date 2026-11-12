@@ -15,7 +15,7 @@ attributed review fields. Keep critical objections visible.
 
 ## Manifest fields
 
-New strict deliveries use `reyrun-delivery-v4`. Archived v1/v2/v3 receipts describe their original checks. To migrate a worker, add the corresponding innovation, review, practitioner, adaptive decision and practical result records. Old runs are not retrospectively upgraded.
+New strict deliveries use `reyrun-delivery-v6`. Archived v1/v2/v3/v4/v5 receipts describe their original checks. To migrate a worker, add the corresponding innovation, review, practitioner, adaptive decision and practical result records. Old runs are not retrospectively upgraded.
 
 | Field | Required content |
 | --- | --- |
@@ -108,6 +108,24 @@ The following concrete questions illustrate generation, not a profession list or
 | A book title is legible at full size but disappears over a textured image in a phone thumbnail. Can a cartographer's label buffer improve recognition at the same font size? | “kartografische Beschriftung Puffer Lesbarkeit Hintergrund” / “map label halo radius contrast complex raster background” | Cover-design searches often change the font or enlarge the title. Read cartographers' actual labeling guidance and test identical thumbnail crops, with and without a restrained halo, at the target phone size. |
 
 Examples of later official checks after a first-hand starting point has been found: [QGIS's labeling documentation](https://documentation.qgis.org/3.44/de/docs/user_manual/style_library/label_settings.html) describes a text buffer; [Huhtamaki's packaging brochure](https://www.huhtamaki.com/globalassets/foodservice-eao/fs-campaign-takeaway-and-hd/packaging-that-delivers-brochure-2021.pdf) lists vented takeaway packaging. These are real leads, not field trials on book covers or waffles. Use similarly specific questions rooted in the current user's observations. Report a transfer as untested until a suitable comparison supports it.
+
+## First-screen answer and optional evidence
+
+Record `task_clarity.requested_geographies` during clarification (an array containing local and/or global only when relevant). `answer_layout.intro` must equal the first paragraph of the final answer and contain two or three complete sentences. The first paragraph answers the question on its own. Include exact `local` and/or `global` result excerpts or explicit remaining gaps when those scopes were requested. In `answer_layout`, `price` and `wait` each carry status verified, gap or not_applicable. A material price or wait needs exact `wording` from the intro, and verified claims require read `source_ids`. The price disposition must match the research.
+
+For a verified leader, add `leader_measure` with `requested_metric`, `source_metric`, `population`, `place` and `period`. Canonicalize truly equivalent names for the same measure, retain the source's actual units, and never relabel a proxy as the target. If car sales by make and color are requested, check those dimensions, location and period. Active advertisements and first-time registrations are separate measures unless the question explicitly asks for them. When the required cross-tabulation is unavailable, mark the leader as unknown.
+
+Specify `language` and `more_heading` in `answer_layout`. Leave a blank line after the opening, then print the heading. For Latvian use **Ja vēlaties uzzināt vairāk**. Under it, `topics` contains two to four distinct items. Each has one `insight` actually shown in the optional part, an `origin_id` from the first-hand sequences, read `source_ids` and an actual `research: {path, sha256}` artifact that includes those source URLs and the completed investigation. A future research suggestion is labelled as such and does not replace completed evidence. Put the conservative, innovative and frontier comparisons here when they are secondary to the opening.
+
+For `format: html_details` include the completed HTML segment with a real `<details id="…"><summary>…</summary>…</details>` in the output and use its id as `target`. For `format: chat_link` put the actual Markdown link in the output. A `sandbox:` target must resolve to the same packaged artifact in a reader-accessible environment. For a hosted HTTPS target, attach `link_check: {path, sha256}` whose retained JSON records requested_url, HTTP status 200, checked_at and content_sha256 of the retrieved research document. A fragment requires the destination's actual section ID. The runtime must verify the reader's access independently of an editor-only login. Do not emit invented links or empty “open” controls.
+
+## Published cases
+
+Choose `task_clarity.format` as `chat` or `published_case`. Published cases require two genuine levels connected by a working button. Read and verify the published control in the supported interfaces; a JSON manifest alone cannot check a web interaction. The accessible reader level explains the question, practical result and what the visitor can do. The professional level includes methods, original or appropriately redacted data, findings, named read sources, limitations, separate reviewer arguments and the editor's conclusion. Avoid exposing private user data.
+
+In `publication_layers`, `reader`, `professional`, `method` and `data` are artifact references. Include `source_ids` whose URLs appear in the professional file, and the published limitations excerpt in `limitations`. Freeze this substantive packet before requesting the reviews. To compute `case_sha256`, form the JSON object of these four names and their SHA-256 values, sort keys lexically, serialize with no spaces or trailing newline, and hash the UTF-8 bytes with SHA-256. Each independent report must cover the exact `answer_sha256` and this `case_sha256`. If a substantive file changes, obtain fresh reviews for the revised packet.
+
+Attach `editorial_decision` after review. Its `conclusions` must contain four role keys, each with the actual `instance_id`, exact `report_sha256` and its own `conclusion`. Label paraphrases and preserve original statements where authorized. `synthesis` weighs the arguments, disagreements, evidence and remaining uncertainty and explains the editor's final decision. Record `unresolved_critical`. Keep this editorial appendix separate from the frozen substantive material to avoid a circular hash. A case describing a prior experiment must explicitly distinguish a review of that experiment's frozen answer from a review of the expanded publication. Four headings or unbound summaries cannot satisfy strict publication mode.
 
 ## Return binding
 
