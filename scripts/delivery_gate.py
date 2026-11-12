@@ -15,7 +15,7 @@ import sys
 from urllib.parse import urlsplit
 
 
-SCHEMA = "reyrun-delivery-v3"
+SCHEMA = "reyrun-delivery-v4"
 ROLES = {"optimistic", "skeptical", "conservative", "innovative"}
 LANGUAGES = {"EN", "DE", "ZH", "JA"}
 CLAIM_TYPES = {"fact", "source_claim", "experience", "calculation",
@@ -232,6 +232,121 @@ def practitioner_routes(data, query_times, sources, claims):
                 timestamp(row.get("checked_at"), "Latvian availability check time")
 
 
+def overlooked_map(root, data, executed, sources):
+    result = data.get("overlooked_search")
+    require(isinstance(result, dict), "missing pre-search map of overlooked questions")
+    plan = json.loads(artifact(root, result.get("plan"), "frozen overlooked search map"))
+    require(plan.get("run_id") == data["run_id"] and plan.get("begin_sha256") == data["begin_sha256"],
+            "overlooked search map belongs to a different run")
+    require(timestamp(plan.get("frozen_at"), "overlooked planning time") <= min(executed.values()),
+            "overlooked search map was recorded after searching began")
+    rows = plan.get("routes")
+    require(isinstance(rows, list) and len(rows) >= 2, "need distinct overlooked directions")
+    routes = {}
+    questions = set()
+    for route in rows:
+        rid = string(route.get("id"), "overlooked route ID")
+        question = string(route.get("question"), "specific overlooked question").strip().casefold()
+        require(rid not in routes and question not in questions, "duplicate overlooked question or route")
+        variants = route.get("formulations")
+        require(isinstance(variants, list) and len({string(v, "query formulation").strip().casefold()
+                                                   for v in variants}) >= 2,
+                "each overlooked question needs multiple actual formulations")
+        string(route.get("why_missed"), "why an ordinary search would overlook this question")
+        string(route.get("venue"), "named intended professional venue or place to investigate")
+        routes[rid] = route
+        questions.add(question)
+    baseline = {query_reference(q, executed) for q in result.get("baseline_queries", [])}
+    require(baseline, "ordinary comparison search is missing")
+    checks = result.get("outcomes")
+    require(isinstance(checks, dict) and set(checks) == set(routes),
+            "every overlooked direction needs an executed check or concrete limitation")
+    unusual = set()
+    for rid, row in checks.items():
+        string(row.get("finding"), "overlooked route finding or access limitation")
+        status = row.get("status")
+        require(status in {"read", "no_result", "unavailable"}, "unknown overlooked route outcome")
+        queries = {query_reference(q, executed) for q in row.get("queries", [])}
+        if status != "unavailable":
+            require(queries, "overlooked route has no actual query")
+        refs = row.get("source_ids", [])
+        require(isinstance(refs, list) and all(s in sources for s in refs), "unread overlooked route source")
+        if status == "read":
+            require(refs, "overlooked route found without read sources")
+        if status == "unavailable":
+            require(not refs, "unavailable route cannot claim to have read material")
+        unusual.update(queries)
+    require(len(unusual - baseline) > len(baseline),
+            "ordinary baseline outweighs actual distinct overlooked-direction searches")
+    sequences = data.get("firsthand_sequences")
+    require(isinstance(sequences, list) and sequences, "missing first-hand practice before official verification")
+    required_routes = {"research:" + rid for rid in routes}
+    required_routes.update("profession:" + p["profession"].strip().casefold()
+                           for p in data.get("practitioner_routes", {}).get("professions", []))
+    covered, human_reads = set(), []
+    for step in sequences:
+        targets = step.get("covers")
+        require(isinstance(targets, list) and targets and all(r in required_routes for r in targets),
+                "unknown or missing first-hand research route")
+        string(step.get("relevance"), "how the observation bears on these routes")
+        require(step.get("status") == "verified",
+                "first-hand experience or its official verification was not found; report the gap as limited")
+        human = sources.get(step.get("human_source_id"), {})
+        official = sources.get(step.get("official_source_id"), {})
+        require(human.get("type") == "first_hand_experience", "professional or owner experience was not read")
+        require(official.get("type") in PRIMARY_TYPES, "later official verification lacks a primary source")
+        require(human["url"] != official["url"], "first-hand and official checks refer to the same page")
+        require(step.get("experience_type") in {"practitioner", "owner", "operator", "maintainer"},
+                "first-hand experience type is missing")
+        string(step.get("observed_detail"), "specific detail reported first-hand")
+        string(step.get("official_check"), "the later official check of that same detail")
+        hq = query_reference(step.get("human_query"), executed)
+        oq = query_reference(step.get("official_query"), executed)
+        htime = timestamp(human["read_at"], "first-hand source read time")
+        otime = timestamp(official["read_at"], "official source read time")
+        require(executed[hq] <= htime < executed[oq] <= otime,
+                "first-hand source must be read before the official lookup it informs")
+        human_reads.append(htime)
+        covered.update(targets)
+    require(covered == required_routes, "each professional and overlooked route needs first-hand then official evidence")
+    require(all(timestamp(src["read_at"], "official source read time") >= min(human_reads)
+                for src in sources.values() if src.get("type") in PRIMARY_TYPES),
+            "official material was read before the first human experience")
+    finding = result.get("first_answer")
+    require(isinstance(finding, dict), "first practical answer summary is missing")
+    string(finding.get("strongest_finding"), "strongest supported finding")
+    require(isinstance(finding.get("source_ids"), list) and finding["source_ids"] and
+            all(i in sources for i in finding["source_ids"]), "strongest finding lacks read evidence")
+    choices = finding.get("options")
+    require(isinstance(choices, dict) and set(choices) == {"conservative", "innovative", "frontier"},
+            "conservative, innovative and field-frontier options must be assessed")
+    for name, choice in choices.items():
+        string(choice.get("option"), name + " concrete option or explanation of gap")
+        require(choice.get("readiness") in {"ready", "limited", "experimental", "unverified", "no_candidate"},
+                "option needs an actual readiness or lack-of-evidence assessment")
+        string(choice.get("reason"), name + " readiness evidence or limitation")
+    price = finding.get("price")
+    require(isinstance(price, dict) and price.get("status") in {"verified", "gap", "not_applicable"},
+            "price disposition is missing")
+    string(price.get("reason"), "price relevance or remaining gap")
+    if price["status"] == "verified":
+        require(isinstance(price.get("source_ids"), list) and price["source_ids"] and
+                all(i in sources for i in price["source_ids"]), "price lacks current read evidence")
+        for field in ("amount", "currency", "scope"):
+            string(price.get(field), "price " + field)
+        timestamp(price.get("checked_at"), "price check time")
+    next_steps = finding.get("next_directions")
+    require(isinstance(next_steps, list) and 2 <= len(next_steps) <= 4,
+            "provide two to four different concrete follow-up directions")
+    questions = set()
+    for step in next_steps:
+        q = string(step.get("question"), "next concrete question").strip().casefold()
+        require(q not in questions, "duplicate next direction")
+        questions.add(q)
+        string(step.get("where"), "where to investigate next")
+        string(step.get("purpose"), "how the next answer changes the practical choice")
+
+
 def sentence_units(text):
     """Nonblank text units for complete coverage, including links and list lines.
 
@@ -414,6 +529,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
         if kind in {"inference", "hypothesis", "recommendation"}:
             string(claim.get("rationale"), "reasoned claim rationale")
     practitioner_routes(data, seen, source_map, claim_ids)
+    overlooked_map(root, data, seen, source_map)
     experience = data.get("practitioner_check", {})
     require(experience.get("status") in {"found", "gap", "not_applicable"}, "professional experience search disposition is missing")
     string(experience.get("reason"), "professional experience disposition reason")

@@ -49,6 +49,14 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
                       "comparison_result": "adds_value", "anchor": {"kind": "question"} if i == 0 else {"kind": "query", "ref": en}})
         if stage == "profession":
             trail[-1]["profession"] = professions[i]["profession"]
+    def q(lang):
+        return {"language": lang, "query": lang + " synthetic query"}
+    routes = [{"id": str(i), "question": "Fixture question " + str(i), "formulations": ["One " + str(i), "Two " + str(i)],
+               "why_missed": "Fixture blind spot", "venue": "Test journal"} for i in range(2)]
+    overlooked_plan = file("overlooked-plan.json", json.dumps({"run_id": run_id, "begin_sha256": begin_hash,
+           "frozen_at": "2026-11-09T00:00:30Z", "routes": routes}))
+    options = {k: {"option": "Synthetic " + k, "readiness": "unverified", "reason": "Test record"}
+               for k in ("conservative", "innovative", "frontier")}
     return {"schema": gate.SCHEMA, "run_id": run_id, "begin_sha256": begin_hash,
             "answer": answer,
             "sentence_review": [{"text": part, "sentences": [{"text": part, "ordinary_approach": "Fixture baseline",
@@ -57,16 +65,31 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
             "task_clarity": {"decision": "ready", "goal": "SYNTHETIC validation",
                              "unresolved_ambiguities": [], "checked_at": "2026-11-09T00:00:00Z"},
             "queries": [{"language": lang, "query": lang + " synthetic query",
-                         "executed_at": "2026-11-09T00:01:00Z", "receipt": receipt}
+                         "executed_at": ("2026-11-09T00:01:45Z" if lang == "DE" else "2026-11-09T00:01:00Z"), "receipt": receipt}
                         for lang in sorted(gate.LANGUAGES)],
             "sources": [{"id": "s1", "url": "https://example.org/source",
                          "type": "primary_source", "read_state": "read", "language": "EN",
                          "read_at": "2026-11-09T00:02:00Z", "scope": "Synthetic fixture only",
-                         "evidence": source}],
+                         "evidence": source},
+                        {"id": "human", "url": "https://example.org/forum/test", "type": "first_hand_experience",
+                         "read_state": "read", "language": "EN", "read_at": "2026-11-09T00:01:30Z",
+                         "scope": "Synthetic first-hand record", "evidence": source}],
             "claims": [{"id": "c1", "text": "Synthetic claim", "type": "fact", "source_ids": ["s1"]}],
             "innovation": {"transfers": transfers, "outside_query": en, "usual_field_keyword": "usualfield",
                            "overlooked_component": {"query": en, "status": "inspected",
                                                     "source_id": "s1", "finding": "Synthetic"}},
+            "firsthand_sequences": [{"covers": ["research:0", "research:1", "profession:direct test role",
+                "profession:adjacent test role"], "relevance": "Synthetic", "status": "verified",
+                "human_source_id": "human", "experience_type": "practitioner", "observed_detail": "Fixture issue",
+                "human_query": q("EN"), "official_source_id": "s1", "official_query": q("DE"),
+                "official_check": "Fixture documentation checked after reading the observation."}],
+            "overlooked_search": {"plan": overlooked_plan, "baseline_queries": [q("EN")],
+                "outcomes": {str(i): {"status": "read", "queries": [q(lang)], "finding": "Synthetic",
+                                      "source_ids": ["s1"]} for i, lang in enumerate(("DE", "ZH"))},
+                "first_answer": {"strongest_finding": "Fixture", "source_ids": ["s1"], "options": options,
+                    "price": {"status": "not_applicable", "reason": "Fixture"},
+                    "next_directions": [{"question": "Next fixture " + str(i), "where": "Fixture venue",
+                                         "purpose": "Fixture reason"} for i in (1, 2)]}},
             "practitioner_routes": {"professions": professions,
                 "rounds": {"first_result": "sufficient", "reason": "Synthetic scope",
                            "first_queries": [{"language": l, "query": l + " synthetic query"}
@@ -110,6 +133,50 @@ class DeliveryRecords(unittest.TestCase):
     def test_professional_routes_require_direct_and_adjacent_disciplines(self):
         self.data["practitioner_routes"]["professions"].pop()
         with self.assertRaisesRegex(gate.Invalid, "adjacent"):
+            self.check()
+
+    def test_official_search_cannot_precede_reading_the_human_account(self):
+        for row in self.data["queries"]:
+            if row["language"] == "DE":
+                row["executed_at"] = "2026-11-09T00:01:10Z"
+        with self.assertRaisesRegex(gate.Invalid, "before the official lookup"):
+            self.check()
+
+    def test_missing_experience_never_counts_as_verified(self):
+        self.data["firsthand_sequences"][0]["status"] = "not_found"
+        with self.assertRaisesRegex(gate.Invalid, "not found"):
+            self.check()
+
+    def test_every_profession_needs_traceable_human_evidence(self):
+        self.data["firsthand_sequences"][0]["covers"].pop()
+        with self.assertRaisesRegex(gate.Invalid, "each professional"):
+            self.check()
+
+    def test_overlooked_plan_frozen_after_first_queries_fails(self):
+        block = self.data["overlooked_search"]
+        path = self.root / block["plan"]["path"]
+        plan = json.loads(path.read_text())
+        plan["frozen_at"] = "2026-11-09T22:00:00Z"
+        path.write_text(json.dumps(plan))
+        block["plan"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        with self.assertRaisesRegex(gate.Invalid, "after searching"):
+            self.check()
+
+    def test_baseline_cannot_be_relabelled_as_overlooked(self):
+        block = self.data["overlooked_search"]
+        block["outcomes"]["0"]["queries"] = block["baseline_queries"]
+        with self.assertRaisesRegex(gate.Invalid, "baseline outweighs"):
+            self.check()
+
+    def test_frontier_option_must_have_readiness(self):
+        self.data["overlooked_search"]["first_answer"]["options"]["frontier"].pop("readiness")
+        with self.assertRaisesRegex(gate.Invalid, "readiness"):
+            self.check()
+
+    def test_next_directions_cannot_repeat_one_question(self):
+        rows = self.data["overlooked_search"]["first_answer"]["next_directions"]
+        rows[1]["question"] = rows[0]["question"]
+        with self.assertRaisesRegex(gate.Invalid, "duplicate next direction"):
             self.check()
 
     def test_an_unreviewed_final_sentence_cannot_pass(self):

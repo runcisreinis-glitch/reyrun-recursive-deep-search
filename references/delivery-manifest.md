@@ -15,7 +15,7 @@ attributed review fields. Keep critical objections visible.
 
 ## Manifest fields
 
-New strict deliveries use `reyrun-delivery-v3`. Archived v1/v2 receipts describe their original checks. To migrate a worker, add the corresponding innovation, review, practitioner, adaptive decision and practical result records. Old runs are not retrospectively upgraded.
+New strict deliveries use `reyrun-delivery-v4`. Archived v1/v2/v3 receipts describe their original checks. To migrate a worker, add the corresponding innovation, review, practitioner, adaptive decision and practical result records. Old runs are not retrospectively upgraded.
 
 | Field | Required content |
 | --- | --- |
@@ -83,6 +83,31 @@ On each adaptive decision, supply `ordinary_approach`, `contribution` and `compa
 After editing, generate units with `delivery_gate.sentence_units(final_text)`. Create one `sentence_review` row per unit, in order, with its exact `text`. Inside each row, supply a nonempty `sentences` array. Split multi-sentence units at actual language-aware sentence boundaries; preserve spaces so joined text reconstructs the unit. Each subrow includes `text`, `ordinary_approach`, `contribution`, `evidence_or_basis`, `utility`, and `result` (adds_value, retains_necessary_fact, revised or no_improvement). A revised row also records `previous_text`. If a sentence adds nothing, revise or remove it and recheck the full draft before sending it to the four reviewers. An essential unchanged fact or source may stay with its exact contribution; do not decorate it or invent novelty. A useful difference from a generic answer is not a claim of novelty within a profession. Any field-wide novelty claim needs appropriate independent evidence. Keep plain wording, numbers and qualifications intact.
 
 The checker matches every final text unit and derives the count of unresolved comparisons from the sentence records. A no_improvement row blocks strict delivery. Only report zero after the checked records return that value. If review cannot finish, identify the actual unfinished items; never invent a zero or a reviewer.
+
+## Map overlooked questions before the main search
+
+Before running the first query, freeze a UTF-8 JSON plan: `run_id`, `begin_sha256`, `frozen_at` and `routes`. Each route has a unique `id`, specific `question`, at least two different `formulations`, `why_missed` and an intended `venue`. Add its artifact reference as `overlooked_search.plan`. Keep actual observations out of the frozen plan; write them separately under `overlooked_search.outcomes`, keyed by each route ID. Each outcome has `status` (read, no_result or unavailable), `finding`, executed `queries` and read `source_ids`. If a route cannot be executed, explain exactly why. The controller can retain a pre-search hash to corroborate timing. Self-reported timestamps without a witness remain attestations.
+
+Record executed `baseline_queries` in the same block. Ordinary routes provide the comparison. For strict review, distinct queries exclusive to overlooked directions must outnumber the baseline queries. Query count is only a check on prioritization: reviewers must decide whether the search formulations were genuinely different and useful and reject padding.
+
+Under `overlooked_search.first_answer`, record the `strongest_finding` backed by `source_ids`, plus `options` keyed by conservative, innovative and frontier. For each give a concrete `option`, `readiness` (ready, limited, experimental, unverified or no_candidate) and `reason`. Frontier means the leading edge of the relevant field. Compare actual readiness; do not invent an option just to fill a category. A `price` row has status verified, gap or not_applicable and a reason. A verified price also requires amount, currency, scope, checked_at and read source_ids. Use the verified Latvian availability record where relevant. Add two to four different `next_directions`, each with a specific `question`, `where` and `purpose`. In the answer, fit these into short practical choices; keep internal records off the reader's page.
+
+### First-hand sequence before official lookup
+
+The frozen plan and clarification may precede internet lookup. Once research starts, first read an accessible professional or owner's first-hand account. This applies to ordinary comparison and overlooked routes alike. Search named communities, associations' member discussions, clubs, practitioners' workshop posts or public chats. Record an observed detail and check that specific detail in official material only after reading the account. A later official page can confirm a specification, version or price; the experience remains attributed to its actual author. Retain public URLs and bounded relevant evidence, avoid personal identifying details, and do not claim access to private groups.
+
+Record `firsthand_sequences` rows with `covers` (route IDs `research:<plan route id>` and/or `profession:<normalized profession name>`), `relevance`, `status`, `human_source_id`, `experience_type` (practitioner, owner, operator or maintainer), `observed_detail`, `human_query`, `official_source_id`, `official_query` and `official_check`. Both query references address actual executions, and both source IDs reference read artifacts with URLs. Record what the official source actually confirms or contradicts. Cover every practitioner and overlooked route. One observation can serve several genuinely related routes if its relevance is explained. To pass strict checks the human query must precede the first-hand read, which must strictly precede the official query, which in turn precedes the official read. A missing human account or confirmation is a reportable gap, not a verified route. Machine checks cannot establish that a forum contributor really holds a claimed professional role.
+
+### Worked questions for the overlooked map
+
+The following concrete questions illustrate generation, not a profession list or pre-decided answers.
+
+| Observation and specific question | Two searches worth trying | Why it is missed, where to check and how to test |
+| --- | --- | --- |
+| A waffle stays crisp on a rack but softens only after it is packed. How much steam can escape without making it cold? | “vented takeaway packaging crisp fries condensation” / “food delivery ventilation aperture heat retention cardboard” | Recipe searches focus on batter. Look for packaging engineers' design notes or delivery professionals' trials. Use the same waffle, box volume, travel time and temperature measurements in a vented versus unvented comparison. |
+| A book title is legible at full size but disappears over a textured image in a phone thumbnail. Can a cartographer's label buffer improve recognition at the same font size? | “kartografische Beschriftung Puffer Lesbarkeit Hintergrund” / “map label halo radius contrast complex raster background” | Cover-design searches often change the font or enlarge the title. Read cartographers' actual labeling guidance and test identical thumbnail crops, with and without a restrained halo, at the target phone size. |
+
+Examples of later official checks after a first-hand starting point has been found: [QGIS's labeling documentation](https://documentation.qgis.org/3.44/de/docs/user_manual/style_library/label_settings.html) describes a text buffer; [Huhtamaki's packaging brochure](https://www.huhtamaki.com/globalassets/foodservice-eao/fs-campaign-takeaway-and-hd/packaging-that-delivers-brochure-2021.pdf) lists vented takeaway packaging. These are real leads, not field trials on book covers or waffles. Use similarly specific questions rooted in the current user's observations. Report a transfer as untested until a suitable comparison supports it.
 
 ## Return binding
 
