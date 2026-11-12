@@ -3,7 +3,7 @@
   "project": "REYRUN Recursive Deep Search",
   "edition": "authored_public_research",
   "repository": "https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search",
-  "created_at": "2026-11-12T22:56:26.558188+00:00",
+  "created_at": "2026-11-12T23:02:10.873456+00:00",
   "file_count_excluding_manifest": 114,
   "manifest_self_excluded": true,
   "manifest_exclusion_reason": "A file cannot contain its own stable content hash. The publisher verifies this manifest as one additional Git blob.",
@@ -11,7 +11,7 @@
     "text": 107,
     "binary": 7
   },
-  "total_bytes_excluding_manifest": 7405870,
+  "total_bytes_excluding_manifest": 7407628,
   "scope_document": "PUBLICATION_SCOPE.md",
   "exclusion_manifest": "exclusion-manifest.json",
   "files": [
@@ -529,9 +529,9 @@
     },
     {
       "path": "scripts/delivery_gate.py",
-      "size": 44215,
-      "sha256": "a7071daacccf0640b99bdbb72bc421b76707147213d34309dd72f72b6806249d",
-      "git_blob_sha": "b84845d9d07705b5c9f2c054301f4fe3aa09a1c5",
+      "size": 44526,
+      "sha256": "c290da6912e4aac7018113def0c55f4d6fb50ebee437ea1d7ebcdb83cd387f6f",
+      "git_blob_sha": "b279218cb1e79360daa22637b1a994d021d5d706",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -561,9 +561,9 @@
     },
     {
       "path": "tests/test_delivery_gate.py",
-      "size": 26170,
-      "sha256": "ffa355bb2cc3634c403e01dddc7c1cb140d99a6bdf548d0892ba0dd1ed4dab27",
-      "git_blob_sha": "ae86ac5fc8eb7dd516f0f965a17732e425027ad7",
+      "size": 27617,
+      "sha256": "129d5c5d8fc1bb0b4d3068449f4557648490041f329c57a700d9c5f38dde2287",
+      "git_blob_sha": "48f1505c69aa8213337e786c321b6c745cfd7a67",
       "classification": "text",
       "git_mode": "100644"
     },

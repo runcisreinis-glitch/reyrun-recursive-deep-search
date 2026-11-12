@@ -148,6 +148,30 @@ class DeliveryRecords(unittest.TestCase):
         with self.assertRaisesRegex(gate.Invalid, "adjacent"):
             self.check()
 
+    def test_windows_newlines_are_equivalent_for_layout_but_hashes_stay_byte_exact(self):
+        answer_path = self.root / self.data["answer"]["path"]
+        lf = gate.text_view(answer_path.read_bytes()).encode("utf-8")
+        windows = lf.replace(b"\n", b"\r\n")
+        self.assertNotEqual(hashlib.sha256(lf).digest(), hashlib.sha256(windows).digest())
+        answer_path.write_bytes(windows)
+        digest = hashlib.sha256(windows).hexdigest()
+        self.data["answer"]["sha256"] = self.data["writing"]["final_sha256"] = digest
+        for row in self.data["independent_review"]["reports"]:
+            report = self.root / row["report"]["path"]
+            payload = json.loads(report.read_bytes())
+            payload["answer_sha256"] = digest
+            report.write_bytes(json.dumps(payload).encode())
+            row["report"]["sha256"] = hashlib.sha256(report.read_bytes()).hexdigest()
+            receipt = self.root / row["dispatch_receipt"]["path"]
+            payload = json.loads(receipt.read_bytes())
+            payload["report_sha256"] = row["report"]["sha256"]
+            receipt.write_bytes(json.dumps(payload).encode())
+            row["dispatch_receipt"]["sha256"] = hashlib.sha256(receipt.read_bytes()).hexdigest()
+        self.assertEqual(self.check()["answer_sha256"], digest)
+        answer_path.write_bytes(lf)
+        with self.assertRaisesRegex(gate.Invalid, "answer bytes changed"):
+            self.check()
+
     def test_published_case_cannot_fall_back_to_chat_only(self):
         self.data["task_clarity"]["format"] = "published_case"
         with self.assertRaisesRegex(gate.Invalid, "reader and professional"):

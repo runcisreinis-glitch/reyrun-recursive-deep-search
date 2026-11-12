@@ -347,6 +347,13 @@ def overlooked_map(root, data, executed, sources):
         string(step.get("purpose"), "how the next answer changes the practical choice")
 
 
+def text_view(value):
+    """Normalize line endings only when comparing rendered text. Hash original bytes."""
+    if isinstance(value, bytes):
+        value = value.decode("utf-8")
+    return value.replace("\r\n", "\n").replace("\r", "\n")
+
+
 def sentence_units(text):
     """Nonblank text units for complete coverage, including links and list lines.
 
@@ -355,20 +362,20 @@ def sentence_units(text):
     subrows while retaining the parent unit exactly.
     """
     split = re.compile(r"(?<=[.!?])[ \t]+(?=[A-ZÀ-ÞА-ЯЁ0-9\[\"“])|(?<=[。！？])(?=[^\s])|[\r\n]+")
-    return [piece.strip() for piece in split.split(text) if piece.strip()]
+    return [piece.strip() for piece in split.split(text_view(text)) if piece.strip()]
 
 
 def sentence_check(data, answer):
     rows = data.get("sentence_review")
-    units = sentence_units(answer.decode("utf-8"))
+    units = sentence_units(text_view(answer))
     require(isinstance(rows, list) and len(rows) == len(units),
             "sentence review does not cover every delivered text unit")
     count = unresolved = 0
     for expected, row in zip(units, rows):
-        require(row.get("text") == expected, "sentence review omits, changes or reorders final text")
+        require(isinstance(row.get("text"), str) and text_view(row["text"]) == expected, "sentence review omits, changes or reorders final text")
         subrows = row.get("sentences")
         require(isinstance(subrows, list) and bool(subrows), "missing sentence-level comparison")
-        require("".join(s.get("text", "") for s in subrows).strip() == expected,
+        require(text_view("".join(s.get("text", "") for s in subrows)).strip() == expected,
                 "sentence subrows do not reconstruct the reviewed unit")
         for line in subrows:
             count += 1
@@ -388,10 +395,10 @@ def sentence_check(data, answer):
 
 
 def answer_layout(data, root, answer, sources):
-    output = answer.decode("utf-8").strip()
+    output = text_view(answer).strip()
     layout = data.get("answer_layout")
     require(isinstance(layout, dict), "answer layout is missing")
-    intro = string(layout.get("intro"), "short opening answer").strip()
+    intro = text_view(string(layout.get("intro"), "short opening answer")).strip()
     heading = string(layout.get("more_heading"), "localized optional reading heading").strip()
     if layout.get("language") == "LV":
         require(heading == "Ja vēlaties uzzināt vairāk", "incorrect Latvian optional reading heading")
@@ -434,7 +441,7 @@ def answer_layout(data, root, answer, sources):
         distinct.add(insight)
         require(topic.get("origin_id") in first_hand_ids, "optional topic lacks a first-hand origin")
         target = string(topic.get("target"), "functional research link or expandable section")
-        content = artifact(root, topic.get("research"), "completed optional research").decode("utf-8")
+        content = text_view(artifact(root, topic.get("research"), "completed optional research"))
         refs = topic.get("source_ids")
         require(isinstance(refs, list) and refs and all(x in sources and sources[x]["url"] in content for x in refs),
                 "completed optional research does not contain the cited sources")
@@ -475,11 +482,11 @@ def publication_layers(root, data, sources):
         value = artifact(root, case.get(name), "published case " + name)
         layers[name] = hashlib.sha256(value).hexdigest()
     require(layers["reader"] != layers["professional"], "published layers must provide different depth")
-    technical = artifact(root, case["professional"], "professional explanation").decode("utf-8")
+    technical = text_view(artifact(root, case["professional"], "professional explanation"))
     refs = case.get("source_ids")
     require(isinstance(refs, list) and refs and all(i in sources and sources[i]["url"] in technical for i in refs),
             "professional layer lacks its actual cited sources")
-    require(string(case.get("limitations"), "research limitations") in technical,
+    require(text_view(string(case.get("limitations"), "research limitations")) in technical,
             "research limitations are missing from the professional layer")
     card = case.get("editorial_decision")
     require(isinstance(card, dict) and set(card.get("conclusions", {})) == ROLES,
