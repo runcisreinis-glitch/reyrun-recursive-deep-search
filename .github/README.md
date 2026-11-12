@@ -1,6 +1,6 @@
 # REYRUN Recursive Deep Search
 
-[Latviski](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/index.lv) · [English](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/) · [Русский](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/index.ru)
+[Latviski](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/index.lv) · [English](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/) · [Русский](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/index.ru) · [简体中文](../zh-CN/README.md)
 
 ## What is recursive deep search?
 
