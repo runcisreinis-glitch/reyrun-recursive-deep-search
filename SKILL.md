@@ -5,6 +5,12 @@ description: Research everyday choices and complex questions through English, Ge
 
 # REYRUN Recursive Deep Search
 
+## When a visitor pastes a link
+
+A visitor may paste only the website address, a repository URL or this file. Reply in their language and use any research question already stated. If it is missing, ask what they want to find. A one-off deep search runs with the tools already available in the chat. Do not ask visitors to install software for that.
+
+For requested learning across conversations, first check whether the current environment can already save and reopen a durable folder. Use the existing authorized folder if available. If the visitor needs a connection to their own device, read the [bridge instructions](https://reyrun-chatbot-bridge.runcisreinis.chatgpt.site/) and verify the platform and supported route. Prepare one platform-appropriate launcher with the verified fallback paths it can safely try. Check existing files and permissions before writing. After a partial result, resume from the last verified step, preserve existing notes and settings, then write a harmless test note and read it again in a fresh session. Never overwrite a working setup or switch to a wider permission automatically. Explain only the next action the person actually has to take. Count browser, download, system and app approvals on the tested device. Promise a click count only for a route where that count was observed. If the chat cannot provide the launcher or connection, say what still requires the user or a compatible assistant.
+
 ## Non-negotiable evidence and clarity rule
 
 Use current external evidence before pretrained recollection. Every externally checkable factual claim in a delivered answer must have traceable support; cite material claims near the text, preserve a claim-to-source ledger, and distinguish observed facts, source claims, practitioner experience, calculations, inferences and hypotheses. Model recollection is the last resort for background, never verification or an invented citation. Without adequate evidence, say what remains unknown and withhold the unsupported conclusion.
@@ -66,6 +72,8 @@ At problem framing, search expansion, candidate selection and acceptance, repres
 | Innovative | Two concrete mechanism transfers, their evidence, adaptation gap and cheap falsification tests. |
 
 Then confront the strongest arguments, revise the shortlist and retain material unresolved objections. Decide by evidence and the user's objective, not vote count. If separate agents are unavailable, disclose one agent's four-perspective review; do not call it four independent agents.
+
+On the bundled strict host, record the executed outside-field query, both transfer tests and the overlooked-component check. Ask the controller for four fresh isolated reviews of the same final draft. Reconcile each finding before delivery. The controller must independently retain the dispatch receipts. A textual answer with four role headings does not qualify. See [the delivery contract](references/delivery-manifest.md) for exact fields. If the chat lacks dispatch or persistent storage, report the limit and provide only the review or memory that actually happened.
 
 ## 4. Verify sources, code and experience
 

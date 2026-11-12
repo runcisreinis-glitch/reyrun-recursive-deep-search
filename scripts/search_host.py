@@ -65,7 +65,7 @@ def config_file(path):
     raw = runtime.read_file(str(path.absolute()))
     config = runtime.parse(raw)
     runtime.fields(config, "controller_id worker_argv worker_cwd timeout_seconds",
-                   "diagnostic_worker_argv diagnostic_timeout_seconds delivery_gate_mode", label="host config")
+                   "diagnostic_worker_argv diagnostic_timeout_seconds delivery_gate_mode review_receipt_dir", label="host config")
     runtime.require(config.get("delivery_gate_mode", "strict") in {"strict", "lifecycle_only"},
                     "delivery_gate_mode must be strict or lifecycle_only")
     runtime.ident(config["controller_id"], "controller_id")
@@ -184,7 +184,10 @@ def run(args):
         if config.get("delivery_gate_mode", "strict") == "strict":
             try:
                 checked = delivery_gate.validate(job_dir / "delivery-manifest.json",
-                                                 begun["run_id"], begun["begin_sha256"], job_dir)
+                                                 begun["run_id"], begun["begin_sha256"], job_dir,
+                                                 config.get("review_receipt_dir"))
+                delivery_gate.require(checked["controller_receipts_matched"],
+                                      "strict delivery needs independent controller dispatch receipts")
             except (delivery_gate.Invalid, OSError, ValueError, TypeError, KeyError, AttributeError) as error:
                 receipt["step_missing"].append("delivery_evidence_contract")
                 receipt["repair_request"] = {

@@ -15,7 +15,8 @@ import sys
 from urllib.parse import urlsplit
 
 
-SCHEMA = "reyrun-delivery-v1"
+SCHEMA = "reyrun-delivery-v2"
+ROLES = {"optimistic", "skeptical", "conservative", "innovative"}
 LANGUAGES = {"EN", "DE", "ZH", "JA"}
 CLAIM_TYPES = {"fact", "source_claim", "experience", "calculation",
                "inference", "hypothesis", "recommendation"}
@@ -65,7 +66,95 @@ def artifact(root, reference, label):
     return data
 
 
-def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None):
+def query_reference(record, executed):
+    require(isinstance(record, dict), "expected a reference to an executed query")
+    key = (string(record.get("language"), "query language"),
+           string(record.get("query"), "query text").strip().casefold())
+    require(key in executed, "innovation references a query that was not executed")
+    return key
+
+
+def innovation_record(record, executed, sources):
+    require(isinstance(record, dict), "innovation record is missing")
+    transfers = record.get("transfers")
+    require(isinstance(transfers, list) and len(transfers) >= 2,
+            "record at least two different mechanism transfers")
+    mechanisms = set()
+    for transfer in transfers:
+        mechanism = string(transfer.get("mechanism"), "transfer mechanism").strip().casefold()
+        require(mechanism not in mechanisms, "duplicate mechanism transfer")
+        mechanisms.add(mechanism)
+        for label in ("domain", "adaptation_gap", "falsification_test", "result"):
+            string(transfer.get(label), "transfer " + label)
+        query_reference(transfer.get("query"), executed)
+    normal = string(record.get("usual_field_keyword"), "usual field keyword").strip().casefold()
+    _, query = query_reference(record.get("outside_query"), executed)
+    require(normal not in query, "outside query still contains the usual field keyword")
+    component = record.get("overlooked_component")
+    require(isinstance(component, dict), "overlooked component check is missing")
+    query_reference(component.get("query"), executed)
+    require(component.get("status") in {"inspected", "no_candidate"}, "unknown component outcome")
+    string(component.get("finding"), "component search outcome")
+    if component["status"] == "inspected":
+        require(component.get("source_id") in sources, "inspected component lacks read evidence")
+
+
+def independent_reviews(root, data, answer_digest, registry):
+    receipt_dir = None
+    if registry is not None:
+        base = Path(registry)
+        require(base.is_absolute() and base.is_dir() and base.resolve() == base,
+                "controller review receipt directory must be an existing absolute directory without symlinks")
+        require(not base.is_relative_to(root) and not root.is_relative_to(base),
+                "controller review receipt directory must be separate from worker artifacts")
+        require(re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", data["run_id"]) is not None,
+                "run ID cannot address the controller review registry")
+        receipt_dir = base / data["run_id"]
+        require(receipt_dir.is_dir() and not receipt_dir.is_symlink(),
+                "no independently supplied controller receipts for this run")
+    review = data.get("independent_review")
+    require(isinstance(review, dict), "independent review records are missing")
+    author = string(review.get("author_instance"), "answer author instance").strip().casefold()
+    roles, instances, reports = set(), {author}, set()
+    rows = review.get("reports")
+    require(isinstance(rows, list) and len(rows) == len(ROLES), "four independent reports are required")
+    for row in rows:
+        role = row.get("role")
+        require(role in ROLES and role not in roles, "missing or duplicate review role")
+        roles.add(role)
+        instance = string(row.get("instance_id"), "reviewer instance ID").strip().casefold()
+        require(instance not in instances, "the author or another reviewer reused an instance")
+        instances.add(instance)
+        report = json.loads(artifact(root, row.get("report"), "independent report"))
+        require(isinstance(report, dict) and report.get("role") == role and
+                report.get("instance_id") == row["instance_id"] and
+                report.get("run_id") == data["run_id"] and report.get("answer_sha256") == answer_digest,
+                "review report is not bound to this draft, role, instance and run")
+        finding = string(report.get("finding"), "independent finding").strip().casefold()
+        require(finding not in reports, "duplicate review finding")
+        reports.add(finding)
+        require(report.get("verdict") in {"accept", "concern"}, "missing review verdict")
+        raw_receipt = artifact(root, row.get("dispatch_receipt"), "review dispatch receipt")
+        if receipt_dir is not None:
+            external = receipt_dir / (role + ".json")
+            require(external.is_file() and not external.is_symlink() and
+                    external.stat().st_size == len(raw_receipt) and external.read_bytes() == raw_receipt,
+                    "worker receipt differs from the controller's isolated review receipt")
+        receipt = json.loads(raw_receipt)
+        require(isinstance(receipt, dict) and receipt.get("run_id") == data["run_id"] and
+                receipt.get("instance_id") == row["instance_id"] and
+                receipt.get("report_sha256") == row["report"]["sha256"] and
+                receipt.get("isolated_initial_review") is True,
+                "host dispatch receipt does not attest an isolated review of this report")
+    decisions = review.get("decisions")
+    require(isinstance(decisions, dict) and set(decisions) == ROLES,
+            "missing role-specific reconciliation")
+    for role, disposition in decisions.items():
+        string(disposition, role + " reconciliation")
+    require(review.get("unresolved_critical") == [], "unresolved critical four-review objection")
+
+
+def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, review_receipt_dir=None):
     supplied_manifest = Path(manifest_path).absolute()
     require(not supplied_manifest.is_symlink(), "delivery manifest must not be a symbolic link")
     root = supplied_manifest.parent.resolve()
@@ -125,6 +214,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None):
         string(source.get("scope"), "source support scope")
         artifact(root, source.get("evidence"), "read source evidence")
         source_map[sid] = source
+    innovation_record(data.get("innovation"), seen, source_map)
     claims = data.get("claims")
     require(type(claims) is list and bool(claims), "claim ledger is missing")
     claim_ids = set()
@@ -170,7 +260,10 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None):
     for key in ("answer_claim_coverage_checked", "material_citations_checked", "source_entailment_checked"):
         require(review.get(key) is True, key + " is missing")
     require(review.get("unresolved_critical") == [], "unresolved critical evidence objections")
-    checked = {"schema": SCHEMA, "evidence_contract_passed": True,
+    independent_reviews(root, data, data["answer"]["sha256"], review_receipt_dir)
+    checked = {"innovation_records_checked": True, "independent_reports_checked": 4,
+            "controller_receipts_matched": review_receipt_dir is not None,
+            "reviewer_identity_authenticated": False, "schema": SCHEMA, "evidence_contract_passed": True,
             "factual_quality_certified": False, "improvement_proven": False,
             "manifest_sha256": hashlib.sha256(raw).hexdigest(),
             "answer_sha256": hashlib.sha256(answer).hexdigest(),
@@ -190,9 +283,10 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("manifest", type=Path)
+    parser.add_argument("--review-receipt-dir", type=Path, help="Controller-owned independent dispatch records")
     args = parser.parse_args()
     try:
-        result = validate(args.manifest)
+        result = validate(args.manifest, review_receipt_dir=args.review_receipt_dir)
     except (Invalid, OSError, ValueError, TypeError, KeyError, AttributeError) as error:
         result = {"evidence_contract_passed": False, "factual_quality_certified": False,
                   "improvement_proven": False, "error": str(error)}

@@ -20,6 +20,22 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
     draft = file("draft.md", "Synthetic draft.\n")
     receipt = file("receipt.json", '{"synthetic":true}')
     source = file("source.txt", "SYNTHETIC SOURCE: fixture for record validation only.")
+    reports = []
+    decisions = {}
+    for role in sorted(gate.ROLES):
+        instance = role + "-test-instance"
+        report = file(role + "-report.json", json.dumps({
+            "role": role, "instance_id": instance, "run_id": run_id, "answer_sha256": answer["sha256"],
+            "finding": "Synthetic test finding for " + role, "verdict": "accept"}))
+        dispatch = file(role + "-dispatch.json", json.dumps({
+            "instance_id": instance, "run_id": run_id, "report_sha256": report["sha256"],
+            "isolated_initial_review": True}))
+        reports.append({"role": role, "instance_id": instance, "report": report, "dispatch_receipt": dispatch})
+        decisions[role] = "Fixture reconciliation for " + role
+    en = {"language": "EN", "query": "EN synthetic query"}
+    transfers = [{"mechanism": "Fixture mechanism " + str(i), "domain": "Synthetic",
+                  "adaptation_gap": "Synthetic gap", "falsification_test": "Synthetic test",
+                  "result": "Not tested; schema fixture", "query": en} for i in (1, 2)]
     return {"schema": gate.SCHEMA, "run_id": run_id, "begin_sha256": begin_hash,
             "answer": answer,
             "task_clarity": {"decision": "ready", "goal": "SYNTHETIC validation",
@@ -32,6 +48,11 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
                          "read_at": "2026-11-09T00:02:00Z", "scope": "Synthetic fixture only",
                          "evidence": source}],
             "claims": [{"id": "c1", "text": "Synthetic claim", "type": "fact", "source_ids": ["s1"]}],
+            "innovation": {"transfers": transfers, "outside_query": en, "usual_field_keyword": "usualfield",
+                           "overlooked_component": {"query": en, "status": "inspected",
+                                                    "source_id": "s1", "finding": "Synthetic"}},
+            "independent_review": {"author_instance": "synthetic-author", "reports": reports,
+                                   "decisions": decisions, "unresolved_critical": []},
             "practitioner_check": {"status": "not_applicable", "reason": "Synthetic fixture"},
             "writing": {"method": "Humanizer", "version": "3.1.0", "editor": "fixture-editor",
                         "draft": draft, "final_sha256": answer["sha256"],
@@ -59,6 +80,56 @@ class DeliveryRecords(unittest.TestCase):
         self.assertTrue(result["evidence_contract_passed"])
         self.assertFalse(result["factual_quality_certified"])
         self.assertFalse(result["improvement_proven"])
+
+    def test_missing_independent_review_cannot_pass(self):
+        self.data["independent_review"]["reports"].pop()
+        with self.assertRaisesRegex(gate.Invalid, "four independent"):
+            self.check()
+
+    def test_one_instance_cannot_fill_two_roles(self):
+        rows = self.data["independent_review"]["reports"]
+        rows[1]["instance_id"] = rows[0]["instance_id"]
+        with self.assertRaisesRegex(gate.Invalid, "reused an instance"):
+            self.check()
+
+    def test_review_for_an_old_draft_cannot_pass(self):
+        new = b"Changed answer."
+        (self.root / "answer.md").write_bytes(new)
+        sha = hashlib.sha256(new).hexdigest()
+        self.data["answer"]["sha256"] = self.data["writing"]["final_sha256"] = sha
+        with self.assertRaisesRegex(gate.Invalid, "not bound to this draft"):
+            self.check()
+
+    def test_missing_dispatch_receipt_cannot_pass(self):
+        self.data["independent_review"]["reports"][0].pop("dispatch_receipt")
+        with self.assertRaisesRegex(gate.Invalid, "dispatch receipt"):
+            self.check()
+
+    def test_unaddressed_review_cannot_pass(self):
+        self.data["independent_review"]["decisions"].pop("skeptical")
+        with self.assertRaisesRegex(gate.Invalid, "role-specific reconciliation"):
+            self.check()
+
+    def test_missing_innovation_cannot_pass(self):
+        self.data.pop("innovation")
+        with self.assertRaisesRegex(gate.Invalid, "innovation record"):
+            self.check()
+
+    def test_unexecuted_innovation_query_cannot_pass(self):
+        self.data["innovation"]["outside_query"] = {"language": "EN", "query": "Never run"}
+        with self.assertRaisesRegex(gate.Invalid, "not executed"):
+            self.check()
+
+    def test_normal_keyword_cannot_count_as_outside_search(self):
+        self.data["innovation"]["usual_field_keyword"] = "synthetic"
+        with self.assertRaisesRegex(gate.Invalid, "usual field keyword"):
+            self.check()
+
+    def test_an_unsuccessful_component_search_can_be_recorded(self):
+        component = self.data["innovation"]["overlooked_component"]
+        component.update(status="no_candidate", finding="No candidate met the scope.")
+        del component["source_id"]
+        self.assertTrue(self.check()["innovation_records_checked"])
 
     def test_missing_language_is_refused(self):
         self.data["queries"].pop()

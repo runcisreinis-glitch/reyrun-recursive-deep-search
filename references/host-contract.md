@@ -51,7 +51,7 @@ configure that environment for the existing authorized worker. The wrapper does
 not discover or request credentials, select a paid service or download a model.
 
 The default `delivery_gate_mode` is `strict`. Read [delivery-manifest.md](delivery-manifest.md)
-before implementing the worker. The explicit `lifecycle_only` option is reserved
+before implementing the worker. To complete strict delivery, configure `review_receipt_dir` with an absolute, controller-owned directory outside the job. A trusted dispatcher must launch four isolated reviewer sessions and save their receipts there. The worker can read or receive copies of its own receipts, but must have no write access to that directory. Enforce that separation with service accounts or a remote dispatch service. A shared OS identity by itself is not an isolation boundary. Without a dispatcher, identify the result as limited. The explicit `lifecycle_only` option is reserved
 for labelled mechanism tests or an openly incomplete adapter. It does not produce
 an accepted evidence-contract check. Existing adapters must add the manifest and
 checked answer binding to use strict mode.

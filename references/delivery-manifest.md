@@ -15,7 +15,7 @@ attributed review fields. Keep critical objections visible.
 
 ## Manifest fields
 
-The schema is `reyrun-delivery-v1`. Required fields are:
+New strict deliveries use `reyrun-delivery-v2`. Archived v1 receipts describe their original checks. To migrate a worker, add the innovation and reviewer records below. Old runs are not retrospectively upgraded.
 
 | Field | Required content |
 | --- | --- |
@@ -49,6 +49,22 @@ is longer; do not invent or silently truncate evidence essential to a claim.
 The checker rejects paths outside the job, a final answer changed after editing,
 missing sources, unresolved ambiguity and a preflight timestamp after searching.
 Recorded timestamps and receipt authenticity still depend on the trusted host.
+
+## Innovation and independent review records
+
+Add an `innovation` object. For every `query` reference below copy the exact `{language, query}` pair from the executed query ledger.
+
+- `transfers` contains at least two objects. Record `mechanism`, originating `domain`, `adaptation_gap`, `falsification_test`, `result` and `query`. Distinguish a tested result from an untested proposal.
+- `usual_field_keyword` is the normal field term in the language of the `outside_query`. Record the actual executed query that omits it, using the usual query-reference structure.
+- `overlooked_component` contains the executed `query`, concrete `finding`, and `status`. For `inspected`, cite the read ledger's `source_id`. If nothing qualified, use `no_candidate`.
+
+Freeze the answer bytes before review. Give the same draft and its evidence to four independently dispatched, fresh sessions. Assign one role to each (`optimistic`, `skeptical`, `conservative`, `innovative`). Each sees the evidence without other reviews. Sequential isolated sessions are fine. The ordinary worker must never mint the dispatcher's receipts. Use an existing authorized dispatcher; no model service is bundled.
+
+Each session writes a UTF-8 JSON report containing `role`, `instance_id`, `run_id`, `answer_sha256`, a concrete `finding` and `verdict` (`accept` or `concern`). The trusted dispatcher captures that session's real identifier and result, then records `{run_id, instance_id, report_sha256, isolated_initial_review: true}` as UTF-8 JSON in its own registry at `<review_receipt_dir>/<run_id>/<role>.json`. Preserve the exact receipt bytes in the job as well.
+
+Add `independent_review` with `author_instance`, four `reports` rows (each has `role`, `instance_id`, `report: {path, sha256}` and `dispatch_receipt: {path, sha256}`), `decisions` mapping all four role names to their concrete dispositions, and `unresolved_critical: []`. Address meaningful disagreements explicitly. If a finding changes the answer, freeze the revision and obtain four fresh reviews for it. If only one chat can review, disclose that fact and continue a limited answer; never create four fictional IDs.
+
+Standalone validation without the controller registry checks file structure and integrity and reports `controller_receipts_matched: false`. The strict host always requires independently retained receipt bytes. Trust ultimately rests on the dispatcher and the operating system's access controls. Neither a hash nor a successful check proves a novel result or factual correctness.
 
 ## Return binding
 

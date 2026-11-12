@@ -122,13 +122,24 @@ class SearchHostHooks(unittest.TestCase):
         self.assertIs(value["improvement_proven"], False)
         return value
 
-    def run_worker(self, run_id, mode="normal", success=True, output=None, diagnostic=None, delivery_mode="lifecycle_only"):
+    def run_worker(self, run_id, mode="normal", success=True, output=None, diagnostic=None, delivery_mode="lifecycle_only", controller_receipts=True):
         config = self.root / (run_id + "-config.json")
         config_data = {
             "controller_id": "synthetic-host-owner",
             "worker_argv": [sys.executable, str(self.worker), mode, str(BASE / "tests")],
             "worker_cwd": str(self.root), "timeout_seconds": 1 if mode == "timeout" else 10,
         }
+        if mode == "delivery" and controller_receipts:
+            from test_delivery_gate import make_fixture
+            stage = self.root / "synthetic-controller-stage"
+            stage.mkdir()
+            mock = make_fixture(stage, run_id)
+            registry = self.root / "synthetic-dispatch-registry" / run_id
+            registry.mkdir(parents=True)
+            for row in mock["independent_review"]["reports"]:
+                (registry / (row["role"] + ".json")).write_bytes(
+                    (stage / row["dispatch_receipt"]["path"]).read_bytes())
+            config_data["review_receipt_dir"] = str(registry.parent)
         if delivery_mode is not None:
             config_data["delivery_gate_mode"] = delivery_mode
         if diagnostic is not None:
@@ -196,6 +207,12 @@ class SearchHostHooks(unittest.TestCase):
         self.assertEqual(result["delivery_answer_sha256"], checked["answer_sha256"])
         saved = self.exported()["runs"]["evidence-fixture"]["result"]["answers"]
         self.assertEqual(saved, {"delivery_sha256": checked["answer_sha256"]})
+
+    def test_worker_self_attestations_cannot_complete_strict_host(self):
+        result, _ = self.run_worker("no-controller-reviews", mode="delivery", success=False,
+                                    delivery_mode=None, controller_receipts=False)
+        self.assertFalse(result["accepted_host_completion"])
+        self.assertIn("independent controller dispatch", result["repair_request"]["reason"])
 
     def test_timeout_stops_the_owned_worker_and_does_not_commit_a_finished_run(self):
         result, output = self.run_worker("timed-out", mode="timeout", success=False)
