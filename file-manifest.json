@@ -3,7 +3,7 @@
   "project": "REYRUN Recursive Deep Search",
   "edition": "authored_public_research",
   "repository": "https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search",
-  "created_at": "2026-11-12T00:36:45.438996+00:00",
+  "created_at": "2026-11-12T20:57:24.641854+00:00",
   "file_count_excluding_manifest": 112,
   "manifest_self_excluded": true,
   "manifest_exclusion_reason": "A file cannot contain its own stable content hash. The publisher verifies this manifest as one additional Git blob.",
@@ -11,7 +11,7 @@
     "text": 105,
     "binary": 7
   },
-  "total_bytes_excluding_manifest": 7311860,
+  "total_bytes_excluding_manifest": 7313919,
   "scope_document": "PUBLICATION_SCOPE.md",
   "exclusion_manifest": "exclusion-manifest.json",
   "files": [
@@ -89,25 +89,25 @@
     },
     {
       "path": "README.lv.md",
-      "size": 19815,
-      "sha256": "df8d2081b60e2bbcfcfb0b5eb3ab155cd50d28edd6448f8b83629cceeadebb8f",
-      "git_blob_sha": "b28e12ef828649f4554f3c97822feb0e787b2ee1",
+      "size": 20414,
+      "sha256": "ee58c65abfde4c573c96c3983aecfcb941abbf69c2d16b502de78ea99a720c5c",
+      "git_blob_sha": "1a7d894dafe472ba966b71aa9b63f2341a7f8a7d",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "README.md",
-      "size": 19115,
-      "sha256": "25d73a99b04dda4019b8edd6f61c4231bfc22fa9807f84058f7cdb05634ab13f",
-      "git_blob_sha": "975334eca8f683d6a9b13d6f31c9a03965946d89",
+      "size": 19694,
+      "sha256": "db194b4eea03c08db3cabe34831d70bc1c41d1e1a60adb470de710200d07f7dd",
+      "git_blob_sha": "388148ce3dedc20b20293619b253b301aaacdcbd",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "README.ru.md",
-      "size": 4055,
-      "sha256": "bd6a6510632c2b1bf452b55b8f6b5072e461f426aaaf5c079b96babeaed95cec",
-      "git_blob_sha": "2ca8056bce07ccf7037f0a48aa49485651b968d2",
+      "size": 4936,
+      "sha256": "29d5b481ba71be69230061781c32be313e9ce19d68c4fa7fd322e440f0376e5e",
+      "git_blob_sha": "4d6cb038467a7f347bbbce2deae82ef07f10e5db",
       "classification": "text",
       "git_mode": "100644"
     },

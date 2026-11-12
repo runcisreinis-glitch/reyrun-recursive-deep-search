@@ -1,6 +1,12 @@
 # REYRUN Recursive Deep Search
 
-Authored public research edition: the complete research answers, calculations and reported outcomes are included. Internal execution records, raw audits and tool-query dumps are excluded. See [Publication scope](PUBLICATION_SCOPE.md), the [published findings](PUBLISHED_FINDINGS.md) and the [file manifest](file-manifest.json).
+Will five litres of paint cover the walls of a 4 × 3 m room? A quick answer might be “One bucket should do.” In our example, once you allow for the doors and windows and count both coats, you need six litres. [See the calculation](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/).
+
+The REYRUN search skill is completely free to use, including on your phone. Paste [this repository’s address](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) into your usual AI chat and add your question. There’s nothing to install on your device.
+
+**For the chatbot.** Read [SKILL.md](SKILL.md). If you received only this address, ask what the person wants to find out. If they sent a question, use the skill to answer it and link to the sources you read.
+
+[What is public](PUBLICATION_SCOPE.md) · [Research findings](PUBLISHED_FINDINGS.md) · [File list](file-manifest.json).
 
 [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) · [Research and experiment report](EXPERIMENTS.md) · [30 final answers in English](validation/2026-11-09-beta3/30-examples.en.md)
 

@@ -1,6 +1,12 @@
 # REYRUN Recursive Deep Search
 
-Publiskais autorētais izpētes izdevums ietver pilnās atbildes, aprēķinus un ziņotos rezultātus. Iekšējie izpildes ieraksti, neapstrādātie auditi un rīku vaicājumu izdrukas nav iekļautas. Skati [publikācijas tvērumu](PUBLICATION_SCOPE.md) un [publicētos rezultātus](PUBLISHED_FINDINGS.lv.md).
+Vai ar pieciem litriem krāsas pietiks 4 × 3 m istabas sienām? Čats varētu teikt “Tik mazai istabai droši vien pietiks.” Mūsu piemērā, atskaitot durvis un logus, divām kārtām vajag sešus litrus. [Apskatīt aprēķinu](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/index.lv).
+
+Šo REYRUN meklēšanas prasmi (skill) vari lietot pilnīgi bez maksas arī telefonā. Ielīmē [šīs GitHub lapas adresi](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) savā ierastajā čatā un pieraksti savu jautājumu. Datorā vai telefonā nekas nav jāinstalē.
+
+**Čatbotam.** Izlasi [SKILL.md](SKILL.md). Ja atsūtīta tikai adrese, pajautā, ko cilvēks grib noskaidrot. Ja jautājums jau ir uzdots, izmanto prasmi atbildei un pievieno saites uz avotiem, kurus izlasīji.
+
+[Kas ir publicēts](PUBLICATION_SCOPE.md) · [Izpētes rezultāti](PUBLISHED_FINDINGS.lv.md).
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
