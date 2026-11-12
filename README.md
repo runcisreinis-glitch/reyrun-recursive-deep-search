@@ -4,7 +4,7 @@ Authored public research edition: the complete research answers, calculations an
 
 [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) · [Research and experiment report](EXPERIMENTS.md) · [30 final answers in English](validation/2026-11-09-beta3/30-examples.en.md)
 
-Additional editions: [Latvian](README.lv.md) · [Simplified Chinese](README.zh-CN.md)
+Additional editions: [Latvian](README.lv.md) · [Русский: руководство](README.ru.md) · [Simplified Chinese](README.zh-CN.md)
 
 Publication status, November 10, 2026: the public [GitHub repository](https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search) is published, and its first 111-file edition has been verified against the publication manifest. The Chinese mirror is pending account verification: both Gitee and ModelScope requested phone binding, and no mirror has been created there. No Hugging Face mirror has been created. The Facebook drafts have not been posted on the author's behalf.
 

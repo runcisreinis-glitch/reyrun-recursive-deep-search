@@ -3,15 +3,15 @@
   "project": "REYRUN Recursive Deep Search",
   "edition": "authored_public_research",
   "repository": "https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search",
-  "created_at": "2026-11-10T04:03:30.351537+00:00",
-  "file_count_excluding_manifest": 110,
+  "created_at": "2026-11-12T00:36:45.438996+00:00",
+  "file_count_excluding_manifest": 112,
   "manifest_self_excluded": true,
   "manifest_exclusion_reason": "A file cannot contain its own stable content hash. The publisher verifies this manifest as one additional Git blob.",
   "counts_by_classification": {
-    "text": 103,
+    "text": 105,
     "binary": 7
   },
-  "total_bytes_excluding_manifest": 7283195,
+  "total_bytes_excluding_manifest": 7311860,
   "scope_document": "PUBLICATION_SCOPE.md",
   "exclusion_manifest": "exclusion-manifest.json",
   "files": [
@@ -97,9 +97,17 @@
     },
     {
       "path": "README.md",
-      "size": 19057,
-      "sha256": "c4a47005c3fb02ae1a38997ed219b124a242c5852ce547de3bcdf886638d27c9",
-      "git_blob_sha": "e0a408b02ae46ee17cfa05d1925203bd44ceebab",
+      "size": 19115,
+      "sha256": "25d73a99b04dda4019b8edd6f61c4231bfc22fa9807f84058f7cdb05634ab13f",
+      "git_blob_sha": "975334eca8f683d6a9b13d6f31c9a03965946d89",
+      "classification": "text",
+      "git_mode": "100644"
+    },
+    {
+      "path": "README.ru.md",
+      "size": 4055,
+      "sha256": "bd6a6510632c2b1bf452b55b8f6b5072e461f426aaaf5c079b96babeaed95cec",
+      "git_blob_sha": "2ca8056bce07ccf7037f0a48aa49485651b968d2",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -116,6 +124,14 @@
       "size": 20843,
       "sha256": "3d9ea01fdbdf15bb0d9453286c366deac0ba5eeea229723842498040a42b45eb",
       "git_blob_sha": "e02d38768d9cb8e18c8a8c3509f3b15008fcf964",
+      "classification": "text",
+      "git_mode": "100644"
+    },
+    {
+      "path": "SKILL.ru.md",
+      "size": 24552,
+      "sha256": "4ddca3d2aebda87c18f9fc5d6b3a9b2f277d4f52d68865fbaa2e503089776ce2",
+      "git_blob_sha": "c29643bde4a09c098579c7566e11628a31a089bd",
       "classification": "text",
       "git_mode": "100644"
     },
