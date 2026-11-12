@@ -6,6 +6,14 @@ Adapt the form to the task. Everyday questions need a useful answer, practical a
 
 Lead with a concrete recommendation and the reason it fits the user's constraints. Then show the following two sections. Keep query counts, dictionaries and search routes in the background unless they explain a material gap or the user asks for them. Cite the evidence supporting each technical conclusion.
 
+### When a reader asks which product leads locally and worldwide
+
+Give the reader a named result in the first two or three sentences whenever the evidence supports one. Define the item, exact attribute, period, geography and metric before ranking it. Start with first-hand accounts from owners, sellers or relevant specialists to discover local names, variants, venues and unusual sources. Follow up in the underlying records. For a colour-specific car question, use national registration microdata, model-by-colour tables, manufacturer order or delivery breakdowns, and the country’s own classified marketplace. A photograph or an all-colours model total cannot establish a yellow-car count.
+
+If worldwide sales by exact attribute are unavailable, test a named candidate across several countries and against high-volume markets outside that region. Check a rival that could overturn the selection. In the short answer say which result was counted, where and when, and which worldwide position is still a hypothesis. If the local new-sales rank is unavailable, a separately labelled recent model-year fleet cohort can help a buyer. Give the observed local price and handover time when available. Distinguish orders, registrations, advertised vehicles and completed sales, and do not sum unlike periods. For every market with missing colour counts, say exactly what is known. Do not turn a gap into a global winner or a made-up confidence percentage.
+
+Put the useful counterexample and the source queries in the deeper answer. Check the actual cells of a two-way table: the top model within a colour and the top colour within a model answer different questions. Look for recently registered, lightly used and dealer-listed new vehicles, even on a marketplace known for used cars. Record asking price, mileage, model year, currency, retrieval date, denominator and sample selection. If a listing URL has been reused, say what was observed at the time. For a worked, reproducible example open [the yellow-car study](https://reyrun-rekursive-deep-search.runcisreinis.chatgpt.site/research/yellow-car/en/).
+
 ### A. Strongest ready options
 
 Usually compare 2–5 meaningful alternatives. Fewer is acceptable when the evidence supports fewer; never manufacture a list.

@@ -3,7 +3,7 @@
   "project": "REYRUN Recursive Deep Search",
   "edition": "authored_public_research",
   "repository": "https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search",
-  "created_at": "2026-11-12T23:02:10.873456+00:00",
+  "created_at": "2026-11-12T23:38:54.171639+00:00",
   "file_count_excluding_manifest": 114,
   "manifest_self_excluded": true,
   "manifest_exclusion_reason": "A file cannot contain its own stable content hash. The publisher verifies this manifest as one additional Git blob.",
@@ -11,7 +11,7 @@
     "text": 107,
     "binary": 7
   },
-  "total_bytes_excluding_manifest": 7407628,
+  "total_bytes_excluding_manifest": 7409733,
   "scope_document": "PUBLICATION_SCOPE.md",
   "exclusion_manifest": "exclusion-manifest.json",
   "files": [
@@ -473,9 +473,9 @@
     },
     {
       "path": "references/output-contract.md",
-      "size": 5925,
-      "sha256": "28e80c483c4ecd6c4307f76fc49eda7f642813a2049219b2d409123b13a051b2",
-      "git_blob_sha": "8f56cdf1b6753ddf7da53838a8b31b00e9163104",
+      "size": 8030,
+      "sha256": "33fa467e697039202581d0dc3e8c07de725cde4d17511240685d9a396a8cd57b",
+      "git_blob_sha": "2c4576b6c864fc94e2abc0e46d542c793f1d4b57",
       "classification": "text",
       "git_mode": "100644"
     },
