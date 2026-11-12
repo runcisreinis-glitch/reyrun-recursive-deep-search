@@ -15,7 +15,7 @@ import sys
 from urllib.parse import urlsplit
 
 
-SCHEMA = "reyrun-delivery-v2"
+SCHEMA = "reyrun-delivery-v3"
 ROLES = {"optimistic", "skeptical", "conservative", "innovative"}
 LANGUAGES = {"EN", "DE", "ZH", "JA"}
 CLAIM_TYPES = {"fact", "source_claim", "experience", "calculation",
@@ -99,6 +99,179 @@ def innovation_record(record, executed, sources):
         require(component.get("source_id") in sources, "inspected component lacks read evidence")
 
 
+def practitioner_routes(data, query_times, sources, claims):
+    plan = data.get("practitioner_routes")
+    require(isinstance(plan, dict), "practitioner routes are missing")
+    venues, professions, categories = {}, set(), set()
+    for person in plan.get("professions", []):
+        name = string(person.get("profession"), "profession").strip().casefold()
+        require(name not in professions, "duplicate profession")
+        professions.add(name)
+        category = person.get("category")
+        require(category in {"direct", "adjacent"}, "unknown profession category")
+        categories.add(category)
+        string(person.get("method"), "profession's relevant method")
+        places = person.get("venues")
+        require(isinstance(places, list) and places, "profession lacks real venue checks")
+        for place in places:
+            url = string(place.get("url"), "professional venue URL")
+            require(urlsplit(url).scheme in {"https", "http"} and urlsplit(url).hostname,
+                    "professional venue needs an actual web URL")
+            string(place.get("name"), "professional venue name")
+            require(place.get("type") in {"association", "workshop", "journal", "forum", "chat", "other"},
+                    "unrecognized professional venue type")
+            query = query_reference(place.get("query"), query_times)
+            venues.setdefault(query, set()).add(url)
+            require(place.get("status") in {"read", "inaccessible", "no_relevant_result"},
+                    "professional venue access outcome is missing")
+            string(place.get("finding"), "professional venue finding or access limitation")
+            if place["status"] == "read":
+                refs = place.get("source_ids")
+                require(isinstance(refs, list) and bool(refs) and all(x in sources for x in refs),
+                        "read professional venue lacks source evidence")
+                require(any(urlsplit(sources[x]["url"]).hostname == urlsplit(url).hostname for x in refs),
+                        "read professional venue has no evidence from its own host")
+            else:
+                require(not place.get("source_ids"), "unread venue cannot claim practitioner evidence")
+    require(categories == {"direct", "adjacent"}, "both direct and adjacent professions must be considered")
+    rounds = plan.get("rounds", {})
+    verdict = rounds.get("first_result")
+    require(verdict in {"sufficient", "insufficient"}, "first-round evidence assessment is missing")
+    string(rounds.get("reason"), "first-round evidence assessment")
+    first = {query_reference(r, query_times) for r in rounds.get("first_queries", [])}
+    require({k[0] for k in first} >= LANGUAGES, "first round lacks the four core languages")
+    if verdict == "insufficient":
+        string(rounds.get("specific_gap"), "specific unresolved gap")
+        follow = {query_reference(r, query_times) for r in rounds.get("followup_queries", [])}
+        require(follow and follow.isdisjoint(first), "targeted second round lacks fresh executed queries")
+        require(any(k[0] not in {q[0] for q in first} for k in follow),
+                "second round needs an additional relevant search language")
+        require(min(query_times[k] for k in follow) >= max(query_times[k] for k in first),
+                "follow-up queries predate the initial round")
+        old_places = {url for k in first for url in venues.get(k, ())}
+        new_places = {url for k in follow for url in venues.get(k, ())}
+        require(bool(new_places - old_places), "targeted second round lacks a new professional venue")
+        require(rounds.get("outcome") in {"resolved", "remaining_gap"}, "follow-up outcome is missing")
+        string(rounds.get("finding"), "follow-up finding or remaining limitation")
+        if rounds["outcome"] == "resolved":
+            refs = rounds.get("source_ids")
+            require(isinstance(refs, list) and refs and all(i in sources for i in refs),
+                    "resolved follow-up has no read source")
+    trail = plan.get("adaptive_decisions")
+    require(isinstance(trail, list) and trail, "adaptive decision trail is missing")
+    stages, visited, selection = set(), set(), set()
+    triggers = set()
+    for step in trail:
+        stage = step.get("stage")
+        require(stage in {"profession", "query", "venue_language", "validation", "practical_option"},
+                "unknown adaptive decision stage")
+        stages.add(stage)
+        step_id = string(step.get("id"), "adaptive decision ID")
+        require(step_id not in visited, "adaptive decision ID is repeated")
+        parent = step.get("after")
+        require((not visited and parent == "user_question") or (visited and parent in visited),
+                "adaptive decision must follow the question or an earlier observed step")
+        visited.add(step_id)
+        observation = string(step.get("observation"), "observed fact or obstacle")
+        option = string(step.get("alternative"), "unconventional alternative derived from the observation")
+        string(step.get("shared_principle"), "transferable principle")
+        string(step.get("ordinary_approach"), "ordinary approach for this action")
+        string(step.get("contribution"), "specific improvement or necessary factual preservation")
+        require(step.get("comparison_result") in {"adds_value", "retains_necessary_fact", "revised"},
+                "unresolved action comparison; revise this step and repeat the check")
+        string(step.get("test"), "concrete falsification or validation test")
+        string(step.get("outcome"), "observed outcome or explicit remaining limitation")
+        require((observation.casefold(), option.casefold()) not in triggers,
+                "adaptive decision repeats an unchanged observation and alternative")
+        triggers.add((observation.casefold(), option.casefold()))
+        anchor = step.get("anchor")
+        require(isinstance(anchor, dict), "adaptive decision lacks a traceable anchor")
+        if anchor.get("kind") == "question":
+            require(parent == "user_question", "only the initial decision can cite the question alone")
+        elif anchor.get("kind") == "query":
+            query_reference(anchor.get("ref"), query_times)
+        elif anchor.get("kind") == "source":
+            require(anchor.get("id") in sources, "adaptive decision cites an unread source")
+        else:
+            raise Invalid("adaptive decision needs the question, an executed query or read source")
+        if stage == "profession":
+            name = string(step.get("profession"), "profession selected by this observation").strip().casefold()
+            require(name in professions, "adaptive profession lacks a real practitioner route")
+            selection.add(name)
+    require(stages == {"profession", "query", "venue_language", "validation", "practical_option"},
+            "adaptive decisions are missing from a search stage")
+    require(selection == professions, "every professional route must have an observation-based selection")
+    checks = data.get("practical_answer")
+    require(isinstance(checks, dict), "practical answer checks are missing")
+    string(checks.get("direct_answer"), "direct practical result")
+    string(checks.get("alternatives"), "useful alternatives or reason none qualified")
+    gains = checks.get("benefits")
+    require(isinstance(gains, dict) and set(gains) == {"time", "money", "effort"},
+            "time, money and effort dispositions are required")
+    for kind, benefit in gains.items():
+        require(benefit.get("basis") in {"measured", "reasoned", "not_applicable", "unknown"},
+                "unknown benefit basis")
+        string(benefit.get("explanation"), kind + " benefit explanation")
+        if benefit["basis"] in {"measured", "reasoned"}:
+            require(benefit.get("claim_id") in claims, "benefit lacks a checked claim")
+        if benefit["basis"] == "measured":
+            string(benefit.get("baseline"), "measured benefit baseline")
+            string(benefit.get("unit"), "measured benefit unit")
+    for name in ("leader", "latvia"):
+        row = checks.get(name, {})
+        require(row.get("status") in {"verified", "gap", "not_applicable"}, name + " relevance is missing")
+        string(row.get("reason"), name + " reason or limitation")
+        if row["status"] == "verified":
+            refs = row.get("source_ids")
+            require(isinstance(refs, list) and refs and all(i in sources for i in refs),
+                    name + " verification lacks read sources")
+            if name == "leader":
+                string(row.get("criterion"), "explicit leadership criterion")
+            else:
+                string(row.get("availability_or_delivery"), "Latvian availability or delivery conditions")
+                timestamp(row.get("checked_at"), "Latvian availability check time")
+
+
+def sentence_units(text):
+    """Nonblank text units for complete coverage, including links and list lines.
+
+    Keep periods inside URLs, decimal values and ordinary inline abbreviations.
+    When a unit still contains multiple human sentences, split the review into
+    subrows while retaining the parent unit exactly.
+    """
+    split = re.compile(r"(?<=[.!?])[ \t]+(?=[A-ZÀ-ÞА-ЯЁ0-9\[\"“])|(?<=[。！？])(?=[^\s])|[\r\n]+")
+    return [piece.strip() for piece in split.split(text) if piece.strip()]
+
+
+def sentence_check(data, answer):
+    rows = data.get("sentence_review")
+    units = sentence_units(answer.decode("utf-8"))
+    require(isinstance(rows, list) and len(rows) == len(units),
+            "sentence review does not cover every delivered text unit")
+    count = unresolved = 0
+    for expected, row in zip(units, rows):
+        require(row.get("text") == expected, "sentence review omits, changes or reorders final text")
+        subrows = row.get("sentences")
+        require(isinstance(subrows, list) and bool(subrows), "missing sentence-level comparison")
+        require("".join(s.get("text", "") for s in subrows).strip() == expected,
+                "sentence subrows do not reconstruct the reviewed unit")
+        for line in subrows:
+            count += 1
+            for field in ("text", "ordinary_approach", "contribution", "evidence_or_basis", "utility"):
+                string(line.get(field), "sentence " + field)
+            status = line.get("result")
+            require(status in {"adds_value", "retains_necessary_fact", "revised", "no_improvement"},
+                    "unknown sentence comparison result")
+            if status == "revised":
+                string(line.get("previous_text"), "revised sentence's previous text")
+                require(line["previous_text"].strip() != line["text"].strip(),
+                        "revision did not change the sentence")
+            if status == "no_improvement":
+                unresolved += 1
+    require(unresolved == 0, f"{unresolved} unresolved sentence comparisons; revise and repeat review")
+    return {"sentences_checked": count, "unresolved_sentence_comparisons": unresolved}
+
+
 def independent_reviews(root, data, answer_digest, registry):
     receipt_dir = None
     if registry is not None:
@@ -133,6 +306,7 @@ def independent_reviews(root, data, answer_digest, registry):
         finding = string(report.get("finding"), "independent finding").strip().casefold()
         require(finding not in reports, "duplicate review finding")
         reports.add(finding)
+        string(report.get("alternative"), "reviewer alternative or reason to reject it")
         require(report.get("verdict") in {"accept", "concern"}, "missing review verdict")
         raw_receipt = artifact(root, row.get("dispatch_receipt"), "review dispatch receipt")
         if receipt_dir is not None:
@@ -183,20 +357,21 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
     checked = timestamp(clarity.get("checked_at"), "preflight time")
     queries = data.get("queries")
     require(type(queries) is list and bool(queries), "executed query ledger is missing")
-    languages, earliest, seen = set(), None, set()
+    languages, earliest, seen = set(), None, {}
     for query in queries:
         require(type(query) is dict, "query must be an object")
         language = query.get("language")
-        require(language in LANGUAGES, "unrecognized core query language")
+        require(isinstance(language, str) and re.fullmatch(r"[A-Z]{2,3}(?:-[A-Z0-9]{2,8})*", language),
+                "query requires an actual uppercase language tag")
         text = string(query.get("query"), "query text")
         key = (language, text.strip().casefold())
         require(key not in seen, "duplicate query is not additional coverage")
-        seen.add(key)
         languages.add(language)
         when = timestamp(query.get("executed_at"), "query time")
+        seen[key] = when
         earliest = when if earliest is None else min(earliest, when)
         artifact(root, query.get("receipt"), "query receipt")
-    require(languages == LANGUAGES, "EN/DE/ZH/JA executed query coverage is incomplete")
+    require(languages >= LANGUAGES, "EN/DE/ZH/JA executed query coverage is incomplete")
     require(checked <= earliest, "task preflight was recorded after research began")
     sources = data.get("sources")
     require(type(sources) is list and bool(sources), "source ledger is missing")
@@ -206,7 +381,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
         sid = string(source.get("id"), "source ID")
         require(sid not in source_map, "duplicate source ID")
         require(source.get("type") in SOURCE_TYPES, "unrecognized source type")
-        require(source.get("language") in LANGUAGES | {"mixed", "other"}, "source content language is missing")
+        require(source.get("language") in languages | {"mixed", "other"}, "source content language is missing")
         require(source.get("read_state") == "read", "a search snippet is not a read source")
         timestamp(source.get("read_at"), "source read time")
         url = string(source.get("url"), "source URL")
@@ -238,6 +413,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
             string(claim.get("inputs"), "calculation inputs and their provenance")
         if kind in {"inference", "hypothesis", "recommendation"}:
             string(claim.get("rationale"), "reasoned claim rationale")
+    practitioner_routes(data, seen, source_map, claim_ids)
     experience = data.get("practitioner_check", {})
     require(experience.get("status") in {"found", "gap", "not_applicable"}, "professional experience search disposition is missing")
     string(experience.get("reason"), "professional experience disposition reason")
@@ -260,6 +436,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
     for key in ("answer_claim_coverage_checked", "material_citations_checked", "source_entailment_checked"):
         require(review.get(key) is True, key + " is missing")
     require(review.get("unresolved_critical") == [], "unresolved critical evidence objections")
+    sentence_summary = sentence_check(data, answer)
     independent_reviews(root, data, data["answer"]["sha256"], review_receipt_dir)
     checked = {"innovation_records_checked": True, "independent_reports_checked": 4,
             "controller_receipts_matched": review_receipt_dir is not None,
@@ -271,6 +448,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
             "source_count": len(sources), "claim_count": len(claims),
             "source_content_languages": sorted({source["language"] for source in sources}),
             "statement": "Required records, references, timestamps and artifact hashes passed. Semantic reviews remain attributed attestations; factual truth and reviewer identity are not machine-certified."}
+    checked.update(sentence_summary)
     if "evaluation_fields" in data:
         fields = json.loads(artifact(root, data["evaluation_fields"], "evaluation fields"))
         require(type(fields) is dict and bool(fields), "evaluation fields must be a nonempty JSON object")

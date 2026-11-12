@@ -1,6 +1,6 @@
 # Executable delivery evidence check
 
-This beta adapter checks the default EN/DE/ZH/JA language profile. It does not yet support substituting a language in the strict manifest. Honour an explicit replacement request through manual research and disclose the missing adapter coverage; do not call that a strict-host pass. Extra authorized languages can have supplementary records.
+Start with the four core languages EN/DE/ZH/JA. Additional executed languages use uppercase tags such as LV, FR or KO. For an explicitly narrower profile, honor the user and report the strict check as unavailable.
 
 `search_host.py` defaults to `delivery_gate_mode: strict`. The worker must write
 `delivery-manifest.json` in the supplied `artifact_dir` before returning. Missing
@@ -15,15 +15,15 @@ attributed review fields. Keep critical objections visible.
 
 ## Manifest fields
 
-New strict deliveries use `reyrun-delivery-v2`. Archived v1 receipts describe their original checks. To migrate a worker, add the innovation and reviewer records below. Old runs are not retrospectively upgraded.
+New strict deliveries use `reyrun-delivery-v3`. Archived v1/v2 receipts describe their original checks. To migrate a worker, add the corresponding innovation, review, practitioner, adaptive decision and practical result records. Old runs are not retrospectively upgraded.
 
 | Field | Required content |
 | --- | --- |
 | `schema`, `run_id`, `begin_sha256` | Schema name and the exact host input binding. |
 | `answer` | `{path, sha256}` of the actual UTF-8 answer. |
 | `task_clarity` | `goal`, `decision: ready`, `unresolved_ambiguities: []`, timezone-aware `checked_at`. Record this before searching. Preserve any real or clearly simulated clarification separately. |
-| `queries` | Actual executed queries: `language` (EN/DE/ZH/JA), `query`, timezone-aware `executed_at`, and `receipt: {path, sha256}`. Each core language needs an executed query. Duplicate queries do not add coverage. Additional explicitly authorized language research can be retained in supplementary records. |
-| `sources` | `id`, actual `url`, `type`, content `language` (EN/DE/ZH/JA/mixed/other), `read_state: read`, timezone-aware `read_at`, supported `scope`, and `evidence: {path, sha256}` for retrieved source content. A search snippet does not qualify as a read source. |
+| `queries` | Actual executed queries: `language` (core or additional), `query`, timezone-aware `executed_at`, and `receipt: {path, sha256}`. Each core language needs an executed query. Include all approved follow-up languages in this ledger. Duplicate queries do not add coverage. |
+| `sources` | `id`, actual `url`, `type`, content `language` (executed language tag, mixed, or other), `read_state: read`, timezone-aware `read_at`, supported `scope`, and `evidence: {path, sha256}` for retrieved source content. A search snippet does not qualify as a read source. |
 | `claims` | `id`, `text`, `type`, `source_ids`. Every externally checkable delivered claim needs evidence. |
 | `practitioner_check` | `status: found`, `gap` or `not_applicable`, and a concrete `reason`. `found` also requires `source_ids`. Expertise remains attributed. |
 | `writing` | `method: Humanizer`, pinned `version`, actual `editor`, `draft: {path, sha256}`, `final_sha256` matching the answer, and `semantic_review`. |
@@ -60,11 +60,29 @@ Add an `innovation` object. For every `query` reference below copy the exact `{l
 
 Freeze the answer bytes before review. Give the same draft and its evidence to four independently dispatched, fresh sessions. Assign one role to each (`optimistic`, `skeptical`, `conservative`, `innovative`). Each sees the evidence without other reviews. Sequential isolated sessions are fine. The ordinary worker must never mint the dispatcher's receipts. Use an existing authorized dispatcher; no model service is bundled.
 
-Each session writes a UTF-8 JSON report containing `role`, `instance_id`, `run_id`, `answer_sha256`, a concrete `finding` and `verdict` (`accept` or `concern`). The trusted dispatcher captures that session's real identifier and result, then records `{run_id, instance_id, report_sha256, isolated_initial_review: true}` as UTF-8 JSON in its own registry at `<review_receipt_dir>/<run_id>/<role>.json`. Preserve the exact receipt bytes in the job as well.
+Each session writes a UTF-8 JSON report containing `role`, `instance_id`, `run_id`, `answer_sha256`, a concrete `finding`, `alternative` (a less obvious option or reason it failed), and `verdict` (`accept` or `concern`). The trusted dispatcher captures that session's real identifier and result, then records `{run_id, instance_id, report_sha256, isolated_initial_review: true}` as UTF-8 JSON in its own registry at `<review_receipt_dir>/<run_id>/<role>.json`. Preserve the exact receipt bytes in the job as well.
 
 Add `independent_review` with `author_instance`, four `reports` rows (each has `role`, `instance_id`, `report: {path, sha256}` and `dispatch_receipt: {path, sha256}`), `decisions` mapping all four role names to their concrete dispositions, and `unresolved_critical: []`. Address meaningful disagreements explicitly. If a finding changes the answer, freeze the revision and obtain four fresh reviews for it. If only one chat can review, disclose that fact and continue a limited answer; never create four fictional IDs.
 
 Standalone validation without the controller registry checks file structure and integrity and reports `controller_receipts_matched: false`. The strict host always requires independently retained receipt bytes. Trust ultimately rests on the dispatcher and the operating system's access controls. Neither a hash nor a successful check proves a novel result or factual correctness.
+
+## Adaptive practitioner routes and practical delivery
+
+Add `practitioner_routes.professions`. Each object has `profession`, `category` (`direct` or `adjacent`), a transferable `method`, and an array of actual `venues`. Include both a direct and an adjacent professional perspective. For each venue record the actual `url`, `name`, `type` (association, workshop, journal, forum, chat or other), executed `query` reference, `status` (read, inaccessible or no_relevant_result) and `finding`. A read venue requires `source_ids` including material from its own host. For inaccessible or empty results retain the query and the limitation; do not cite inaccessible testimony.
+
+Add `practitioner_routes.rounds` with `first_queries` (executed query references across EN/DE/ZH/JA), `first_result` (sufficient or insufficient) and `reason`. If insufficient, record `specific_gap`, distinct executed `followup_queries` including another relevant language and at least one new named professional venue; then `outcome` (resolved or remaining_gap) and `finding`. A resolved gap requires read `source_ids`. Bind each venue to the actual query that reached it. Do not guess when evidence runs out.
+
+Add `practitioner_routes.adaptive_decisions` as an ordered array. Each row has a unique `id`, `after` (user_question for the initial row; otherwise an earlier decision ID), `stage` (profession, query, venue_language, validation or practical_option), `observation`, `shared_principle`, `alternative`, `test`, `outcome`, and an `anchor`. An initial anchor can be `{"kind":"question"}`; later cite a read source via `{"kind":"source","id":"s1"}` or an executed query via `{"kind":"query","ref":{"language":"LV","query":"…"}}`. Cover all five stages, and name the selected `profession` in a profession-stage row for every listed profession. Use real observations and explain where the unexpected route came from. Mark an untested proposal plainly.
+
+Add `practical_answer` containing `direct_answer`, `alternatives` (or why none qualified), `benefits`, `leader`, and `latvia`. The benefits map contains time, money and effort. Each contains `basis` (measured, reasoned, unknown or not_applicable) and `explanation`; measured and reasoned benefits require a checked `claim_id`. Measured gains also require a `baseline` and `unit`. Both leader and Latvia contain `status` (verified, gap or not_applicable) and `reason`. A verified row requires read `source_ids`; include the leader's `criterion` or Latvia's `availability_or_delivery` and a timezone-aware `checked_at`. Present what matters for this question in the answer. Semantic reviewers must verify these records genuinely appear in or support the delivered conclusion. A checklist cannot establish novelty, professional identity, market leadership or quality by itself.
+
+## Compare every significant action and final sentence
+
+On each adaptive decision, supply `ordinary_approach`, `contribution` and `comparison_result` (`adds_value`, `retains_necessary_fact` or `revised`). Compare the actual action with the obvious default. If no useful difference can be explained, revisit the choice, perform a better test, then update the result. Also revisit intermediate findings during independent review. Scale the comparisons to the question.
+
+After editing, generate units with `delivery_gate.sentence_units(final_text)`. Create one `sentence_review` row per unit, in order, with its exact `text`. Inside each row, supply a nonempty `sentences` array. Split multi-sentence units at actual language-aware sentence boundaries; preserve spaces so joined text reconstructs the unit. Each subrow includes `text`, `ordinary_approach`, `contribution`, `evidence_or_basis`, `utility`, and `result` (adds_value, retains_necessary_fact, revised or no_improvement). A revised row also records `previous_text`. If a sentence adds nothing, revise or remove it and recheck the full draft before sending it to the four reviewers. An essential unchanged fact or source may stay with its exact contribution; do not decorate it or invent novelty. A useful difference from a generic answer is not a claim of novelty within a profession. Any field-wide novelty claim needs appropriate independent evidence. Keep plain wording, numbers and qualifications intact.
+
+The checker matches every final text unit and derives the count of unresolved comparisons from the sentence records. A no_improvement row blocks strict delivery. Only report zero after the checked records return that value. If review cannot finish, identify the actual unfinished items; never invent a zero or a reviewer.
 
 ## Return binding
 

@@ -1,6 +1,6 @@
 # Bounded host wrapper
 
-Language coverage in this beta adapter is fixed to EN/DE/ZH/JA. An explicit user-requested replacement profile needs manual research with this limitation disclosed; the wrapper cannot currently accept that profile as a strict delivery. The research instructions still defer to the user's requested languages.
+The strict host checks EN/DE/ZH/JA in the initial round and supports additional executed languages. When core evidence is insufficient, a targeted second round must include another appropriate language and a new professional venue. Honor explicit user restrictions and label incompatible strict profiles as limited.
 
 `scripts/search_host.py` is an executable host entry point for one research
 invocation. It calls the persistent lifecycle itself, gives the configured worker

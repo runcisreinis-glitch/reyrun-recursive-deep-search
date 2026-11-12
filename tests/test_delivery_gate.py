@@ -26,7 +26,8 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
         instance = role + "-test-instance"
         report = file(role + "-report.json", json.dumps({
             "role": role, "instance_id": instance, "run_id": run_id, "answer_sha256": answer["sha256"],
-            "finding": "Synthetic test finding for " + role, "verdict": "accept"}))
+            "finding": "Synthetic test finding for " + role, "alternative": "Test alternative for " + role,
+            "verdict": "accept"}))
         dispatch = file(role + "-dispatch.json", json.dumps({
             "instance_id": instance, "run_id": run_id, "report_sha256": report["sha256"],
             "isolated_initial_review": True}))
@@ -36,8 +37,23 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
     transfers = [{"mechanism": "Fixture mechanism " + str(i), "domain": "Synthetic",
                   "adaptation_gap": "Synthetic gap", "falsification_test": "Synthetic test",
                   "result": "Not tested; schema fixture", "query": en} for i in (1, 2)]
+    venue = {"url": "https://example.org/source", "name": "Synthetic professional venue",
+             "type": "journal", "query": en, "status": "read", "finding": "Fixture", "source_ids": ["s1"]}
+    professions = [{"profession": c + " test role", "category": c, "method": "Fixture method",
+                    "venues": [dict(venue)]} for c in ("direct", "adjacent")]
+    trail = []
+    for i, stage in enumerate(("profession", "profession", "query", "venue_language", "validation", "practical_option")):
+        trail.append({"id": str(i), "after": "user_question" if i == 0 else str(i-1), "stage": stage,
+                      "observation": "Fixture finding " + str(i), "shared_principle": "Test principle",
+                      "alternative": "Test option " + str(i), "test": "Test method", "outcome": "Fixture", "ordinary_approach": "Fixture baseline", "contribution": "Fixture delta",
+                      "comparison_result": "adds_value", "anchor": {"kind": "question"} if i == 0 else {"kind": "query", "ref": en}})
+        if stage == "profession":
+            trail[-1]["profession"] = professions[i]["profession"]
     return {"schema": gate.SCHEMA, "run_id": run_id, "begin_sha256": begin_hash,
             "answer": answer,
+            "sentence_review": [{"text": part, "sentences": [{"text": part, "ordinary_approach": "Fixture baseline",
+                "contribution": "Fixture delta", "evidence_or_basis": "Synthetic source", "utility": "Fixture",
+                "result": "adds_value"}]} for part in gate.sentence_units((root / "answer.md").read_text())],
             "task_clarity": {"decision": "ready", "goal": "SYNTHETIC validation",
                              "unresolved_ambiguities": [], "checked_at": "2026-11-09T00:00:00Z"},
             "queries": [{"language": lang, "query": lang + " synthetic query",
@@ -51,6 +67,16 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
             "innovation": {"transfers": transfers, "outside_query": en, "usual_field_keyword": "usualfield",
                            "overlooked_component": {"query": en, "status": "inspected",
                                                     "source_id": "s1", "finding": "Synthetic"}},
+            "practitioner_routes": {"professions": professions,
+                "rounds": {"first_result": "sufficient", "reason": "Synthetic scope",
+                           "first_queries": [{"language": l, "query": l + " synthetic query"}
+                                             for l in sorted(gate.LANGUAGES)]},
+                "adaptive_decisions": trail},
+            "practical_answer": {"direct_answer": "Fixture answer", "alternatives": "Fixture option",
+                "benefits": {name: {"basis": "not_applicable", "explanation": "Fixture"}
+                             for name in ("time", "money", "effort")},
+                "leader": {"status": "not_applicable", "reason": "Fixture"},
+                "latvia": {"status": "not_applicable", "reason": "Fixture"}},
             "independent_review": {"author_instance": "synthetic-author", "reports": reports,
                                    "decisions": decisions, "unresolved_critical": []},
             "practitioner_check": {"status": "not_applicable", "reason": "Synthetic fixture"},
@@ -81,6 +107,64 @@ class DeliveryRecords(unittest.TestCase):
         self.assertFalse(result["factual_quality_certified"])
         self.assertFalse(result["improvement_proven"])
 
+    def test_professional_routes_require_direct_and_adjacent_disciplines(self):
+        self.data["practitioner_routes"]["professions"].pop()
+        with self.assertRaisesRegex(gate.Invalid, "adjacent"):
+            self.check()
+
+    def test_an_unreviewed_final_sentence_cannot_pass(self):
+        self.data["sentence_review"].pop()
+        with self.assertRaisesRegex(gate.Invalid, "every delivered"):
+            self.check()
+
+    def test_sentence_comparison_with_no_value_requires_rework(self):
+        self.data["sentence_review"][0]["sentences"][0]["result"] = "no_improvement"
+        with self.assertRaisesRegex(gate.Invalid, "1 unresolved sentence"):
+            self.check()
+
+    def test_action_without_improvement_requires_rework(self):
+        self.data["practitioner_routes"]["adaptive_decisions"][2]["comparison_result"] = "no_improvement"
+        with self.assertRaisesRegex(gate.Invalid, "unresolved action"):
+            self.check()
+
+    def test_static_profession_list_without_observation_chain_is_refused(self):
+        self.data["practitioner_routes"]["adaptive_decisions"][1]["after"] = "unobserved"
+        with self.assertRaisesRegex(gate.Invalid, "earlier observed"):
+            self.check()
+
+    def test_missing_practical_option_stage_is_refused(self):
+        self.data["practitioner_routes"]["adaptive_decisions"].pop()
+        with self.assertRaisesRegex(gate.Invalid, "missing from a search stage"):
+            self.check()
+
+    def test_unread_forum_cannot_stand_in_for_experience(self):
+        self.data["practitioner_routes"]["professions"][0]["venues"][0]["status"] = "inaccessible"
+        with self.assertRaisesRegex(gate.Invalid, "unread venue"):
+            self.check()
+
+    def test_shallow_result_without_executed_followup_is_refused(self):
+        rounds = self.data["practitioner_routes"]["rounds"]
+        rounds.update(first_result="insufficient", specific_gap="Source omitted delivery.")
+        with self.assertRaisesRegex(gate.Invalid, "fresh executed"):
+            self.check()
+
+    def test_targeted_additional_language_and_new_venue_can_document_a_remaining_gap(self):
+        routes = self.data["practitioner_routes"]
+        q = {"language": "LV", "query": "piegāde Latvijā"}
+        self.data["queries"].append(dict(q, executed_at="2026-11-09T00:04:00Z",
+                                        receipt=self.data["queries"][0]["receipt"]))
+        venue = dict(routes["professions"][0]["venues"][0], query=q,
+                     status="no_relevant_result", url="https://example.org/new-venue", source_ids=[])
+        routes["professions"][0]["venues"].append(venue)
+        routes["rounds"].update(first_result="insufficient", specific_gap="Shipping to Latvia",
+                                followup_queries=[q], outcome="remaining_gap", finding="No shipping terms available")
+        self.assertTrue(self.check()["evidence_contract_passed"])
+
+    def test_claimed_leader_needs_criterion_and_evidence(self):
+        self.data["practical_answer"]["leader"] = {"status": "verified", "reason": "Fixture", "source_ids": ["s1"]}
+        with self.assertRaisesRegex(gate.Invalid, "leadership criterion"):
+            self.check()
+
     def test_missing_independent_review_cannot_pass(self):
         self.data["independent_review"]["reports"].pop()
         with self.assertRaisesRegex(gate.Invalid, "four independent"):
@@ -97,6 +181,8 @@ class DeliveryRecords(unittest.TestCase):
         (self.root / "answer.md").write_bytes(new)
         sha = hashlib.sha256(new).hexdigest()
         self.data["answer"]["sha256"] = self.data["writing"]["final_sha256"] = sha
+        self.data["sentence_review"] = [dict(self.data["sentence_review"][0],
+            text=new.decode(), sentences=[dict(self.data["sentence_review"][0]["sentences"][0], text=new.decode())])]
         with self.assertRaisesRegex(gate.Invalid, "not bound to this draft"):
             self.check()
 
