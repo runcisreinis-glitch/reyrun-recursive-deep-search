@@ -19,30 +19,39 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64, html_topic_count=0
     intro = "Synthetic claim for testing. It has no real-world evidential value."
     more = "If you would like to learn more"
     topics = []
-    for i in range(1, (html_topic_count or 2) + 1):
+    for i in range(1, (html_topic_count or 10) + 1):
         url = "https://example.org/test-report-" + str(i)
         plain = "Fixture everyday explanation " + str(i) + "."
         technical = "Fixture detailed explanation " + str(i) + "."
-        article = file("report-" + str(i) + ".md",
-                       plain + "\n" + technical + " https://example.org/source")
+        application = "A reader can repeat the fixture demonstration " + str(i) + "."
+        method = "We compared matched observations in fixture " + str(i) + "."
+        limitation = "This synthetic sample tests the format only."
+        follow_up = "Ask for a closer look at the measurements in direction " + str(i) + "."
+        article = file("report-" + str(i) + ".md", "\n\n".join([
+            plain, application, technical, method, limitation, "https://example.org/source", follow_up]))
         check = file("link-" + str(i) + ".json", json.dumps(dict(requested_url=url, status=200,
                      content_sha256=article["sha256"], checked_at="2026-11-09T00:03:00Z")))
         topics.append(dict(insight="Synthetic insight " + str(i) + ".", origin_id="human", source_ids=["s1"],
                            format="chat_link", target=url, research=article, link_check=check,
-                           reading_levels=dict(reader_excerpt=plain, professional_excerpt=technical, claim_ids=["c1"])))
+                           follow_up=follow_up, discovery=dict(angle="Fixture angle " + str(i), benefit="Fixture decision",
+                           query={"language":"EN", "query":"EN synthetic query"}),
+                           reading_levels=dict(reader_excerpt=plain, reader_application=application, professional_excerpt=technical,
+                           method_excerpt=method, limit_excerpt=limitation, claim_ids=["c1"])))
     if html_topic_count:
         sections = []
         for i, topic in enumerate(topics):
             target = "research-topic-" + str(i)
             pair = topic["reading_levels"]
             section = ('<details class="deep-topic" id="' + target + '"><summary>' + topic["insight"] +
-                       "</summary><p>" + pair["reader_excerpt"] + "</p><p>" + pair["professional_excerpt"] +
-                       '</p><a href="https://example.org/source">Evidence</a></details>')
+                       "</summary><p>" + pair["reader_excerpt"] + "</p><p>" + pair["reader_application"] +
+                       "</p><p>" + pair["professional_excerpt"] +
+                       "</p><p>" + pair["method_excerpt"] + " " + pair["limit_excerpt"] +
+                       '</p><a href="https://example.org/source">Evidence</a><p>' + topic["follow_up"] + "</p></details>")
             topic.update(format="html_details", target=target, research=file(target + ".html", section))
             sections.append(section)
     else:
-        sections = [t["insight"] + " [Read](" + t["target"] + ")" for t in topics]
-    answer = file("answer.md", intro + "\n\n" + more + "\n" + "\n".join(sections) + "\n")
+        sections = ["[" + t["insight"] + "](" + t["target"] + ")" for t in topics]
+    answer = file("answer.md", intro + "\n\n---\n\n" + more + "\nClick a sentence to open its article.\n" + "\n".join(sections) + "\n")
     draft = file("draft.md", "Synthetic draft.\n")
     receipt = file("receipt.json", '{"synthetic":true}')
     source = file("source.txt", "SYNTHETIC SOURCE: fixture for record validation only.")
@@ -85,7 +94,7 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64, html_topic_count=0
                for k in ("conservative", "innovative", "frontier")}
     return {"schema": gate.SCHEMA, "run_id": run_id, "begin_sha256": begin_hash,
             "answer": answer,
-            "answer_layout": {"intro": intro, "more_heading": more, "language": "EN", "topics": topics,
+            "answer_layout": {"intro": intro, "more_heading": more, "open_hint": "Click a sentence to open its article.", "language": "EN", "topics": topics,
                               "price": {"status": "not_applicable"}, "wait": {"status": "not_applicable"}},
             "sentence_review": [{"text": part, "sentences": [{"text": part, "ordinary_approach": "Fixture baseline",
                 "contribution": "Fixture delta", "evidence_or_basis": "Synthetic source", "utility": "Fixture",
@@ -225,13 +234,53 @@ class DeliveryRecords(unittest.TestCase):
                 "instance_id": row["instance_id"], "report_sha256": row["report"]["sha256"], "conclusion": "Fixture"}
         return case, hashlib.sha256(payload).hexdigest()
 
-    def test_published_six_topic_html_study(self):
-        self.data = make_fixture(self.root, html_topic_count=6)
-        case, expected_digest = self.prepare_published_case()
+    def test_ten_one_click_topics_work_for_chat_and_publication(self):
+        self.data = make_fixture(self.root, html_topic_count=10)
+        self.assertTrue(self.check()["evidence_contract_passed"])
+        _, expected_digest = self.prepare_published_case()
         self.assertEqual(self.check()["published_case_sha256"], expected_digest)
-        self.data["task_clarity"]["format"] = "chat"
-        with self.assertRaisesRegex(gate.Invalid, "up to four"):
+
+    def test_nine_completed_directions_are_incomplete(self):
+        self.data = make_fixture(self.root, html_topic_count=9)
+        with self.assertRaisesRegex(gate.Invalid, "at least ten"):
             self.check()
+
+    def test_concealed_questions_and_separate_reading_level_controls_fail(self):
+        self.data = make_fixture(self.root, html_topic_count=10)
+        topics = self.data["answer_layout"]["topics"]
+        topic = topics[0]
+        article = self.root / topic["research"]["path"]
+        content = article.read_text()
+        answer = (self.root / self.data["answer"]["path"]).read_text()
+        for old, new, message in [
+                ("<details", "<details><summary>More</summary><details", "visible standalone"),
+                ("Synthetic insight 1.", "Synthetic insight 1?", "declarative sentence"),
+                ("<p>" + topic["reading_levels"]["professional_excerpt"],
+                 "<details><summary>More</summary><p>" + topic["reading_levels"]["professional_excerpt"],
+                 "reader level first"),
+                ("<summary>", "<summary hidden>", "visible standalone")]:
+            with self.subTest(message=message):
+                changed = content.replace(old, new, 1)
+                article.write_text(changed)
+                topic["research"]["sha256"] = hashlib.sha256(article.read_bytes()).hexdigest()
+                topic["insight"] = "Synthetic insight 1?" if "?" in new else "Synthetic insight 1."
+                with self.assertRaisesRegex(gate.Invalid, message):
+                    gate.answer_layout(self.data, self.root, answer.replace(content, changed),
+                                       {"s1": self.data["sources"][0]})
+
+    def test_both_levels_and_end_invitation_must_be_present_in_each_chat_article(self):
+        topic = self.data["answer_layout"]["topics"][0]
+        path = self.root / topic["research"]["path"]
+        content = path.read_text()
+        pair = topic["reading_levels"]
+        revised = content.replace(pair["reader_excerpt"], "TEMP").replace(pair["professional_excerpt"],
+                 pair["reader_excerpt"]).replace("TEMP", pair["professional_excerpt"])
+        for bad in (revised, content.replace(topic["follow_up"], "")):
+            path.write_text(bad)
+            topic["research"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+            with self.assertRaisesRegex(gate.Invalid, "reader level first"):
+                gate.direction_article(topic, self.root, {"c1": self.data["claims"][0]},
+                                       {"s1": self.data["sources"][0]})
 
     def test_published_case_reviews_bind_both_layers_method_and_data(self):
         case, expected_digest = self.prepare_published_case()

@@ -3,7 +3,7 @@
   "project": "REYRUN Recursive Deep Search",
   "edition": "authored_public_research",
   "repository": "https://github.com/runcisreinis-glitch/reyrun-recursive-deep-search",
-  "created_at": "2026-11-13T02:10:34.280800+00:00",
+  "created_at": "2026-11-13T03:05:37.050116+00:00",
   "file_count_excluding_manifest": 114,
   "manifest_self_excluded": true,
   "manifest_exclusion_reason": "A file cannot contain its own stable content hash. The publisher verifies this manifest as one additional Git blob.",
@@ -11,7 +11,7 @@
     "text": 107,
     "binary": 7
   },
-  "total_bytes_excluding_manifest": 7423864,
+  "total_bytes_excluding_manifest": 7437556,
   "scope_document": "PUBLICATION_SCOPE.md",
   "exclusion_manifest": "exclusion-manifest.json",
   "files": [
@@ -129,17 +129,17 @@
     },
     {
       "path": "SKILL.md",
-      "size": 29461,
-      "sha256": "c85cf39996f6cd080e28839e16d63d19a686b7896c95de544be67999f442afc8",
-      "git_blob_sha": "ba1b25c1390cc5fbdd351cfb0a004355ee1a44f6",
+      "size": 30411,
+      "sha256": "fa6e4c13820aea19851c36eaea54a2bcf34f14ed06e82084b5f180ecfbdacc20",
+      "git_blob_sha": "0764a5a2aa22198b14582e4f783b18831c5fd711",
       "classification": "text",
       "git_mode": "100644"
     },
     {
       "path": "SKILL.ru.md",
-      "size": 34349,
-      "sha256": "a8c8f383837e9a4912518ae7a9d8817d7911be4b59cc94cdd93cd6a74a2726ea",
-      "git_blob_sha": "99e765fe1c081ca8ce019c68c308edf5e4c525df",
+      "size": 35345,
+      "sha256": "6a10861bd7861b00553f97afce937804a7b4441d72186fe5554399b9ccc1eb03",
+      "git_blob_sha": "027edaa8dadaf52d556d018b7b3cf6d9086c82c1",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -417,9 +417,9 @@
     },
     {
       "path": "references/delivery-manifest.md",
-      "size": 24729,
-      "sha256": "bec4723898e1fcef0ae37933156fc495a470f02307faea6491e5c00a98fc6038",
-      "git_blob_sha": "b3b1d29e6a87e688eff2f47e54eeb95285bc7360",
+      "size": 25373,
+      "sha256": "dc9115ae184bfa756e6612ee523d54ababb7cc8072b776b084be004a38b27757",
+      "git_blob_sha": "a69ee154aab553561760466a39343530e9349632",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -473,9 +473,9 @@
     },
     {
       "path": "references/output-contract.md",
-      "size": 8030,
-      "sha256": "33fa467e697039202581d0dc3e8c07de725cde4d17511240685d9a396a8cd57b",
-      "git_blob_sha": "2c4576b6c864fc94e2abc0e46d542c793f1d4b57",
+      "size": 8416,
+      "sha256": "0381dc2dee7762f607b594a49810c52cd95d7309bafb8d87e2fa9bc3a39b3242",
+      "git_blob_sha": "2dec0c915c39f52302a08042e44fed8c22a98ba4",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -529,9 +529,9 @@
     },
     {
       "path": "scripts/delivery_gate.py",
-      "size": 49596,
-      "sha256": "d187b7e5060c0bc0144e30a6801210017d90f80a58f64f946be372e3eed5d7bc",
-      "git_blob_sha": "ee0a4d6fb2b410960375215a857c8341ce7b5438",
+      "size": 56808,
+      "sha256": "9043f0173d7d52d46a366fa6f16fef2b6ed3427d5641578b3bdb85c73e277734",
+      "git_blob_sha": "84ef7ac9e0764f2740baac79173abf56d66d0967",
       "classification": "text",
       "git_mode": "100644"
     },
@@ -561,9 +561,9 @@
     },
     {
       "path": "tests/test_delivery_gate.py",
-      "size": 32191,
-      "sha256": "3956d0cd6a0bd28bce405e2b05ef5c5705147a555d0929a76ad773394ff0d974",
-      "git_blob_sha": "e3d28065e13d55c56839ac094db08632525e702e",
+      "size": 35695,
+      "sha256": "107b8d95b8abc3bb991114294fadd1e149170d344477e7069c69502f336d9610",
+      "git_blob_sha": "d4632b9c9315c5c99c06142383617e8a3eb3ed26",
       "classification": "text",
       "git_mode": "100644"
     },

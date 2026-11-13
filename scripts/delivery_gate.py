@@ -16,7 +16,8 @@ import sys
 from urllib.parse import urlsplit
 
 
-SCHEMA = "reyrun-delivery-v7"
+SCHEMA = "reyrun-delivery-v8"
+PREVIOUS_SCHEMA = "reyrun-delivery-v7"
 ARCHIVED_SCHEMA = "reyrun-delivery-v6"
 ROLES = {"optimistic", "skeptical", "conservative", "innovative"}
 LANGUAGES = {"EN", "DE", "ZH", "JA"}
@@ -407,6 +408,8 @@ def answer_layout(data, root, answer, sources):
     require(output.startswith(intro + "\n\n") and len(sentence_units(intro)) in {2, 3},
             "first paragraph must be the standalone two- or three-sentence answer")
     tail = output[len(intro):].lstrip()
+    if data["schema"] == SCHEMA:
+        tail = re.sub(r"^(?:---|<hr\s*/?>)\s*\n", "", tail, count=1, flags=re.IGNORECASE)
     require(tail.startswith(heading + "\n") or re.match(r"^#{1,6} " + re.escape(heading) + r"\s*\n", tail),
             "optional reading must begin immediately after the short answer")
     scopes = data["task_clarity"].get("requested_geographies")
@@ -434,9 +437,22 @@ def answer_layout(data, root, answer, sources):
     require(layout["price"]["status"] == data["overlooked_search"]["first_answer"]["price"]["status"],
             "short answer and research disagree on the price status")
     topics = layout.get("topics")
-    published = data["task_clarity"]["format"] == "published_case" and data["schema"] == SCHEMA
-    require(isinstance(topics, list) and len(topics) >= 2, "need at least two distinct optional topics")
-    require(published or len(topics) <= 4, "chat and archived v6 deliveries allow up to four optional topics")
+    current = data["schema"] == SCHEMA
+    if current:
+        require(isinstance(topics, list) and len(topics) >= 10,
+                "deliver at least ten distinct completed directions in chat and on the website")
+        hint = string(layout.get("open_hint"), "reader instruction for opening a topic")
+        first_lead = string(topics[0].get("insight"), "first topic lead")
+        require(first_lead in tail and hint in tail[:tail.index(first_lead)],
+                "put the click or tap instruction before the first topic")
+    else:
+        published = data["task_clarity"]["format"] == "published_case" and data["schema"] == PREVIOUS_SCHEMA
+        require(isinstance(topics, list) and len(topics) >= 2, "need at least two distinct optional topics")
+        require(published or len(topics) <= 4, "archived chat and v6 allow up to four optional topics")
+    positions = []
+    targets, invitations, angles = set(), set(), set()
+    executed = {(q["language"], q["query"].strip().casefold()) for q in data["queries"]}
+    claims = {c["id"]: c for c in data["claims"]}
     first_hand_ids = {seq["human_source_id"] for seq in data["firsthand_sequences"]}
     distinct = set()
     for topic in topics:
@@ -472,7 +488,122 @@ def answer_layout(data, root, answer, sources):
                             "linked research section anchor is absent")
         else:
             raise Invalid("unknown optional research format")
+        if current:
+            require(target not in targets, "each direction must open its own article")
+            targets.add(target)
+            require(len(sentence_units(insight)) == 1 and insight.endswith((".", "!", "。", "！")) and
+                    "?" not in insight and "？" not in insight,
+                    "each topic lead must be one declarative sentence")
+            if topic["format"] == "html_details":
+                inspector = TopicView(target, document=True)
+                inspector.feed(tail)
+                require(inspector.public_toggles == 1 and inspector.summary == insight,
+                        "the exact lead must be a visible standalone summary, initially closed")
+            else:
+                require(any(line.strip().lstrip("-* ").strip() == "[" + insight + "](" + target + ")"
+                            for line in tail.splitlines()), "the entire chat lead must be its own visible link")
+                inspector = TopicView(None, document=True)
+                inspector.feed(tail)
+                require(not inspector.has_concealed_chat_link, "a master toggle hides the chat links")
+            positions.append(tail.index(insight))
+            direction_article(topic, root, claims, sources)
+            invitation = topic["follow_up"].strip().casefold()
+            require(invitation not in invitations, "use a specific follow-up for each direction")
+            invitations.add(invitation)
+            discovery = topic.get("discovery")
+            require(isinstance(discovery, dict), "each direction needs a real research path")
+            query_reference(discovery.get("query"), executed)
+            angle = string(discovery.get("angle"), "different search angle").strip().casefold()
+            require(angle not in angles, "repeated topic angle")
+            angles.add(angle)
+            string(discovery.get("benefit"), "decision or understanding improved by this direction")
+    if current:
+        require(positions == sorted(positions), "manifest topics differ from display order")
 
+
+
+class TopicView(HTMLParser):
+    """Read the target as visitors see it after activating just its own control."""
+    def __init__(self, target, document=False):
+        super().__init__()
+        self.target, self.document = target, document
+        self.stack = []
+        self.text, self.summary_parts = [], []
+        self.public_toggles = 0
+        self.has_concealed_chat_link = False
+
+    @property
+    def summary(self):
+        return " ".join(" ".join(self.summary_parts).split())
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        active, concealed, summary = self.stack[-1][1:] if self.stack else (self.target is None, False, False)
+        active_here = self.target is not None and attrs.get("id") == self.target
+        active = active_here or active
+        concealed = (concealed or "hidden" in attrs or attrs.get("aria-hidden", "").lower() == "true"
+                     or tag in {"head", "script", "style", "template"}
+                     or bool(re.search(r"(?:display\s*:\s*none|visibility\s*:\s*hidden)",
+                                       attrs.get("style", ""), re.I)))
+        if tag == "details":
+            if active_here and not concealed and "open" not in attrs:
+                self.public_toggles += 1
+            if not active_here and "open" not in attrs:
+                concealed = True
+        if tag == "summary" and active and not concealed and self.stack and self.stack[-1][0] == "details":
+            summary = True
+        if active and not concealed and tag == "a" and attrs.get("href"):
+            self.text.append(attrs["href"])
+        if tag not in VisibleSection.VOID:
+            self.stack.append((tag, active, concealed, summary))
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                return
+
+    def handle_data(self, text):
+        if not self.stack:
+            if self.target is None:
+                self.text.append(text)
+            return
+        _, active, concealed, summary = self.stack[-1]
+        if concealed and "](" in text:
+            self.has_concealed_chat_link = True
+        if active and not concealed:
+            self.text.append(text)
+            if summary:
+                self.summary_parts.append(text)
+
+
+def direction_article(topic, root, claims, sources):
+    """Bind the one-action article, its ordered levels, sources and specific invitation."""
+    published_topic(topic, root, claims)
+    body = text_view(artifact(root, topic["research"], "opened article"))
+    target = topic["target"] if topic["format"] == "html_details" else urlsplit(topic["target"]).fragment
+    if topic["format"] == "html_details" or re.search(r"<(?:html|article|details|section)\b", body, re.I):
+        view = TopicView(target or None)
+        view.feed(body)
+        body = " ".join(" ".join(view.text).split())
+    pair = topic["reading_levels"]
+    plain, tech = pair["reader_excerpt"], pair["professional_excerpt"]
+    invitation = string(topic.get("follow_up"), "topic-specific invitation")
+    start = body.find(plain)
+    method = body.find(tech, start + len(plain)) if start >= 0 else -1
+    last = body.rfind(invitation)
+    require(start >= 0 and method > start and last > method,
+            "opening the topic must show the reader level first, the specialist level second, then its invitation")
+    reader = body[start:method]
+    application = string(pair.get("reader_application"), "practical implication")
+    require(application in reader and application != plain,
+            "plain explanation must include an actual practical implication or worked example")
+    technical = body[method:last]
+    require(all(sources[sid]["url"] in technical for sid in topic["source_ids"]),
+            "source links must appear with the specialist interpretation in this same opened article")
+    for key in ("method_excerpt", "limit_excerpt"):
+        require(string(pair.get(key), "documented " + key) in technical, "technical method or limit missing")
+    require(pair["method_excerpt"] != pair["limit_excerpt"], "distinguish method and evidence limit")
 
 def published_topic(topic, root, claims):
     """Bind both explanations to the actual report and its cited claim ledger."""
@@ -548,7 +679,7 @@ def publication_layers(root, data, sources, applied_lesson_ids=None):
             "professional layer lacks its actual cited sources")
     require(text_view(string(case.get("limitations"), "research limitations")) in technical,
             "research limitations are missing from the professional layer")
-    if data["schema"] == SCHEMA:
+    if data["schema"] in {SCHEMA, PREVIOUS_SCHEMA}:
         topics = data.get("answer_layout", {}).get("topics")
         require(isinstance(topics, list) and len(topics) >= 2, "published case requires at least two completed topics")
         claims = {claim["id"]: claim for claim in data["claims"]}
@@ -660,7 +791,7 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
     data = json.loads(raw)
     archived = run_id is None and begin_sha256 is None and artifact_dir is None and applied_lesson_ids is None
     require(type(data) is dict and (data.get("schema") == SCHEMA or
-            (archived and data.get("schema") == ARCHIVED_SCHEMA)), "wrong delivery schema")
+            (archived and data.get("schema") in {ARCHIVED_SCHEMA, PREVIOUS_SCHEMA})), "wrong delivery schema")
     string(data.get("run_id"), "run_id")
     digest = string(data.get("begin_sha256"), "begin_sha256")
     require(re.fullmatch(r"[0-9a-f]{64}", digest) is not None, "invalid begin hash")

@@ -4,7 +4,7 @@
 
 Adapt the form to the task. Everyday questions need a useful answer, practical alternatives and only material clarifications; conceptual questions need explanations and credible learning routes. The full two-track software comparison below applies when the task is to choose or build a technical solution. Never manufacture a synthesis project for a simple product or appearance question. A confusing question is a reason to interpret carefully, not to ridicule the user.
 
-Lead with a concrete recommendation and the reason it fits the user's constraints. Then show the following two sections. Keep query counts, dictionaries and search routes in the background unless they explain a material gap or the user asks for them. Cite the evidence supporting each technical conclusion.
+Lead with a concrete recommendation and the reason it fits the user's constraints. Separate the opening from at least ten immediately visible declarative, clickable leads. In each completed article present the same result in accessible and specialist language, in that order, with evidence, limits and a specific invitation to continue. Place the two decision tracks below inside relevant directions. The publication and chat rendering contracts are defined in [delivery-manifest.md](delivery-manifest.md). Keep query counts, dictionaries and search routes in the background unless they explain a material gap or the user asks for them. Cite the evidence supporting each technical conclusion.
 
 ### When a reader asks which product leads locally and worldwide
 
