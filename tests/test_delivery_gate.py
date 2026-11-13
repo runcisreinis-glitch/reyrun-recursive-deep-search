@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import delivery_gate as gate
 
 
-def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
+def make_fixture(root, run_id="fixture", begin_hash="a" * 64, html_topic_count=0):
     def file(name, text):
         path = root / name
         path.write_text(text, encoding="utf-8")
@@ -19,7 +19,7 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
     intro = "Synthetic claim for testing. It has no real-world evidential value."
     more = "If you would like to learn more"
     topics = []
-    for i in (1, 2):
+    for i in range(1, (html_topic_count or 2) + 1):
         url = "https://example.org/test-report-" + str(i)
         plain = "Fixture everyday explanation " + str(i) + "."
         technical = "Fixture detailed explanation " + str(i) + "."
@@ -30,8 +30,19 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
         topics.append(dict(insight="Synthetic insight " + str(i) + ".", origin_id="human", source_ids=["s1"],
                            format="chat_link", target=url, research=article, link_check=check,
                            reading_levels=dict(reader_excerpt=plain, professional_excerpt=technical, claim_ids=["c1"])))
-    answer = file("answer.md", intro + "\n\n" + more + "\n" + "\n".join(
-        t["insight"] + " [Read](" + t["target"] + ")" for t in topics) + "\n")
+    if html_topic_count:
+        sections = []
+        for i, topic in enumerate(topics):
+            target = "research-topic-" + str(i)
+            pair = topic["reading_levels"]
+            section = ('<details class="deep-topic" id="' + target + '"><summary>' + topic["insight"] +
+                       "</summary><p>" + pair["reader_excerpt"] + "</p><p>" + pair["professional_excerpt"] +
+                       '</p><a href="https://example.org/source">Evidence</a></details>')
+            topic.update(format="html_details", target=target, research=file(target + ".html", section))
+            sections.append(section)
+    else:
+        sections = [t["insight"] + " [Read](" + t["target"] + ")" for t in topics]
+    answer = file("answer.md", intro + "\n\n" + more + "\n" + "\n".join(sections) + "\n")
     draft = file("draft.md", "Synthetic draft.\n")
     receipt = file("receipt.json", '{"synthetic":true}')
     source = file("source.txt", "SYNTHETIC SOURCE: fixture for record validation only.")
@@ -181,7 +192,7 @@ class DeliveryRecords(unittest.TestCase):
         with self.assertRaisesRegex(gate.Invalid, "reader and professional"):
             self.check()
 
-    def test_published_case_reviews_bind_both_layers_method_and_data(self):
+    def prepare_published_case(self):
         def keep(name, value):
             body = value.encode()
             (self.root / name).write_bytes(body)
@@ -212,7 +223,20 @@ class DeliveryRecords(unittest.TestCase):
             row["dispatch_receipt"] = keep(row["dispatch_receipt"]["path"], json.dumps(receipt))
             case["editorial_decision"]["conclusions"][row["role"]] = {
                 "instance_id": row["instance_id"], "report_sha256": row["report"]["sha256"], "conclusion": "Fixture"}
-        self.assertEqual(self.check()["published_case_sha256"], hashlib.sha256(payload).hexdigest())
+        return case, hashlib.sha256(payload).hexdigest()
+
+    def test_published_six_topic_html_study(self):
+        self.data = make_fixture(self.root, html_topic_count=6)
+        case, expected_digest = self.prepare_published_case()
+        self.assertEqual(self.check()["published_case_sha256"], expected_digest)
+        self.data["task_clarity"]["format"] = "chat"
+        with self.assertRaisesRegex(gate.Invalid, "up to four"):
+            self.check()
+
+    def test_published_case_reviews_bind_both_layers_method_and_data(self):
+        case, expected_digest = self.prepare_published_case()
+        topics = self.data["answer_layout"]["topics"]
+        self.assertEqual(self.check()["published_case_sha256"], expected_digest)
         topic_pair = topics[1].pop("reading_levels")
         with self.assertRaisesRegex(gate.Invalid, "each published topic"):
             self.check()
@@ -230,7 +254,9 @@ class DeliveryRecords(unittest.TestCase):
         with self.assertRaisesRegex(gate.Invalid, "lessons actually applied"):
             gate.publication_layers(self.root, self.data, {"s1": self.data["sources"][0]}, ["first/note"])
         method.update(recursion_status="none_applied", lesson_ids=[])
-        case["data"] = keep("data.csv", "changed,1")
+        changed = b"changed,1"
+        (self.root / "data.csv").write_bytes(changed)
+        case["data"] = {"path": "data.csv", "sha256": hashlib.sha256(changed).hexdigest()}
         with self.assertRaisesRegex(gate.Invalid, "research packet"):
             self.check()
 

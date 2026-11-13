@@ -434,7 +434,9 @@ def answer_layout(data, root, answer, sources):
     require(layout["price"]["status"] == data["overlooked_search"]["first_answer"]["price"]["status"],
             "short answer and research disagree on the price status")
     topics = layout.get("topics")
-    require(isinstance(topics, list) and 2 <= len(topics) <= 4, "need two to four optional topics")
+    published = data["task_clarity"]["format"] == "published_case" and data["schema"] == SCHEMA
+    require(isinstance(topics, list) and len(topics) >= 2, "need at least two distinct optional topics")
+    require(published or len(topics) <= 4, "chat and archived v6 deliveries allow up to four optional topics")
     first_hand_ids = {seq["human_source_id"] for seq in data["firsthand_sequences"]}
     distinct = set()
     for topic in topics:
@@ -548,7 +550,7 @@ def publication_layers(root, data, sources, applied_lesson_ids=None):
             "research limitations are missing from the professional layer")
     if data["schema"] == SCHEMA:
         topics = data.get("answer_layout", {}).get("topics")
-        require(isinstance(topics, list) and 2 <= len(topics) <= 4, "published case requires two to four completed topics")
+        require(isinstance(topics, list) and len(topics) >= 2, "published case requires at least two completed topics")
         claims = {claim["id"]: claim for claim in data["claims"]}
         layers["topics"] = [published_topic(topic, root, claims) for topic in topics]
         summary = case.get("method_summary")
