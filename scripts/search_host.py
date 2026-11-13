@@ -183,9 +183,12 @@ def run(args):
             runtime.atomic(job_dir / "validated-worker-result.json", runtime.canonical(result))
         if config.get("delivery_gate_mode", "strict") == "strict":
             try:
+                loaded = begun["brief"]["loaded_lesson_ids"]
+                applied = [use["lesson_id"] for use in result.get("learning_use", [])
+                           if use.get("status") == "applied" and use.get("lesson_id") in loaded]
                 checked = delivery_gate.validate(job_dir / "delivery-manifest.json",
                                                  begun["run_id"], begun["begin_sha256"], job_dir,
-                                                 config.get("review_receipt_dir"))
+                                                 config.get("review_receipt_dir"), applied)
                 delivery_gate.require(checked["controller_receipts_matched"],
                                       "strict delivery needs independent controller dispatch receipts")
             except (delivery_gate.Invalid, OSError, ValueError, TypeError, KeyError, AttributeError) as error:

@@ -7,6 +7,7 @@ attestations, not authenticated identities or automatic semantic verification.
 """
 import argparse
 from datetime import datetime
+from html.parser import HTMLParser
 import hashlib
 import json
 from pathlib import Path
@@ -15,7 +16,8 @@ import sys
 from urllib.parse import urlsplit
 
 
-SCHEMA = "reyrun-delivery-v6"
+SCHEMA = "reyrun-delivery-v7"
+ARCHIVED_SCHEMA = "reyrun-delivery-v6"
 ROLES = {"optimistic", "skeptical", "conservative", "innovative"}
 LANGUAGES = {"EN", "DE", "ZH", "JA"}
 CLAIM_TYPES = {"fact", "source_claim", "experience", "calculation",
@@ -470,7 +472,63 @@ def answer_layout(data, root, answer, sources):
             raise Invalid("unknown optional research format")
 
 
-def publication_layers(root, data, sources):
+def published_topic(topic, root, claims):
+    """Bind both explanations to the actual report and its cited claim ledger."""
+    pair = topic.get("reading_levels")
+    require(isinstance(pair, dict), "each published topic needs both reading levels")
+    content = text_view(artifact(root, topic.get("research"), "published topic report"))
+    target = topic.get("target", "")
+    is_html = topic.get("format") == "html_details" or "<html" in content.lower() or "<details" in content.lower()
+    if is_html:
+        fragment = target if topic.get("format") == "html_details" else urlsplit(target).fragment
+        parser = VisibleSection(fragment)
+        parser.feed(content)
+        content = " ".join(" ".join(parser.parts).split())
+    plain = string(pair.get("reader_excerpt"), "everyday explanation").strip()
+    technical = string(pair.get("professional_excerpt"), "technical explanation").strip()
+    require(plain in content and technical in content and
+            plain not in technical and technical not in plain,
+            "both distinct explanations must appear in the opened topic")
+    ids = pair.get("claim_ids")
+    require(isinstance(ids, list) and ids and all(cid in claims for cid in ids),
+            "the two explanations must identify their shared claims")
+    refs = set(topic.get("source_ids", []))
+    require(all(set(claims[cid]["source_ids"]) <= refs for cid in ids),
+            "the linked report lacks the source for a shared claim")
+    return {"target": target, "research_sha256": topic["research"]["sha256"], "reading_levels": pair}
+
+
+class VisibleSection(HTMLParser):
+    """Read visitor-facing text only inside the link's target, when specified."""
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta",
+            "param", "source", "track", "wbr"}
+
+    def __init__(self, fragment):
+        super().__init__()
+        self.fragment = fragment
+        self.stack = []
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.VOID:
+            return
+        attrs = dict(attrs)
+        active = not self.fragment or attrs.get("id") == self.fragment or (self.stack and self.stack[-1][1])
+        hidden = tag in {"script", "style", "template", "head"} or "hidden" in attrs or (self.stack and self.stack[-1][2])
+        self.stack.append((tag, bool(active), bool(hidden)))
+
+    def handle_endtag(self, tag):
+        for index in range(len(self.stack) - 1, -1, -1):
+            if self.stack[index][0] == tag:
+                del self.stack[index:]
+                break
+
+    def handle_data(self, value):
+        if self.stack and self.stack[-1][1] and not self.stack[-1][2]:
+            self.parts.append(value)
+
+
+def publication_layers(root, data, sources, applied_lesson_ids=None):
     mode = data["task_clarity"].get("format")
     require(mode in {"chat", "published_case"}, "select chat or published_case delivery during clarification")
     if mode == "chat":
@@ -488,6 +546,28 @@ def publication_layers(root, data, sources):
             "professional layer lacks its actual cited sources")
     require(text_view(string(case.get("limitations"), "research limitations")) in technical,
             "research limitations are missing from the professional layer")
+    if data["schema"] == SCHEMA:
+        topics = data.get("answer_layout", {}).get("topics")
+        require(isinstance(topics, list) and 2 <= len(topics) <= 4, "published case requires two to four completed topics")
+        claims = {claim["id"]: claim for claim in data["claims"]}
+        layers["topics"] = [published_topic(topic, root, claims) for topic in topics]
+        summary = case.get("method_summary")
+        require(isinstance(summary, dict), "published case needs a visitor-facing method summary")
+        visible = text_view(artifact(root, case["reader"], "reader explanation")) + "\n" + technical
+        steps = {step["id"] for step in data["practitioner_routes"]["adaptive_decisions"]}
+        require(summary.get("decision_id") in steps, "innovation summary must name an actual adaptive decision")
+        require(string(summary.get("innovation_excerpt"), "method change and result") in visible,
+                "innovation summary must appear in a published layer")
+        require(string(summary.get("recursion_excerpt"), "use of prior search experience") in visible,
+                "recursion summary must appear in a published layer")
+        status, notes = summary.get("recursion_status"), summary.get("lesson_ids")
+        require(status in {"applied", "none_applied"} and isinstance(notes, list) and
+                all(isinstance(note, str) and note for note in notes) and
+                bool(notes) == (status == "applied"), "state whether a saved lesson affected this search")
+        if applied_lesson_ids is not None:
+            require(set(notes) <= set(applied_lesson_ids) and bool(notes) == bool(applied_lesson_ids),
+                    "recursion summary does not match the lessons actually applied in this run")
+        layers["method_summary"] = summary
     card = case.get("editorial_decision")
     require(isinstance(card, dict) and set(card.get("conclusions", {})) == ROLES,
             "published case needs four separately attributed conclusions")
@@ -563,7 +643,8 @@ def independent_reviews(root, data, answer_digest, registry, case_digest=None):
     require(review.get("unresolved_critical") == [], "unresolved critical four-review objection")
 
 
-def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, review_receipt_dir=None):
+def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, review_receipt_dir=None,
+             applied_lesson_ids=None):
     supplied_manifest = Path(manifest_path).absolute()
     require(not supplied_manifest.is_symlink(), "delivery manifest must not be a symbolic link")
     root = supplied_manifest.parent.resolve()
@@ -575,7 +656,9 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
     require(manifest_path.stat().st_size <= MAX_FILE_BYTES, "delivery manifest exceeds 4 MiB")
     raw = manifest_path.read_bytes()
     data = json.loads(raw)
-    require(type(data) is dict and data.get("schema") == SCHEMA, "wrong delivery schema")
+    archived = run_id is None and begin_sha256 is None and artifact_dir is None and applied_lesson_ids is None
+    require(type(data) is dict and (data.get("schema") == SCHEMA or
+            (archived and data.get("schema") == ARCHIVED_SCHEMA)), "wrong delivery schema")
     string(data.get("run_id"), "run_id")
     digest = string(data.get("begin_sha256"), "begin_sha256")
     require(re.fullmatch(r"[0-9a-f]{64}", digest) is not None, "invalid begin hash")
@@ -673,12 +756,12 @@ def validate(manifest_path, run_id=None, begin_sha256=None, artifact_dir=None, r
         require(review.get(key) is True, key + " is missing")
     require(review.get("unresolved_critical") == [], "unresolved critical evidence objections")
     sentence_summary = sentence_check(data, answer)
-    case_digest = publication_layers(root, data, source_map)
+    case_digest = publication_layers(root, data, source_map, applied_lesson_ids)
     independent_reviews(root, data, data["answer"]["sha256"], review_receipt_dir, case_digest)
     answer_layout(data, root, answer, source_map)
     checked = {"innovation_records_checked": True, "independent_reports_checked": 4,
             "controller_receipts_matched": review_receipt_dir is not None,
-            "reviewer_identity_authenticated": False, "schema": SCHEMA, "evidence_contract_passed": True,
+            "reviewer_identity_authenticated": False, "schema": data["schema"], "evidence_contract_passed": True,
             "factual_quality_certified": False, "improvement_proven": False,
             "manifest_sha256": hashlib.sha256(raw).hexdigest(),
             "answer_sha256": hashlib.sha256(answer).hexdigest(),

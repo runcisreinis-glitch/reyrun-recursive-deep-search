@@ -21,11 +21,15 @@ def make_fixture(root, run_id="fixture", begin_hash="a" * 64):
     topics = []
     for i in (1, 2):
         url = "https://example.org/test-report-" + str(i)
-        article = file("report-" + str(i) + ".md", "Synthetic report " + str(i) + " with source https://example.org/source")
+        plain = "Fixture everyday explanation " + str(i) + "."
+        technical = "Fixture detailed explanation " + str(i) + "."
+        article = file("report-" + str(i) + ".md",
+                       plain + "\n" + technical + " https://example.org/source")
         check = file("link-" + str(i) + ".json", json.dumps(dict(requested_url=url, status=200,
                      content_sha256=article["sha256"], checked_at="2026-11-09T00:03:00Z")))
         topics.append(dict(insight="Synthetic insight " + str(i) + ".", origin_id="human", source_ids=["s1"],
-                           format="chat_link", target=url, research=article, link_check=check))
+                           format="chat_link", target=url, research=article, link_check=check,
+                           reading_levels=dict(reader_excerpt=plain, professional_excerpt=technical, claim_ids=["c1"])))
     answer = file("answer.md", intro + "\n\n" + more + "\n" + "\n".join(
         t["insight"] + " [Read](" + t["target"] + ")" for t in topics) + "\n")
     draft = file("draft.md", "Synthetic draft.\n")
@@ -188,7 +192,14 @@ class DeliveryRecords(unittest.TestCase):
             "method": keep("method.md", "Fixture method"), "data": keep("data.csv", "fixture,0"),
             "source_ids": ["s1"], "limitations": "Fixture scope",
             "editorial_decision": {"conclusions": {}, "synthesis": "Fixture test only.", "unresolved_critical": []}}
+        case["method_summary"] = dict(innovation_excerpt="Fixture scope", decision_id="2",
+                                      recursion_excerpt="Synthetic claim for testing.", recursion_status="none_applied",
+                                      lesson_ids=[])
+        topics = self.data["answer_layout"]["topics"]
         layers = {k: case[k]["sha256"] for k in ("reader", "professional", "method", "data")}
+        layers["method_summary"] = case["method_summary"]
+        layers["topics"] = [dict(target=t["target"], research_sha256=t["research"]["sha256"],
+                                reading_levels=t["reading_levels"]) for t in topics]
         payload = json.dumps(layers, sort_keys=True, separators=(",", ":")).encode()
         self.data["task_clarity"]["format"] = "published_case"
         self.data["publication_layers"] = case
@@ -202,9 +213,45 @@ class DeliveryRecords(unittest.TestCase):
             case["editorial_decision"]["conclusions"][row["role"]] = {
                 "instance_id": row["instance_id"], "report_sha256": row["report"]["sha256"], "conclusion": "Fixture"}
         self.assertEqual(self.check()["published_case_sha256"], hashlib.sha256(payload).hexdigest())
+        topic_pair = topics[1].pop("reading_levels")
+        with self.assertRaisesRegex(gate.Invalid, "each published topic"):
+            self.check()
+        topics[1]["reading_levels"] = dict(topic_pair, reader_excerpt=topic_pair["professional_excerpt"])
+        with self.assertRaisesRegex(gate.Invalid, "both distinct explanations"):
+            self.check()
+        topics[1]["reading_levels"] = dict(topic_pair, claim_ids=["invented-result"])
+        with self.assertRaisesRegex(gate.Invalid, "shared claims"):
+            self.check()
+        topics[1]["reading_levels"] = topic_pair
+        with self.assertRaisesRegex(gate.Invalid, "lessons actually applied"):
+            gate.publication_layers(self.root, self.data, {"s1": self.data["sources"][0]}, ["first/note"])
+        method = case["method_summary"]
+        method.update(recursion_status="applied", lesson_ids=["never-loaded"])
+        with self.assertRaisesRegex(gate.Invalid, "lessons actually applied"):
+            gate.publication_layers(self.root, self.data, {"s1": self.data["sources"][0]}, ["first/note"])
+        method.update(recursion_status="none_applied", lesson_ids=[])
         case["data"] = keep("data.csv", "changed,1")
         with self.assertRaisesRegex(gate.Invalid, "research packet"):
             self.check()
+
+    def test_both_levels_must_be_in_the_same_opened_section(self):
+        topic = self.data["answer_layout"]["topics"][0]
+        pair = topic["reading_levels"]
+        plain, technical = pair["reader_excerpt"], pair["professional_excerpt"]
+        section = '<details id="wanted"><summary>Read</summary>' + plain + '</details>'
+        body = section + '<details id="other">' + technical + '</details>'
+        report = self.root / topic["research"]["path"]
+        topic["format"], topic["target"] = "html_details", "wanted"
+        claims = {"c1": self.data["claims"][0]}
+        for text, expected in [(body, False), (body.replace(plain, plain + "<!-- " + technical + " -->"), False),
+                               (body.replace(plain, plain + " " + technical), True)]:
+            report.write_text(text)
+            topic["research"]["sha256"] = hashlib.sha256(report.read_bytes()).hexdigest()
+            if expected:
+                self.assertTrue(gate.published_topic(topic, self.root, claims))
+            else:
+                with self.assertRaisesRegex(gate.Invalid, "both distinct explanations"):
+                    gate.published_topic(topic, self.root, claims)
 
     def test_short_opening_precedes_the_exploration(self):
         self.data["answer_layout"]["intro"] = "Supplement"
